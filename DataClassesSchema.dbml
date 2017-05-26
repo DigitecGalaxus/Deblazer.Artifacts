@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="dev-devinite-schema" EntityNamespace="devinite.DbLayer" ContextNamespace="devinite.DbLayer" Class="Dev_Devinite_Schema" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo._temp_traceTable_noon" Member="_temp_traceTable_noons">
+    <Type Name="_temp_traceTable_noon">
+      <Column Name="RowNumber" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BinaryData" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DatabaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NTUserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NTDomainName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="HostName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ClientProcessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="SPID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Error" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DatabaseName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="RowCounts" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EventSequence" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="IsSystem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServerName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="TextData" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EventSubClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Handle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+	  <Column Name="IsFinalized" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" Expression="(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)" />
+    </Type>
+  </Table>
+  <Table Name="dbo._temp_traceTable_x4" Member="_temp_traceTable_x4s">
+    <Type Name="_temp_traceTable_x4">
+      <Column Name="RowNumber" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EventSequence" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TextData" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DatabaseName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DatabaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientProcessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HostName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ServerName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="BinaryData" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SPID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsSystem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NTDomainName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NTUserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Error" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowCounts" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EventSubClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Handle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo._temp_traceTable_xx" Member="_temp_traceTable_xxes">
+    <Type Name="_temp_traceTable_xx">
+      <Column Name="RowNumber" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EventClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EventSequence" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TextData" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DatabaseName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="DatabaseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientProcessID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HostName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ServerName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="BinaryData" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SPID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsSystem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NTDomainName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="NTUserName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Error" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowCounts" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EventSubClass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Handle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ABTest" Member="ABTests">
+    <Type Name="ABTest">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="FK_ABTestOption_ABTest" Member="ABTestOptions" ThisKey="Id" OtherKey="ABTestId" Type="ABTestOption" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ABTestActivity" Member="ABTestActivities">
+    <Type Name="ABTestActivity">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ABTestOptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PortalId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime2(4) NOT NULL" CanBeNull="false" />
+      <Column Name="UserSessionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CookieId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_ABTestActivity_ABTestOption" Member="ABTestOption" ThisKey="ABTestOptionId" OtherKey="Id" Type="ABTestOption" IsForeignKey="true" />
+      <Association Name="FK_ABTestSession_Portal" Member="Portal" ThisKey="PortalId" OtherKey="Id" Type="Portal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ABTestOption" Member="ABTestOptions">
+    <Type Name="ABTestOption">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ABTestId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="CookieLastDigitFrom" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="CookieLastDigitTo" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="FK_ABTestActivity_ABTestOption" Member="ABTestActivities" ThisKey="Id" OtherKey="ABTestOptionId" Type="ABTestActivity" DeleteRule="NO ACTION" />
+      <Association Name="FK_ABTestOption_ABTest" Member="ABTest" ThisKey="ABTestId" OtherKey="Id" Type="ABTest" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinder" Member="AccessoryFinders">
+    <Type Name="AccessoryFinder">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccessoryFinder_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinder2ProductType_AccessoryFinder" Member="AccessoryFinder2ProductTypes" ThisKey="Id" OtherKey="AccessoryFinderId" Type="AccessoryFinder2ProductType" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderColumn_AccessoryFinder" Member="AccessoryFinderColumns" ThisKey="Id" OtherKey="AccessoryFinderId" Type="AccessoryFinderColumn" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinder" Member="AccessoryFinderProducts" ThisKey="Id" OtherKey="AccessoryFinderId" Type="AccessoryFinderProduct" DeleteRule="NO ACTION" />
+      <Association Name="FK_DataSourceAccessoryFinder_AccessoryFinder" Member="DataSourceAccessoryFinders" ThisKey="Id" OtherKey="AccessoryFinderId" Type="DataSourceAccessoryFinder" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinder2ProductType" Member="AccessoryFinder2ProductTypes">
+    <Type Name="AccessoryFinder2ProductType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessoryFinderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAccessoryProductType" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccessoryFinder2ProductType_AccessoryFinder" Member="AccessoryFinder" ThisKey="AccessoryFinderId" OtherKey="Id" Type="AccessoryFinder" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinder2ProductType_ProductType" Member="ProductType" ThisKey="ProductTypeId" OtherKey="Id" Type="ProductType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinderColumn" Member="AccessoryFinderColumns">
+    <Type Name="AccessoryFinderColumn">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessoryFinderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccessoryFinderColumnTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccessoryFinderColumn_AccessoryFinder" Member="AccessoryFinder" ThisKey="AccessoryFinderId" OtherKey="Id" Type="AccessoryFinder" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderColumn_AccessoryFinderColumnDefinition" Member="AccessoryFinderColumnType" ThisKey="AccessoryFinderColumnTypeId" OtherKey="Id" Type="AccessoryFinderColumnType" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderValue_AccessoryFinderColumn" Member="AccessoryFinderValues" ThisKey="Id" OtherKey="AccessoryFinderColumnId" Type="AccessoryFinderValue" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinderColumnType" Member="AccessoryFinderColumnTypes">
+    <Type Name="AccessoryFinderColumnType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccessoryFinderColumn_AccessoryFinderColumnDefinition" Member="AccessoryFinderColumns" ThisKey="Id" OtherKey="AccessoryFinderColumnTypeId" Type="AccessoryFinderColumn" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderColumnType_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinderProduct" Member="AccessoryFinderProducts">
+    <Type Name="AccessoryFinderProduct">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessoryFinderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataSourceAccessoryFinderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Column0_AccessoryFinderValueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Column1_AccessoryFinderValueId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Column2_AccessoryFinderValueId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Column3_AccessoryFinderValueId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinder" Member="AccessoryFinder" ThisKey="AccessoryFinderId" OtherKey="Id" Type="AccessoryFinder" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column0" Member="AccessoryFinderValue" ThisKey="Column0_AccessoryFinderValueId" OtherKey="Id" Type="AccessoryFinderValue" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column1" Member="Column1_AccessoryFinderValue" ThisKey="Column1_AccessoryFinderValueId" OtherKey="Id" Type="AccessoryFinderValue" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column2" Member="Column2_AccessoryFinderValue" ThisKey="Column2_AccessoryFinderValueId" OtherKey="Id" Type="AccessoryFinderValue" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column3" Member="Column3_AccessoryFinderValue" ThisKey="Column3_AccessoryFinderValueId" OtherKey="Id" Type="AccessoryFinderValue" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_DataSourceAccessoryFinder" Member="DataSourceAccessoryFinder" ThisKey="DataSourceAccessoryFinderId" OtherKey="Id" Type="DataSourceAccessoryFinder" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderProduct_Product" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryFinderValue" Member="AccessoryFinderValues">
+    <Type Name="AccessoryFinderValue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessoryFinderColumnId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MatchingValue" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Value_DbContentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column0" Member="AccessoryFinderProducts" ThisKey="Id" OtherKey="Column0_AccessoryFinderValueId" Type="AccessoryFinderProduct" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column1" Member="AccessoryFinderProduct_AccessoryFinderValue_Column1s" ThisKey="Id" OtherKey="Column1_AccessoryFinderValueId" Type="AccessoryFinderProduct" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column2" Member="AccessoryFinderProduct_AccessoryFinderValue_Column2s" ThisKey="Id" OtherKey="Column2_AccessoryFinderValueId" Type="AccessoryFinderProduct" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderProduct_AccessoryFinderValue_Column3" Member="AccessoryFinderProduct_AccessoryFinderValue_Column3s" ThisKey="Id" OtherKey="Column3_AccessoryFinderValueId" Type="AccessoryFinderProduct" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryFinderValue_AccessoryFinderColumn" Member="AccessoryFinderColumn" ThisKey="AccessoryFinderColumnId" OtherKey="Id" Type="AccessoryFinderColumn" IsForeignKey="true" />
+      <Association Name="FK_AccessoryFinderValue_DbContent" Member="DbContent" ThisKey="Value_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryGroup" Member="AccessoryGroups">
+    <Type Name="AccessoryGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="InsertUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description_DbContentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccessoryGroup_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroup_DbContent1" Member="Description_DbContent" ThisKey="Description_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroup2ProductType_AccessoryGroup" Member="AccessoryGroup2ProductTypes" ThisKey="Id" OtherKey="AccessoryGroupId" Type="AccessoryGroup2ProductType" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryGroupAccessory_AccessoryGroup" Member="AccessoryGroupAccessories" ThisKey="Id" OtherKey="AccessoryGroupId" Type="AccessoryGroupAccessory" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessoryGroupProductMandatorRelation_AccessoryGroup" Member="ProductAccessoryGroupRelations" ThisKey="Id" OtherKey="AccessoryGroupId" Type="ProductAccessoryGroupRelation" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryGroup2ProductType" Member="AccessoryGroup2ProductTypes">
+    <Type Name="AccessoryGroup2ProductType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccessoryGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InsertUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime2(4) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime2(4) NOT NULL" CanBeNull="false" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="DateTime2(4)" CanBeNull="true" />
+      <Association Name="FK_AccessoryGroup2ProductType_AccessoryGroup" Member="AccessoryGroup" ThisKey="AccessoryGroupId" OtherKey="Id" Type="AccessoryGroup" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroup2ProductType_ProductType" Member="ProductType" ThisKey="ProductTypeId" OtherKey="Id" Type="ProductType" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroup2ProductType_User" Member="User" ThisKey="InsertUserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroup2ProductType_User1" Member="UpdateUser" ThisKey="UpdateUserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessoryGroupAccessory" Member="AccessoryGroupAccessories">
+    <Type Name="AccessoryGroupAccessory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessoryGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecommendedByProductManager" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccessoryGroupAccessory_AccessoryGroup" Member="AccessoryGroup" ThisKey="AccessoryGroupId" OtherKey="Id" Type="AccessoryGroup" IsForeignKey="true" />
+      <Association Name="FK_AccessoryGroupAccessory_Product" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessRight" Member="AccessRights">
+    <Type Name="AccessRight">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="FK_Annotation_AccessRight" Member="Annotations" ThisKey="Id" OtherKey="AccessRightId" Type="Annotation" DeleteRule="NO ACTION" />
+      <Association Name="FK_CompanyContract_AccessRight" Member="CompanyContracts" ThisKey="Id" OtherKey="AccessRightId" Type="CompanyContract" DeleteRule="NO ACTION" />
+      <Association Name="FK_JobOffer_AccessRight" Member="JobOffers" ThisKey="Id" OtherKey="AccessRightId" Type="JobOffer" DeleteRule="NO ACTION" />
+      <Association Name="FK_OrderType_AccessRight" Member="OrderTypes" ThisKey="Id" OtherKey="AccessRightId" Type="OrderType" DeleteRule="NO ACTION" />
+      <Association Name="FK_ReportMandator_AccessRight" Member="ReportMandators" ThisKey="Id" OtherKey="AccessRightId" Type="ReportMandator" DeleteRule="NO ACTION" />
+      <Association Name="FK_Subject_AccessRight" Member="AccessRightSubjects" ThisKey="Id" OtherKey="AccessRightId" Type="AccessRightSubject" DeleteRule="NO ACTION" />
+      <Association Name="FK_WikiTopic_AccessRight" Member="WikiTopics" ThisKey="Id" OtherKey="AccessRightId" Type="WikiTopic" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessRightSubject" Member="AccessRightSubjects">
+    <Type Name="AccessRightSubject">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccessRightId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MandatorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccessRightSubjectConfigurationId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsInherited" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsInheritable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InheritedFrom_AccessRightSubjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InsertDate" Type="System.DateTime" DbType="DateTime2(4) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime2(4) NOT NULL" CanBeNull="false" />
+      <Column Name="InsertUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateUserSessionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InsertUserSessionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdateSystemTaskId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccessRightSubject_AccessRightSubject" Member="InheritedFrom_AccessRightSubject" ThisKey="InheritedFrom_AccessRightSubjectId" OtherKey="Id" Type="AccessRightSubject" IsForeignKey="true" />
+      <Association Name="FK_AccessRightSubject_AccessRightSubject" Member="AccessRightSubject_AccessRightSubjects" ThisKey="Id" OtherKey="InheritedFrom_AccessRightSubjectId" Type="AccessRightSubject" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccessRightSubject_InsertUser" Member="User" ThisKey="InsertUserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_AccessRightSubject_UpdateSystemTask" Member="SystemTask" ThisKey="UpdateSystemTaskId" OtherKey="Id" Type="SystemTask" IsForeignKey="true" />
+      <Association Name="FK_AccessRightSubject_UpdateUser" Member="UpdateUser" ThisKey="UpdateUserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="FK_Subject_AccessRight" Member="AccessRight" ThisKey="AccessRightId" OtherKey="Id" Type="AccessRight" IsForeignKey="true" />
+      <Association Name="FK_Subject_Department" Member="Department" ThisKey="DepartmentId" OtherKey="Id" Type="Department" IsForeignKey="true" />
+      <Association Name="FK_Subject_Mandator" Member="Mandator" ThisKey="MandatorId" OtherKey="Id" Type="Mandator" IsForeignKey="true" />
+      <Association Name="FK_Subject_Role" Member="Role" ThisKey="RoleId" OtherKey="Id" Type="Role" IsForeignKey="true" />
+      <Association Name="FK_Subject_SubjectAccessType" Member="AccessRightSubjectConfiguration" ThisKey="AccessRightSubjectConfigurationId" OtherKey="Id" Type="AccessRightSubjectConfiguration" IsForeignKey="true" />
+      <Association Name="FK_Subject_User" Member="Subject_User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccessRightSubjectConfiguration" Member="AccessRightSubjectConfigurations">
+    <Type Name="AccessRightSubjectConfiguration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CanRead" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanWrite" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanEditAccessRight" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanActivate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CanDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Subject_SubjectAccessType" Member="AccessRightSubjects" ThisKey="Id" OtherKey="AccessRightSubjectConfigurationId" Type="AccessRightSubject" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Account" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description_DbContentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountSystemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountRoleId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccumulateBookEntries" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="MandatorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Successor_AccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_Account_AccountGroup" Member="AccountGroup" ThisKey="AccountGroupId" OtherKey="Id" Type="AccountGroup" IsForeignKey="true" />
+      <Association Name="FK_Account_AccountRole" Member="AccountRole" ThisKey="AccountRoleId" OtherKey="Id" Type="AccountRole" IsForeignKey="true" />
+      <Association Name="FK_Account_AccountSystem" Member="AccountSystem" ThisKey="AccountSystemId" OtherKey="Id" Type="AccountSystem" IsForeignKey="true" />
+      <Association Name="FK_Account_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_Account_DbContent1" Member="Description_DbContent" ThisKey="Description_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_Account_Mandator" Member="Mandator" ThisKey="MandatorId" OtherKey="Id" Type="Mandator" IsForeignKey="true" />
+      <Association Name="FK_AccountingPurposeNameAccount_Account" Member="AccountingPurposeNameAccount" ThisKey="Id" OtherKey="AccountId" Type="AccountingPurposeNameAccount" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK_BankAccountAccount_Account" Member="BankAccountAccount" ThisKey="Id" OtherKey="AccountId" Type="BankAccountAccount" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK_BookEntry_Account" Member="BookEntries" ThisKey="Id" OtherKey="Left_AccountId" Type="BookEntry" DeleteRule="NO ACTION" />
+      <Association Name="FK_BookEntry_Account1" Member="BookEntry_Account1s" ThisKey="Id" OtherKey="Right_AccountId" Type="BookEntry" DeleteRule="NO ACTION" />
+      <Association Name="FK_BookEntryVat_Account" Member="BookEntryVats" ThisKey="Id" OtherKey="Left_AccountId" Type="BookEntryVat" DeleteRule="NO ACTION" />
+      <Association Name="FK_BookEntryVat_Account1" Member="BookEntryVat_Account1s" ThisKey="Id" OtherKey="Right_AccountId" Type="BookEntryVat" DeleteRule="NO ACTION" />
+      <Association Name="FK_BookingAccount_Currency" Member="Currency" ThisKey="CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_ItemPriceBookEntry_Account" Member="ItemPriceBookEntries" ThisKey="Id" OtherKey="Left_AccountId" Type="ItemPriceBookEntry" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntry_Account1" Member="ItemPriceBookEntry_Account1s" ThisKey="Id" OtherKey="Right_AccountId" Type="ItemPriceBookEntry" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryGroup_Account" Member="ItemPriceBookEntryGroups" ThisKey="Id" OtherKey="Left_AccountId" Type="ItemPriceBookEntryGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryGroup_Account1" Member="ItemPriceBookEntryGroup_Account1s" ThisKey="Id" OtherKey="Right_AccountId" Type="ItemPriceBookEntryGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryGroup_Account2" Member="ItemPriceBookEntryGroup_Account2s" ThisKey="Id" OtherKey="VatRate_Left_AccountId" Type="ItemPriceBookEntryGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryGroup_Account3" Member="ItemPriceBookEntryGroup_Account3s" ThisKey="Id" OtherKey="VatRate_Right_AccountId" Type="ItemPriceBookEntryGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryVat_Account" Member="ItemPriceBookEntryVats" ThisKey="Id" OtherKey="Left_AccountId" Type="ItemPriceBookEntryVat" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryVat_Account1" Member="ItemPriceBookEntryVat_Account1s" ThisKey="Id" OtherKey="Right_AccountId" Type="ItemPriceBookEntryVat" DeleteRule="NO ACTION" />
+      <Association Name="FK_Original_AccountId_Account" Member="CustomerAccountReplacements" ThisKey="Id" OtherKey="Original_AccountId" Type="CustomerAccountReplacement" DeleteRule="NO ACTION" />
+      <Association Name="FK_PaymentTransferAccount_Account" Member="PaymentTransferAccount" ThisKey="Id" OtherKey="AccountId" Type="PaymentTransferAccount" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK_Replacement_AccountId_Account" Member="Replacement_AccountId_Accounts" ThisKey="Id" OtherKey="Replacement_AccountId" Type="CustomerAccountReplacement" DeleteRule="NO ACTION" />
+      <Association Name="FK_VatCode_Account" Member="VatCodes" ThisKey="Id" OtherKey="Tax_AccountId" Type="VatCode" DeleteRule="NO ACTION" />
+      <Association Name="FK_VatRate_Account" Member="VatRates" ThisKey="Id" OtherKey="Tax_AccountId" Type="VatRate" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="report.AccountChangePerDate" Member="Report_AccountChangePerDates">
+    <Type Name="Report_AccountChangePerDate">
+      <Column Name="AccountingCurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Left" Type="System.Decimal" DbType="Decimal(14,4) NOT NULL" CanBeNull="false" />
+      <Column Name="Right" Type="System.Decimal" DbType="Decimal(14,4) NOT NULL" CanBeNull="false" />
+      <Column Name="LeftTax" Type="System.Decimal" DbType="Decimal(14,4) NOT NULL" CanBeNull="false" />
+      <Column Name="RightTax" Type="System.Decimal" DbType="Decimal(14,4) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountGroup" Member="AccountGroups">
+    <Type Name="AccountGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountGroupNo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountSystemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Parent_AccountGroupId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsLeftSidePositive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FK_Account_AccountGroup" Member="Accounts" ThisKey="Id" OtherKey="AccountGroupId" Type="Account" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountGroup_AccountGroup" Member="Parent_AccountGroup" ThisKey="Parent_AccountGroupId" OtherKey="Id" Type="AccountGroup" IsForeignKey="true" />
+      <Association Name="FK_AccountGroup_AccountGroup" Member="AccountGroup_AccountGroups" ThisKey="Id" OtherKey="Parent_AccountGroupId" Type="AccountGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountGroup_AccountSystem" Member="AccountSystem" ThisKey="AccountSystemId" OtherKey="Id" Type="AccountSystem" IsForeignKey="true" />
+      <Association Name="FK_AccountGroup_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurpose" Member="AccountingPurposes">
+    <Type Name="AccountingPurpose">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountingPurposeNameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsExpense" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Sign" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" Expression="(case when [IsExpense]=(1) then (-1) else (1) end)" />
+      <Association Name="FK_ItemPrice_AccountingPurpose" Member="ItemPrices" ThisKey="Id" OtherKey="AccountingPurposeId" Type="ItemPrice" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceLog_AccountingPurpose" Member="ItemPriceLogs" ThisKey="Id" OtherKey="AccountingPurposeId" Type="ItemPriceLog" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPurpose_ItemPurposeName" Member="AccountingPurposeName" ThisKey="AccountingPurposeNameId" OtherKey="Id" Type="AccountingPurposeName" IsForeignKey="true" />
+      <Association Name="FK_OrderPositionTemplate_AccountingPurpose" Member="OrderPositionTemplates" ThisKey="Id" OtherKey="AccountingPurposeId" Type="OrderPositionTemplate" DeleteRule="NO ACTION" />
+      <Association Name="FK_PaymentOptionCommission_AccountingPurpose" Member="PaymentOptionCommissions" ThisKey="Id" OtherKey="AccountingPurposeId" Type="PaymentOptionCommission" DeleteRule="NO ACTION" />
+      <Association Name="FK_SalesOfferAccountingPosition_AccountingPurpose" Member="SalesOfferAccountingPositions" ThisKey="Id" OtherKey="AccountingPurposeId" Type="SalesOfferAccountingPosition" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurposeGroup" Member="AccountingPurposeGroups">
+    <Type Name="AccountingPurposeGroup">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description_DbContentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccountingPurposeGroup_DbContent" Member="DbContent" ThisKey="Description_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_dbo_AccountingPurposeGroupName_DbContentId_DbContent_Id" Member="Name_DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_ItemPurposeGroup_ItemPurpose_ItemPurposeGroup" Member="AccountingPurposeGroup_AccountingPurposeNames" ThisKey="Id" OtherKey="AccountingPurposeGroupId" Type="AccountingPurposeGroup_AccountingPurposeName" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurposeGroup_AccountingPurposeName" Member="AccountingPurposeGroup_AccountingPurposeNames">
+    <Type Name="AccountingPurposeGroup_AccountingPurposeName">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountingPurposeGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountingPurposeNameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPrimary" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccountingPurposeGroup_AccountingPurposeName_AccountingPurposeName" Member="AccountingPurposeName" ThisKey="AccountingPurposeNameId" OtherKey="Id" Type="AccountingPurposeName" IsForeignKey="true" />
+      <Association Name="FK_ItemPurposeGroup_ItemPurpose_ItemPurposeGroup" Member="AccountingPurposeGroup" ThisKey="AccountingPurposeGroupId" OtherKey="Id" Type="AccountingPurposeGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurposeName" Member="AccountingPurposeNames">
+    <Type Name="AccountingPurposeName">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccountingPurposeGroup_AccountingPurposeName_AccountingPurposeName" Member="AccountingPurposeGroup_AccountingPurposeNames" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="AccountingPurposeGroup_AccountingPurposeName" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountingPurposeNameAccount2AccountingPurposeName_AccountingPurposeName" Member="AccountingPurposeNameAccount2AccountingPurposeNames" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="AccountingPurposeNameAccount2AccountingPurposeName" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceType_AccountingPurposeName" Member="AdditionalProductServiceType" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="AdditionalProductServiceType" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK_CompanyAccountingPurposeName_AccountingPurposeName" Member="CompanyAccountingPurposeNames" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="CompanyAccountingPurposeName" DeleteRule="NO ACTION" />
+      <Association Name="FK_dbo_AccountingPurposeNameDescription_DbContentId_DbContent_Id" Member="DbContent" ThisKey="Description_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_dbo_AccountingPurposeNameName_DbContentId_DbContent_Id" Member="Name_DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_ItemPriceBookEntry_AccountingPurposeName" Member="ItemPriceBookEntries" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="ItemPriceBookEntry" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryGroup_AccountingPurposeName" Member="ItemPriceBookEntryGroups" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="ItemPriceBookEntryGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemProductStaticRefurbishedOrigin_AccountingPurposeName" Member="ItemProductStaticRefurbishedOrigins" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="ItemProductStaticRefurbishedOrigin" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemProductStaticRmaType_AccountingPurposeName" Member="ItemProductStaticRmaTypes" ThisKey="Id" OtherKey="Difference_AccountingPurposeNameId" Type="ItemProductStaticRmaType" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPurpose_ItemPurposeName" Member="AccountingPurposes" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="AccountingPurpose" DeleteRule="NO ACTION" />
+      <Association Name="FK_LogisticsProviderDeliveryOption_AccountingPurposeName" Member="LogisticsProviderDeliveryOptions" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="LogisticsProviderDeliveryOption" DeleteRule="NO ACTION" />
+      <Association Name="FK_PaymentProviderPaymentOption_AccountingPurposeName" Member="PaymentProviderPaymentOptions" ThisKey="Id" OtherKey="AccountingPurposeNameId" Type="PaymentProviderPaymentOption" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurposeNameAccount" Member="AccountingPurposeNameAccounts">
+    <Type Name="AccountingPurposeNameAccount">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDirectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AccountingPurposeNameAccount_Account" Member="Account" ThisKey="AccountId" OtherKey="Id" Type="Account" IsForeignKey="true" />
+      <Association Name="FK_AccountingPurposeNameAccount_PaymentDirection" Member="PaymentDirection" ThisKey="PaymentDirectionId" OtherKey="Id" Type="PaymentDirection" IsForeignKey="true" />
+      <Association Name="FK_AccountingPurposeNameAccount2AccountingPurposeName_AccountingPurposeNameAccount" Member="AccountingPurposeNameAccount2AccountingPurposeNames" ThisKey="Id" OtherKey="AccountingPurposeNameAccountId" Type="AccountingPurposeNameAccount2AccountingPurposeName" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountingPurposeNameAccount2AccountingPurposeName" Member="AccountingPurposeNameAccount2AccountingPurposeNames">
+    <Type Name="AccountingPurposeNameAccount2AccountingPurposeName">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountingPurposeNameAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountingPurposeNameId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SiteId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AccountingPurposeNameAccount2AccountingPurposeName_AccountingPurposeName" Member="AccountingPurposeName" ThisKey="AccountingPurposeNameId" OtherKey="Id" Type="AccountingPurposeName" IsForeignKey="true" />
+      <Association Name="FK_AccountingPurposeNameAccount2AccountingPurposeName_AccountingPurposeNameAccount" Member="AccountingPurposeNameAccount" ThisKey="AccountingPurposeNameAccountId" OtherKey="Id" Type="AccountingPurposeNameAccount" IsForeignKey="true" />
+      <Association Name="FK_AccountingPurposeNameAccount2AccountingPurposeName_Site" Member="Site" ThisKey="SiteId" OtherKey="Id" Type="Site" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountRole" Member="AccountRoles">
+    <Type Name="AccountRole">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Account_AccountRole" Member="Accounts" ThisKey="Id" OtherKey="AccountRoleId" Type="Account" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountRole_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountSystem" Member="AccountSystems">
+    <Type Name="AccountSystem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MandatorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Accounting_CurrencyId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Account_AccountSystem" Member="Accounts" ThisKey="Id" OtherKey="AccountSystemId" Type="Account" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountGroup_AccountSystem" Member="AccountGroups" ThisKey="Id" OtherKey="AccountSystemId" Type="AccountGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_AccountSystem_Currency" Member="Currency" ThisKey="Accounting_CurrencyId" OtherKey="Id" Type="Currency" IsForeignKey="true" />
+      <Association Name="FK_AccountSystem_Mandator" Member="Mandator" ThisKey="MandatorId" OtherKey="Id" Type="Mandator" IsForeignKey="true" />
+      <Association Name="FK_BookEntryList_AccountSystem" Member="BookEntryLists" ThisKey="Id" OtherKey="AccountSystemId" Type="BookEntryList" DeleteRule="NO ACTION" />
+      <Association Name="FK_ItemPriceBookEntryList_AccountSystem" Member="ItemPriceBookEntryLists" ThisKey="Id" OtherKey="AccountSystemId" Type="ItemPriceBookEntryList" DeleteRule="NO ACTION" />
+      <Association Name="FK_VatCode_AccountSystem" Member="VatCodes" ThisKey="Id" OtherKey="AccountSystemId" Type="VatCode" DeleteRule="NO ACTION" />
+      <Association Name="FK_VatRate_AccountSystem" Member="VatRates" ThisKey="Id" OtherKey="AccountSystemId" Type="VatRate" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActionRightDistribution" Member="ActionRightDistributions">
+    <Type Name="ActionRightDistribution">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionRightDistributionContainerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DistributeAutomaticallyAfterDeploy" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ActionRightDistribution_ActionRightDistributionContainer" Member="ActionRightDistributionContainer" ThisKey="ActionRightDistributionContainerId" OtherKey="Id" Type="ActionRightDistributionContainer" IsForeignKey="true" />
+      <Association Name="FK_ActionRightDistribution2Mandator_ActionRightDistribution" Member="ActionRightDistribution2Mandators" ThisKey="Id" OtherKey="ActionRightDistributionId" Type="ActionRightDistribution2Mandator" DeleteRule="NO ACTION" />
+      <Association Name="FK_ActionRightDistribution2Role_ActionRightDistribution" Member="ActionRightDistribution2Roles" ThisKey="Id" OtherKey="ActionRightDistributionId" Type="ActionRightDistribution2Role" DeleteRule="NO ACTION" />
+      <Association Name="FK_ActionRightDistributionAction_ActionRightDistribution" Member="ActionRightDistributionActions" ThisKey="Id" OtherKey="ActionRightDistributionId" Type="ActionRightDistributionAction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActionRightDistribution2Mandator" Member="ActionRightDistribution2Mandators">
+    <Type Name="ActionRightDistribution2Mandator">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionRightDistributionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MandatorId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ActionRightDistribution2Mandator_ActionRightDistribution" Member="ActionRightDistribution" ThisKey="ActionRightDistributionId" OtherKey="Id" Type="ActionRightDistribution" IsForeignKey="true" />
+      <Association Name="FK_ActionRightDistribution2Mandator_Mandator" Member="Mandator" ThisKey="MandatorId" OtherKey="Id" Type="Mandator" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActionRightDistribution2Role" Member="ActionRightDistribution2Roles">
+    <Type Name="ActionRightDistribution2Role">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionRightDistributionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ActionRightDistribution2Role_ActionRightDistribution" Member="ActionRightDistribution" ThisKey="ActionRightDistributionId" OtherKey="Id" Type="ActionRightDistribution" IsForeignKey="true" />
+      <Association Name="FK_ActionRightDistribution2Role_Role" Member="Role" ThisKey="RoleId" OtherKey="Id" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActionRightDistributionAction" Member="ActionRightDistributionActions">
+    <Type Name="ActionRightDistributionAction">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ActionRightDistributionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ControllerName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ActionName" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="PortalTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_ActionRightDistributionAction_ActionRightDistribution" Member="ActionRightDistribution" ThisKey="ActionRightDistributionId" OtherKey="Id" Type="ActionRightDistribution" IsForeignKey="true" />
+      <Association Name="FK_ActionRightDistributionAction_PortalType" Member="PortalType" ThisKey="PortalTypeId" OtherKey="Id" Type="PortalType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActionRightDistributionContainer" Member="ActionRightDistributionContainers">
+    <Type Name="ActionRightDistributionContainer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_ActionRightDistribution_ActionRightDistributionContainer" Member="ActionRightDistributions" ThisKey="Id" OtherKey="ActionRightDistributionContainerId" Type="ActionRightDistribution" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActivateHereRequest" Member="ActivateHereRequests">
+    <Type Name="ActivateHereRequest">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Purchase_ItemProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProcessedDate" Type="System.DateTime" DbType="DateTime2(4)" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="DateTime2(4)" CanBeNull="true" />
+      <Column Name="EDITextId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TechDataOrderReference" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="FK_ActivateHereRequest_EdiText" Member="EDIText" ThisKey="EDITextId" OtherKey="Id" Type="EDIText" IsForeignKey="true" />
+      <Association Name="FK_ActivateHereRequest_ItemProduct" Member="ItemProduct" ThisKey="Purchase_ItemProductId" OtherKey="Id" Type="ItemProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductService" Member="AdditionalProductServices">
+    <Type Name="AdditionalProductService">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description_DbContentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ServiceProviderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="RenewalPossible" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="WarrantyDeliveryTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title_DbContentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceProcedureId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FK_AdditionalProductService_AdditionalProductServiceType" Member="AdditionalProductServiceType" ThisKey="AdditionalProductServiceTypeId" OtherKey="Id" Type="AdditionalProductServiceType" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_DbContent" Member="DbContent" ThisKey="Name_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_DbContent1" Member="Description_DbContent" ThisKey="Description_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_DbContent2" Member="Title_DbContent" ThisKey="Title_DbContentId" OtherKey="Id" Type="DbContent" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_ServiceProcedure" Member="ServiceProcedure" ThisKey="ServiceProcedureId" OtherKey="Id" Type="ServiceProcedure" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_ServiceProvider" Member="ServiceProvider" ThisKey="ServiceProviderId" OtherKey="Id" Type="ServiceProvider" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService_WarrantyDeliveryType" Member="WarrantyDeliveryType" ThisKey="WarrantyDeliveryTypeId" OtherKey="Id" Type="WarrantyDeliveryType" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService2Product_AdditionalProductService" Member="AdditionalProductService2Products" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductService2Product" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductService2ProductType_AdditionalProductService" Member="AdditionalProductService2ProductTypes" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductService2ProductType" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceCountry_AdditionalProductService" Member="AdditionalProductServiceCountries" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductServiceCountry" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceDuration_AdditionalProductService" Member="AdditionalProductServiceDurations" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductServiceDuration" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceDurationChoice_AdditionalProductService" Member="AdditionalProductServiceDurationChoices" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductServiceDurationChoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceFile_AdditionalProductService" Member="AdditionalProductServiceFiles" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductServiceFile" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServiceLink_AdditionalProductService" Member="AdditionalProductServiceLinks" ThisKey="Id" OtherKey="AdditionalProductServiceId" Type="AdditionalProductServiceLink" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductService2Product" Member="AdditionalProductService2Products">
+    <Type Name="AdditionalProductService2Product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AdditionalProductService2Product_AdditionalProductService" Member="AdditionalProductService" ThisKey="AdditionalProductServiceId" OtherKey="Id" Type="AdditionalProductService" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService2Product_Product" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductService2ProductType" Member="AdditionalProductService2ProductTypes">
+    <Type Name="AdditionalProductService2ProductType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BrandId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsIncluded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AdditionalProductService2ProductType_AdditionalProductService" Member="AdditionalProductService" ThisKey="AdditionalProductServiceId" OtherKey="Id" Type="AdditionalProductService" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService2ProductType_Brand" Member="Brand" ThisKey="BrandId" OtherKey="Id" Type="Brand" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductService2ProductType_ProductType" Member="ProductType" ThisKey="ProductTypeId" OtherKey="Id" Type="ProductType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductServiceCertificate" Member="AdditionalProductServiceCertificates">
+    <Type Name="AdditionalProductServiceCertificate">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceItemAccountingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CertificateNumber" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FileId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="DateTime2(4)" CanBeNull="true" />
+      <Association Name="FK_AdditionalProductServiceCertificate_AdditionalProductServiceItemAccounting" Member="AdditionalProductServiceItemAccounting" ThisKey="AdditionalProductServiceItemAccountingId" OtherKey="Id" Type="AdditionalProductServiceItemAccounting" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductServiceCertificate_File" Member="File" ThisKey="FileId" OtherKey="Id" Type="File" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductServiceCountry" Member="AdditionalProductServiceCountries">
+    <Type Name="AdditionalProductServiceCountry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AdditionalProductServiceCountry_AdditionalProductService" Member="AdditionalProductService" ThisKey="AdditionalProductServiceId" OtherKey="Id" Type="AdditionalProductService" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductServiceCountry_Country" Member="Country" ThisKey="CountryId" OtherKey="Id" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdditionalProductServiceDuration" Member="AdditionalProductServiceDurations">
+    <Type Name="AdditionalProductServiceDuration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AdditionalProductServiceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DurationInMonth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="DateTime2(4)" CanBeNull="true" />
+      <Association Name="FK_AdditionalProductServiceDuration_AdditionalProductService" Member="AdditionalProductService" ThisKey="AdditionalProductServiceId" OtherKey="Id" Type="AdditionalProductService" IsForeignKey="true" />
+      <Association Name="FK_AdditionalProductServiceItemAccounting_AdditionalProductServiceDuration" Member="AdditionalProductServiceItemAccountings" ThisKey="Id" OtherKey="AdditionalProductServiceDurationId" Type="AdditionalProductServiceItemAccounting" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServicePurchasePriceFormula_AdditionalProductServiceDuration" Member="AdditionalProductServiceDurationFormula" ThisKey="Id" OtherKey="AdditionalProductServiceDurationId" Type="AdditionalProductServiceDurationFormula" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK_AdditionalProductServicePurchasePriceRange_AdditionalProductServiceDuration" Member="AdditionalProductServiceDurationRanges" ThisKey="Id" OtherKey="AdditionalProductServiceDurationId" Type="AdditionalProductServiceDurationRange" DeleteRule="NO ACTION" />
+      <Association Name="FK_UpsellingItem_Insurance_AdditionalProductServiceDurationId" Member="UpsellingItems" ThisKey="Id" OtherKey="Insurance_AdditionalProductServiceDurationId" Type="UpsellingItem" DeleteRule="NO ACTION" />
+      <Association Name="FK_UpsellingItem_WarrantyExtension_AdditionalProductServiceDurationId" Member="UpsellingItem_WarrantyExtension_AdditionalProductServiceDurationIds" ThisKey="Id" OtherKey="WarrantyExtension_AdditionalProductServiceDurationId" Type="UpsellingItem" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Function Name="report.EmployeeData" Method="Report_EmployeeData" IsComposable="true">
+    <Parameter Name="LanguageId" Parameter="languageId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Report_EmployeeDataResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OldDigitecId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(101)" CanBeNull="true" />
+      <Column Name="EntryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ExitDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="DepartmentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Superior_PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDepartmentHead" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Substitute_PersonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="report.WorkDaysDiff" Method="Report_WorkDaysDiff" IsComposable="true">
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="SaturdayIsWorkday" Parameter="saturdayIsWorkday" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CompanyId" Parameter="companyId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+</Database>

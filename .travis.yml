@@ -1,0 +1,12 @@
+language: csharp
+solution: Deblazer.Artifacts.sln
+before_install:
+  - mkdir -p .nuget
+  - wget -O .nuget/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+  - mono .nuget/nuget.exe # Output NuGet's version number
+install:
+  - mono .nuget/nuget.exe restore Deblazer.Artifacts.sln -Verbosity detailed
+  - mono .nuget/nuget.exe install xunit.runner.console -Version 2.2.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release Sample.sln
+  - mono ./testrunner/xunit.runner.console.2.2.0/tools/xunit.console.exe ./Deblazer.Artifacts.Test/bin/Release/Deblazer.Artifacts.Test.dll ./Deblazer.WideWorldImporter.DbLayer.Test/bin/Release/Deblazer.WideWorldImporter.DbLayer.Test.dll

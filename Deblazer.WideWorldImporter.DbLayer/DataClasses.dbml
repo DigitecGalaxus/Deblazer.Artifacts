@@ -1,0 +1,1188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="WideWorldImporters" EntityNamespace="Deblazer.WideWorldImporter.DbLayer"
+ ContextNamespace="Deblazer.WideWorldImporter.DbLayer" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="Sales.BuyingGroups" Member="Sales_BuyingGroups">
+    <Type Name="Sales_BuyingGroup">
+      <Column Name="BuyingGroupID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BuyingGroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_BuyingGroups_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_BuyingGroupID_Sales_BuyingGroups" Member="Sales_Customers" ThisKey="BuyingGroupID" OtherKey="BuyingGroupID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_SpecialDeals_BuyingGroupID_Sales_BuyingGroups" Member="Sales_SpecialDeals" ThisKey="BuyingGroupID" OtherKey="BuyingGroupID" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Sales.BuyingGroups_Archive" Member="Sales_BuyingGroups_Archives">
+    <Type Name="Sales_BuyingGroups_Archive">
+      <Column Name="BuyingGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuyingGroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Application.Cities" Member="Application_Cities">
+    <Type Name="Application_City">
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StateProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_Cities_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Application_Cities_StateProvinceID_Application_StateProvinces" Member="Application_StateProvince" ThisKey="StateProvinceID" OtherKey="StateProvinceID" Type="Application_StateProvince" IsForeignKey="true" />
+      <Association Name="FK_Application_SystemParameters_DeliveryCityID_Application_Cities" Member="Application_SystemParameters" ThisKey="CityID" OtherKey="DeliveryCityID" Type="Application_SystemParameter" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_SystemParameters_PostalCityID_Application_Cities" Member="Cities" ThisKey="CityID" OtherKey="PostalCityID" Type="Application_SystemParameter" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_DeliveryCityID_Application_Cities" Member="Purchasing_Suppliers" ThisKey="CityID" OtherKey="DeliveryCityID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_PostalCityID_Application_Cities" Member="Purchasing_Suppliers_PostalCityID_Application_Cities" ThisKey="CityID" OtherKey="PostalCityID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_DeliveryCityID_Application_Cities" Member="Sales_Customers" ThisKey="CityID" OtherKey="DeliveryCityID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_PostalCityID_Application_Cities" Member="Sales_Customers_PostalCityID_Application_Cities" ThisKey="CityID" OtherKey="PostalCityID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.Cities_Archive" Member="Application_Cities_Archives">
+    <Type Name="Application_Cities_Archive">
+      <Column Name="CityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StateProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.ColdRoomTemperatures" Member="Warehouse_ColdRoomTemperatures">
+    <Type Name="Warehouse_ColdRoomTemperature">
+      <Column Name="ColdRoomTemperatureID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ColdRoomSensorNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Temperature" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.ColdRoomTemperatures_Archive" Member="Warehouse_ColdRoomTemperatures_Archives">
+    <Type Name="Warehouse_ColdRoomTemperatures_Archive">
+      <Column Name="ColdRoomTemperatureID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ColdRoomSensorNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Temperature" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.Colors" Member="Warehouse_Colors">
+    <Type Name="Warehouse_Color">
+      <Column Name="ColorID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ColorName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Warehouse_Colors_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_ColorID_Warehouse_Colors" Member="Warehouse_StockItems" ThisKey="ColorID" OtherKey="ColorID" Type="Warehouse_StockItem" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.Colors_Archive" Member="Warehouse_Colors_Archives">
+    <Type Name="Warehouse_Colors_Archive">
+      <Column Name="ColorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColorName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Application.Countries" Member="Application_Countries">
+    <Type Name="Application_Country">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="FormalName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="IsoAlpha3Code" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="IsoNumericCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Continent" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Region" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Subregion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_Countries_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Application_StateProvinces_CountryID_Application_Countries" Member="Application_StateProvinces" ThisKey="CountryID" OtherKey="CountryID" Type="Application_StateProvince" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.Countries_Archive" Member="Application_Countries_Archives">
+    <Type Name="Application_Countries_Archive">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="FormalName" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="IsoAlpha3Code" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="IsoNumericCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Continent" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Region" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Subregion" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Sales.CustomerCategories" Member="Sales_CustomerCategories">
+    <Type Name="Sales_CustomerCategory">
+      <Column Name="CustomerCategoryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerCategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_CustomerCategories_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_CustomerCategoryID_Sales_CustomerCategories" Member="Sales_Customers" ThisKey="CustomerCategoryID" OtherKey="CustomerCategoryID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_SpecialDeals_CustomerCategoryID_Sales_CustomerCategories" Member="Sales_SpecialDeals" ThisKey="CustomerCategoryID" OtherKey="CustomerCategoryID" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Sales.CustomerCategories_Archive" Member="Sales_CustomerCategories_Archives">
+    <Type Name="Sales_CustomerCategories_Archive">
+      <Column Name="CustomerCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Sales.Customers" Member="Sales_Customers">
+    <Type Name="Sales_Customer">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillToCustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuyingGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AlternateContactPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreditLimit" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AccountOpenedDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="StandardDiscountPercentage" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsStatementSent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsOnCreditHold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryRun" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="RunPosition" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="WebsiteURL" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="DeliveryPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PostalPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_Customers_AlternateContactPersonID_Application_People" Member="Application_People" ThisKey="AlternateContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_Application_People" Member="LastEditedByApplication_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_BillToCustomerID_Sales_Customers" Member="BillToCustomer" ThisKey="BillToCustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_BillToCustomerID_Sales_Customers" Member="Customers" ThisKey="CustomerID" OtherKey="BillToCustomerID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_BuyingGroupID_Sales_BuyingGroups" Member="Sales_BuyingGroup" ThisKey="BuyingGroupID" OtherKey="BuyingGroupID" Type="Sales_BuyingGroup" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_CustomerCategoryID_Sales_CustomerCategories" Member="Sales_CustomerCategory" ThisKey="CustomerCategoryID" OtherKey="CustomerCategoryID" Type="Sales_CustomerCategory" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_DeliveryCityID_Application_Cities" Member="Application_City" ThisKey="DeliveryCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_DeliveryMethodID_Application_DeliveryMethods" Member="Application_DeliveryMethod" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Application_DeliveryMethod" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_PostalCityID_Application_Cities" Member="PostalCity" ThisKey="PostalCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+      <Association Name="FK_Sales_Customers_PrimaryContactPersonID_Application_People" Member="PrimaryContactPerson" ThisKey="PrimaryContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_CustomerTransactions_CustomerID_Sales_Customers" Member="Sales_CustomerTransactions" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_CustomerTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_BillToCustomerID_Sales_Customers" Member="Sales_Invoices" ThisKey="CustomerID" OtherKey="BillToCustomerID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_CustomerID_Sales_Customers" Member="Sales_Invoices_CustomerID_Sales_Customers" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_CustomerID_Sales_Customers" Member="Sales_Orders" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_SpecialDeals_CustomerID_Sales_Customers" Member="Sales_SpecialDeals" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_CustomerID_Sales_Customers" Member="Warehouse_StockItemTransactions" ThisKey="CustomerID" OtherKey="CustomerID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Sales.Customers_Archive" Member="Sales_Customers_Archives">
+    <Type Name="Sales_Customers_Archive">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="BillToCustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BuyingGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AlternateContactPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreditLimit" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AccountOpenedDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="StandardDiscountPercentage" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="IsStatementSent" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsOnCreditHold" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryRun" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="RunPosition" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="WebsiteURL" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="DeliveryPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PostalPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Sales.CustomerTransactions" Member="Sales_CustomerTransactions">
+    <Type Name="Sales_CustomerTransaction">
+      <Column Name="CustomerTransactionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="AmountExcludingTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OutstandingBalance" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FinalizationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsFinalized" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" Expression="(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_CustomerTransactions_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_CustomerTransactions_CustomerID_Sales_Customers" Member="Sales_Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_CustomerTransactions_InvoiceID_Sales_Invoices" Member="Sales_Invoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Sales_Invoice" IsForeignKey="true" />
+      <Association Name="FK_Sales_CustomerTransactions_PaymentMethodID_Application_PaymentMethods" Member="Application_PaymentMethod" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="Application_PaymentMethod" IsForeignKey="true" />
+      <Association Name="FK_Sales_CustomerTransactions_TransactionTypeID_Application_TransactionTypes" Member="Application_TransactionType" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Application_TransactionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Application.DeliveryMethods" Member="Application_DeliveryMethods">
+    <Type Name="Application_DeliveryMethod">
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeliveryMethodName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_DeliveryMethods_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrders_DeliveryMethodID_Application_DeliveryMethods" Member="Purchasing_PurchaseOrders" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Purchasing_PurchaseOrder" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_DeliveryMethodID_Application_DeliveryMethods" Member="Purchasing_Suppliers" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_DeliveryMethodID_Application_DeliveryMethods" Member="Sales_Customers" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_DeliveryMethodID_Application_DeliveryMethods" Member="Sales_Invoices" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.DeliveryMethods_Archive" Member="Application_DeliveryMethods_Archives">
+    <Type Name="Application_DeliveryMethods_Archive">
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryMethodName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Sales.InvoiceLines" Member="Sales_InvoiceLines">
+    <Type Name="Sales_InvoiceLine">
+      <Column Name="InvoiceLineID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PackageTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxRate" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="LineProfit" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ExtendedPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_InvoiceLines_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_InvoiceLines_InvoiceID_Sales_Invoices" Member="Sales_Invoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Sales_Invoice" IsForeignKey="true" />
+      <Association Name="FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes" Member="Warehouse_PackageType" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Warehouse_PackageType" IsForeignKey="true" />
+      <Association Name="FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Sales.Invoices" Member="Sales_Invoices">
+    <Type Name="Sales_Invoice">
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BillToCustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccountsPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalespersonPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PackedByPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPurchaseOrderNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsCreditNote" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreditNoteReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DeliveryInstructions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TotalDryItems" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalChillerItems" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryRun" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="RunPosition" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="ReturnedDeliveryData" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ConfirmedDeliveryTime" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" UpdateCheck="Never" Expression="(TRY_CONVERT([datetime2](7),json_value([ReturnedDeliveryData],N'$.DeliveredWhen'),(126)))" />
+      <Column Name="ConfirmedReceivedBy" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" UpdateCheck="Never" Expression="(json_value([ReturnedDeliveryData],N'$.ReceivedBy'))" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_CustomerTransactions_InvoiceID_Sales_Invoices" Member="Sales_CustomerTransactions" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Sales_CustomerTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_InvoiceLines_InvoiceID_Sales_Invoices" Member="Sales_InvoiceLines" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Sales_InvoiceLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_AccountsPersonID_Application_People" Member="Application_People" ThisKey="AccountsPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_Application_People" Member="LastEditedByApplication_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_BillToCustomerID_Sales_Customers" Member="Sales_Customer" ThisKey="BillToCustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_ContactPersonID_Application_People" Member="ContactPerson" ThisKey="ContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_CustomerID_Sales_Customers" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_DeliveryMethodID_Application_DeliveryMethods" Member="Application_DeliveryMethod" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Application_DeliveryMethod" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_OrderID_Sales_Orders" Member="Sales_Order" ThisKey="OrderID" OtherKey="OrderID" Type="Sales_Order" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_PackedByPersonID_Application_People" Member="PackedByPerson" ThisKey="PackedByPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Invoices_SalespersonPersonID_Application_People" Member="SalespersonPerson" ThisKey="SalespersonPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_InvoiceID_Sales_Invoices" Member="Warehouse_StockItemTransactions" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Sales.OrderLines" Member="Sales_OrderLines">
+    <Type Name="Sales_OrderLine">
+      <Column Name="OrderLineID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PackageTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TaxRate" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="PickedQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PickingCompletedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_OrderLines_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_OrderLines_OrderID_Sales_Orders" Member="Sales_Order" ThisKey="OrderID" OtherKey="OrderID" Type="Sales_Order" IsForeignKey="true" />
+      <Association Name="FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes" Member="Warehouse_PackageType" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Warehouse_PackageType" IsForeignKey="true" />
+      <Association Name="FK_Sales_OrderLines_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Sales.Orders" Member="Sales_Orders">
+    <Type Name="Sales_Order">
+      <Column Name="OrderID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalespersonPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PickedByPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BackorderOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="ExpectedDeliveryDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerPurchaseOrderNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsUndersupplyBackordered" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DeliveryInstructions" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PickingCompletedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_Invoices_OrderID_Sales_Orders" Member="Sales_Invoices" ThisKey="OrderID" OtherKey="OrderID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_OrderLines_OrderID_Sales_Orders" Member="Sales_OrderLines" ThisKey="OrderID" OtherKey="OrderID" Type="Sales_OrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Orders_BackorderOrderID_Sales_Orders" Member="BackorderOrder" ThisKey="BackorderOrderID" OtherKey="OrderID" Type="Sales_Order" IsForeignKey="true" />
+      <Association Name="FK_Sales_Orders_BackorderOrderID_Sales_Orders" Member="Orders" ThisKey="OrderID" OtherKey="BackorderOrderID" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_ContactPersonID_Application_People" Member="ContactPerson" ThisKey="ContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Orders_CustomerID_Sales_Customers" Member="Sales_Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_Orders_PickedByPersonID_Application_People" Member="PickedByPerson" ThisKey="PickedByPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_Orders_SalespersonPersonID_Application_People" Member="SalespersonPerson" ThisKey="SalespersonPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.PackageTypes" Member="Warehouse_PackageTypes">
+    <Type Name="Warehouse_PackageType">
+      <Column Name="PackageTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PackageTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_PackageTypeID_Warehouse_PackageTypes" Member="Purchasing_PurchaseOrderLines" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Purchasing_PurchaseOrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes" Member="Sales_InvoiceLines" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Sales_InvoiceLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes" Member="Sales_OrderLines" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Sales_OrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_PackageTypes_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" Member="Warehouse_StockItems" ThisKey="PackageTypeID" OtherKey="OuterPackageID" Type="Warehouse_StockItem" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" Member="PackageTypes" ThisKey="PackageTypeID" OtherKey="UnitPackageID" Type="Warehouse_StockItem" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.PackageTypes_Archive" Member="Warehouse_PackageTypes_Archives">
+    <Type Name="Warehouse_PackageTypes_Archive">
+      <Column Name="PackageTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PackageTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Application.PaymentMethods" Member="Application_PaymentMethods">
+    <Type Name="Application_PaymentMethod">
+      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PaymentMethodName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_PaymentMethods_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_PaymentMethodID_Application_PaymentMethods" Member="Purchasing_SupplierTransactions" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="Purchasing_SupplierTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_CustomerTransactions_PaymentMethodID_Application_PaymentMethods" Member="Sales_CustomerTransactions" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="Sales_CustomerTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.PaymentMethods_Archive" Member="Application_PaymentMethods_Archives">
+    <Type Name="Application_PaymentMethods_Archive">
+      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaymentMethodName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Application.People" Member="Application_Peoples">
+    <Type Name="Application_People">
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PreferredName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SearchName" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" UpdateCheck="Never" Expression="(concat([PreferredName],N' ',[FullName]))" />
+      <Column Name="IsPermittedToLogon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LogonName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsExternalLogonProvider" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HashedPassword" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsSystemUser" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsEmployee" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSalesperson" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserPreferences" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CustomFields" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OtherLanguages" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" Expression="(json_query([CustomFields],N'$.OtherLanguages'))" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_Cities_Application_People" Member="Application_Cities" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_City" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_Countries_Application_People" Member="Application_Countries" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_Country" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_DeliveryMethods_Application_People" Member="Application_DeliveryMethods" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_DeliveryMethod" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_PaymentMethods_Application_People" Member="Application_PaymentMethods" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_PaymentMethod" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_People_Application_People" Member="LastEditedByApplication_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Application_People_Application_People" Member="Persons" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_People" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_StateProvinces_Application_People" Member="Application_StateProvinces" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_StateProvince" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_SystemParameters_Application_People" Member="Application_SystemParameters" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_SystemParameter" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_TransactionTypes_Application_People" Member="Application_TransactionTypes" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Application_TransactionType" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_Application_People" Member="Purchasing_PurchaseOrderLines" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Purchasing_PurchaseOrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_PurchaseOrders_Application_People" Member="Purchasing_PurchaseOrders" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Purchasing_PurchaseOrder" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_PurchaseOrders_ContactPersonID_Application_People" Member="Purchasing_PurchaseOrders_ContactPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="ContactPersonID" Type="Purchasing_PurchaseOrder" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_SupplierCategories_Application_People" Member="Purchasing_SupplierCategories" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Purchasing_SupplierCategory" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_AlternateContactPersonID_Application_People" Member="Purchasing_Suppliers" ThisKey="PersonID" OtherKey="AlternateContactPersonID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_Application_People" Member="Purchasing_Suppliers_Application_Peoples" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_PrimaryContactPersonID_Application_People" Member="Purchasing_Suppliers_PrimaryContactPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="PrimaryContactPersonID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_SupplierTransactions_Application_People" Member="Purchasing_SupplierTransactions" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Purchasing_SupplierTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_BuyingGroups_Application_People" Member="Sales_BuyingGroups" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_BuyingGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_CustomerCategories_Application_People" Member="Sales_CustomerCategories" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_CustomerCategory" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_AlternateContactPersonID_Application_People" Member="Sales_Customers" ThisKey="PersonID" OtherKey="AlternateContactPersonID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_Application_People" Member="Sales_Customers_Application_Peoples" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Customers_PrimaryContactPersonID_Application_People" Member="Sales_Customers_PrimaryContactPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="PrimaryContactPersonID" Type="Sales_Customer" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_CustomerTransactions_Application_People" Member="Sales_CustomerTransactions" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_CustomerTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_InvoiceLines_Application_People" Member="Sales_InvoiceLines" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_InvoiceLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_AccountsPersonID_Application_People" Member="Sales_Invoices" ThisKey="PersonID" OtherKey="AccountsPersonID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_Application_People" Member="Sales_Invoices_Application_Peoples" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_ContactPersonID_Application_People" Member="Sales_Invoices_ContactPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="ContactPersonID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_PackedByPersonID_Application_People" Member="Sales_Invoices_PackedByPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="PackedByPersonID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Invoices_SalespersonPersonID_Application_People" Member="Sales_Invoices_SalespersonPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="SalespersonPersonID" Type="Sales_Invoice" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_OrderLines_Application_People" Member="Sales_OrderLines" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_OrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_Application_People" Member="Sales_Orders" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_ContactPersonID_Application_People" Member="Sales_Orders_ContactPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="ContactPersonID" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_PickedByPersonID_Application_People" Member="Sales_Orders_PickedByPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="PickedByPersonID" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_Orders_SalespersonPersonID_Application_People" Member="Sales_Orders_SalespersonPersonID_Application_Peoples" ThisKey="PersonID" OtherKey="SalespersonPersonID" Type="Sales_Order" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_SpecialDeals_Application_People" Member="Sales_SpecialDeals" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_Colors_Application_People" Member="Warehouse_Colors" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_Color" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_PackageTypes_Application_People" Member="Warehouse_PackageTypes" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_PackageType" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockGroups_Application_People" Member="Warehouse_StockGroups" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_StockGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemHoldings_Application_People" Member="Warehouse_StockItemHoldings" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_StockItemHolding" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItems_Application_People" Member="Warehouse_StockItems" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_StockItem" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_Application_People" Member="Warehouse_StockItemStockGroups" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_StockItemStockGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_Application_People" Member="Warehouse_StockItemTransactions" ThisKey="PersonID" OtherKey="LastEditedBy" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.People_Archive" Member="Application_People_Archives">
+    <Type Name="Application_People_Archive">
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PreferredName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SearchName" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPermittedToLogon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LogonName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsExternalLogonProvider" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HashedPassword" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IsSystemUser" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsEmployee" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSalesperson" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UserPreferences" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CustomFields" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OtherLanguages" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.PurchaseOrderLines" Member="Purchasing_PurchaseOrderLines">
+    <Type Name="Purchasing_PurchaseOrderLine">
+      <Column Name="PurchaseOrderLineID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PurchaseOrderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderedOuters" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ReceivedOuters" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PackageTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExpectedUnitPricePerOuter" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LastReceiptDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsOrderLineFinalized" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_PackageTypeID_Warehouse_PackageTypes" Member="Warehouse_PackageType" ThisKey="PackageTypeID" OtherKey="PackageTypeID" Type="Warehouse_PackageType" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Purchasing_PurchaseOrder" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Purchasing_PurchaseOrder" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.PurchaseOrders" Member="Purchasing_PurchaseOrders">
+    <Type Name="Purchasing_PurchaseOrder">
+      <Column Name="PurchaseOrderID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ExpectedDeliveryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="SupplierReference" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsOrderFinalized" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Purchasing_PurchaseOrderLines" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Purchasing_PurchaseOrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_PurchaseOrders_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrders_ContactPersonID_Application_People" Member="ContactPerson" ThisKey="ContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrders_DeliveryMethodID_Application_DeliveryMethods" Member="Application_DeliveryMethod" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Application_DeliveryMethod" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_PurchaseOrders_SupplierID_Purchasing_Suppliers" Member="Purchasing_Supplier" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_Supplier" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Purchasing_SupplierTransactions" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Purchasing_SupplierTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Warehouse_StockItemTransactions" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Sales.SpecialDeals" Member="Sales_SpecialDeals">
+    <Type Name="Sales_SpecialDeal">
+      <Column Name="SpecialDealID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyingGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerCategoryID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StockGroupID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DealDescription" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DiscountAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DiscountPercentage" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_SpecialDeals_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Sales_SpecialDeals_BuyingGroupID_Sales_BuyingGroups" Member="Sales_BuyingGroup" ThisKey="BuyingGroupID" OtherKey="BuyingGroupID" Type="Sales_BuyingGroup" IsForeignKey="true" />
+      <Association Name="FK_Sales_SpecialDeals_CustomerCategoryID_Sales_CustomerCategories" Member="Sales_CustomerCategory" ThisKey="CustomerCategoryID" OtherKey="CustomerCategoryID" Type="Sales_CustomerCategory" IsForeignKey="true" />
+      <Association Name="FK_Sales_SpecialDeals_CustomerID_Sales_Customers" Member="Sales_Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Sales_SpecialDeals_StockGroupID_Warehouse_StockGroups" Member="Warehouse_StockGroup" ThisKey="StockGroupID" OtherKey="StockGroupID" Type="Warehouse_StockGroup" IsForeignKey="true" />
+      <Association Name="FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Application.StateProvinces" Member="Application_StateProvinces">
+    <Type Name="Application_StateProvince">
+      <Column Name="StateProvinceID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StateProvinceCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="StateProvinceName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalesTerritory" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_Cities_StateProvinceID_Application_StateProvinces" Member="Application_Cities" ThisKey="StateProvinceID" OtherKey="StateProvinceID" Type="Application_City" DeleteRule="NO ACTION" />
+      <Association Name="FK_Application_StateProvinces_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Application_StateProvinces_CountryID_Application_Countries" Member="Application_Country" ThisKey="CountryID" OtherKey="CountryID" Type="Application_Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Application.StateProvinces_Archive" Member="Application_StateProvinces_Archives">
+    <Type Name="Application_StateProvinces_Archive">
+      <Column Name="StateProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StateProvinceCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="StateProvinceName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SalesTerritory" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LatestRecordedPopulation" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockGroups" Member="Warehouse_StockGroups">
+    <Type Name="Warehouse_StockGroup">
+      <Column Name="StockGroupID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StockGroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Sales_SpecialDeals_StockGroupID_Warehouse_StockGroups" Member="Sales_SpecialDeals" ThisKey="StockGroupID" OtherKey="StockGroupID" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockGroups_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_StockGroupID_Warehouse_StockGroups" Member="Warehouse_StockItemStockGroups" ThisKey="StockGroupID" OtherKey="StockGroupID" Type="Warehouse_StockItemStockGroup" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockGroups_Archive" Member="Warehouse_StockGroups_Archives">
+    <Type Name="Warehouse_StockGroups_Archive">
+      <Column Name="StockGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockGroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockItemHoldings" Member="Warehouse_StockItemHoldings">
+    <Type Name="Warehouse_StockItemHolding">
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QuantityOnHand" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BinLocation" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="LastStocktakeQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastCostPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="ReorderLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TargetStockLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Warehouse_StockItemHoldings_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="PKFK_Warehouse_StockItemHoldings_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockItems" Member="Warehouse_StockItems">
+    <Type Name="Warehouse_StockItem">
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StockItemName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitPackageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OuterPackageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LeadTimeDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityPerOuter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsChillerStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaxRate" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RecommendedRetailPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TypicalWeightPerUnit" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MarketingComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CustomFields" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" Expression="(json_query([CustomFields],N'$.Tags'))" />
+      <Column Name="SearchDetails" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" Expression="(concat([StockItemName],N' ',[MarketingComments]))" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_PurchaseOrderLines_StockItemID_Warehouse_StockItems" Member="Purchasing_PurchaseOrderLines" ThisKey="StockItemID" OtherKey="StockItemID" Type="Purchasing_PurchaseOrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems" Member="Sales_InvoiceLines" ThisKey="StockItemID" OtherKey="StockItemID" Type="Sales_InvoiceLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_OrderLines_StockItemID_Warehouse_StockItems" Member="Sales_OrderLines" ThisKey="StockItemID" OtherKey="StockItemID" Type="Sales_OrderLine" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems" Member="Sales_SpecialDeals" ThisKey="StockItemID" OtherKey="StockItemID" Type="Sales_SpecialDeal" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItems_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_ColorID_Warehouse_Colors" Member="Warehouse_Color" ThisKey="ColorID" OtherKey="ColorID" Type="Warehouse_Color" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes" Member="Warehouse_PackageType" ThisKey="OuterPackageID" OtherKey="PackageTypeID" Type="Warehouse_PackageType" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_SupplierID_Purchasing_Suppliers" Member="Purchasing_Supplier" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_Supplier" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes" Member="UnitPackage" ThisKey="UnitPackageID" OtherKey="PackageTypeID" Type="Warehouse_PackageType" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItemStockGroups" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItemStockGroup" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItemTransactions" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+      <Association Name="PKFK_Warehouse_StockItemHoldings_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItemHolding" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItemHolding" Cardinality="One" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockItems_Archive" Member="Warehouse_StockItems_Archives">
+    <Type Name="Warehouse_StockItems_Archive">
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockItemName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ColorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitPackageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OuterPackageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Size" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LeadTimeDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuantityPerOuter" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsChillerStock" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Barcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaxRate" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RecommendedRetailPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TypicalWeightPerUnit" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="MarketingComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CustomFields" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SearchDetails" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockItemStockGroups" Member="Warehouse_StockItemStockGroups">
+    <Type Name="Warehouse_StockItemStockGroup">
+      <Column Name="StockItemStockGroupID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockGroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_StockGroupID_Warehouse_StockGroups" Member="Warehouse_StockGroup" ThisKey="StockGroupID" OtherKey="StockGroupID" Type="Warehouse_StockGroup" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemStockGroups_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.StockItemTransactions" Member="Warehouse_StockItemTransactions">
+    <Type Name="Warehouse_StockItemTransaction">
+      <Column Name="StockItemTransactionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StockItemID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurchaseOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionOccurredWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,3) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Warehouse_StockItemTransactions_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_CustomerID_Sales_Customers" Member="Sales_Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Sales_Customer" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_InvoiceID_Sales_Invoices" Member="Sales_Invoice" ThisKey="InvoiceID" OtherKey="InvoiceID" Type="Sales_Invoice" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Purchasing_PurchaseOrder" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Purchasing_PurchaseOrder" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_StockItemID_Warehouse_StockItems" Member="Warehouse_StockItem" ThisKey="StockItemID" OtherKey="StockItemID" Type="Warehouse_StockItem" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_SupplierID_Purchasing_Suppliers" Member="Purchasing_Supplier" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_Supplier" IsForeignKey="true" />
+      <Association Name="FK_Warehouse_StockItemTransactions_TransactionTypeID_Application_TransactionTypes" Member="Application_TransactionType" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Application_TransactionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.SupplierCategories" Member="Purchasing_SupplierCategories">
+    <Type Name="Purchasing_SupplierCategory">
+      <Column Name="SupplierCategoryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SupplierCategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_SupplierCategories_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories" Member="Purchasing_Suppliers" ThisKey="SupplierCategoryID" OtherKey="SupplierCategoryID" Type="Purchasing_Supplier" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.SupplierCategories_Archive" Member="Purchasing_SupplierCategories_Archives">
+    <Type Name="Purchasing_SupplierCategories_Archive">
+      <Column Name="SupplierCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierCategoryName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.Suppliers" Member="Purchasing_Suppliers">
+    <Type Name="Purchasing_Supplier">
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AlternateContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierReference" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankAccountName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankAccountBranch" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankAccountCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankAccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankInternationalCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="PaymentDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="WebsiteURL" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="DeliveryPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PostalPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_PurchaseOrders_SupplierID_Purchasing_Suppliers" Member="Purchasing_PurchaseOrders" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_PurchaseOrder" DeleteRule="NO ACTION" />
+      <Association Name="FK_Purchasing_Suppliers_AlternateContactPersonID_Application_People" Member="Application_People" ThisKey="AlternateContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_Application_People" Member="LastEditedByApplication_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_DeliveryCityID_Application_Cities" Member="Application_City" ThisKey="DeliveryCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_DeliveryMethodID_Application_DeliveryMethods" Member="Application_DeliveryMethod" ThisKey="DeliveryMethodID" OtherKey="DeliveryMethodID" Type="Application_DeliveryMethod" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_PostalCityID_Application_Cities" Member="PostalCity" ThisKey="PostalCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_PrimaryContactPersonID_Application_People" Member="PrimaryContactPerson" ThisKey="PrimaryContactPersonID" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories" Member="Purchasing_SupplierCategory" ThisKey="SupplierCategoryID" OtherKey="SupplierCategoryID" Type="Purchasing_SupplierCategory" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_SupplierID_Purchasing_Suppliers" Member="Purchasing_SupplierTransactions" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_SupplierTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItems_SupplierID_Purchasing_Suppliers" Member="Warehouse_StockItems" ThisKey="SupplierID" OtherKey="SupplierID" Type="Warehouse_StockItem" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_SupplierID_Purchasing_Suppliers" Member="Warehouse_StockItemTransactions" ThisKey="SupplierID" OtherKey="SupplierID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.Suppliers_Archive" Member="Purchasing_Suppliers_Archives">
+    <Type Name="Purchasing_Suppliers_Archive">
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierCategoryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AlternateContactPersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeliveryCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierReference" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankAccountName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankAccountBranch" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BankAccountCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankAccountNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BankInternationalCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="PaymentDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InternalComments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FaxNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="WebsiteURL" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="DeliveryPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PostalPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Purchasing.SupplierTransactions" Member="Purchasing_SupplierTransactions">
+    <Type Name="Purchasing_SupplierTransaction">
+      <Column Name="SupplierTransactionID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SupplierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SupplierInvoiceNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="AmountExcludingTax" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionAmount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="OutstandingBalance" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FinalizationDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsFinalized" Type="System.Boolean" DbType="Bit" CanBeNull="true" UpdateCheck="Never" Expression="(case when [FinalizationDate] IS NULL then CONVERT([bit],(0)) else CONVERT([bit],(1)) end)" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Purchasing_SupplierTransactions_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_PaymentMethodID_Application_PaymentMethods" Member="Application_PaymentMethod" ThisKey="PaymentMethodID" OtherKey="PaymentMethodID" Type="Application_PaymentMethod" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_PurchaseOrderID_Purchasing_PurchaseOrders" Member="Purchasing_PurchaseOrder" ThisKey="PurchaseOrderID" OtherKey="PurchaseOrderID" Type="Purchasing_PurchaseOrder" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_SupplierID_Purchasing_Suppliers" Member="Purchasing_Supplier" ThisKey="SupplierID" OtherKey="SupplierID" Type="Purchasing_Supplier" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_TransactionTypeID_Application_TransactionTypes" Member="Application_TransactionType" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Application_TransactionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Application.SystemParameters" Member="Application_SystemParameters">
+    <Type Name="Application_SystemParameter">
+      <Column Name="SystemParameterID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="DeliveryCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine1" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="PostalAddressLine2" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PostalCityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostalPostalCode" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationSettings" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_SystemParameters_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Application_SystemParameters_DeliveryCityID_Application_Cities" Member="Application_City" ThisKey="DeliveryCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+      <Association Name="FK_Application_SystemParameters_PostalCityID_Application_Cities" Member="PostalCity" ThisKey="PostalCityID" OtherKey="CityID" Type="Application_City" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Application.TransactionTypes" Member="Application_TransactionTypes">
+    <Type Name="Application_TransactionType">
+      <Column Name="TransactionTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TransactionTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_Application_TransactionTypes_Application_People" Member="Application_People" ThisKey="LastEditedBy" OtherKey="PersonID" Type="Application_People" IsForeignKey="true" />
+      <Association Name="FK_Purchasing_SupplierTransactions_TransactionTypeID_Application_TransactionTypes" Member="Purchasing_SupplierTransactions" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Purchasing_SupplierTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Sales_CustomerTransactions_TransactionTypeID_Application_TransactionTypes" Member="Sales_CustomerTransactions" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Sales_CustomerTransaction" DeleteRule="NO ACTION" />
+      <Association Name="FK_Warehouse_StockItemTransactions_TransactionTypeID_Application_TransactionTypes" Member="Warehouse_StockItemTransactions" ThisKey="TransactionTypeID" OtherKey="TransactionTypeID" Type="Warehouse_StockItemTransaction" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="Application.TransactionTypes_Archive" Member="Application_TransactionTypes_Archives">
+    <Type Name="Application_TransactionTypes_Archive">
+      <Column Name="TransactionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastEditedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidTo" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="Warehouse.VehicleTemperatures" Member="Warehouse_VehicleTemperatures">
+    <Type Name="Warehouse_VehicleTemperature">
+      <Column Name="VehicleTemperatureID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="VehicleRegistration" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ChillerSensorNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordedWhen" Type="System.DateTime" DbType="DateTime2(7) NOT NULL" CanBeNull="false" />
+      <Column Name="Temperature" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="FullSensorData" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="IsCompressed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CompressedSensorData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Function Name="Application.AddRoleMemberIfNonexistent" Method="Application_AddRoleMemberIfNonexistent">
+    <Parameter Name="RoleName" Parameter="roleName" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.Configuration_ApplyAuditing" Method="Application_Configuration_ApplyAuditing">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.Configuration_ApplyRowLevelSecurity" Method="Application_Configuration_ApplyRowLevelSecurity">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.Configuration_RemoveAuditing" Method="Application_Configuration_RemoveAuditing">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.Configuration_RemoveRowLevelSecurity" Method="Application_Configuration_RemoveRowLevelSecurity">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.CreateRoleIfNonexistent" Method="Application_CreateRoleIfNonexistent">
+    <Parameter Name="RoleName" Parameter="roleName" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Application.DetermineCustomerAccess" Method="Application_DetermineCustomerAccess" IsComposable="true">
+    <Parameter Name="CityID" Parameter="cityID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Application_DetermineCustomerAccessResult">
+      <Column Name="AccessResult" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="DataLoadSimulation.Configuration_RemoveDataLoadSimulationProcedures" Method="DataLoadSimulation_Configuration_RemoveDataLoadSimulationProcedures">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="dbo.fn_diagramobjects" Method="Fn_diagramobjects" IsComposable="true">
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="dbo.sp_alterdiagram" Method="Sp_alterdiagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="version" Type="System.Int32" DbType="Int" />
+    <Parameter Name="definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="dbo.sp_creatediagram" Method="Sp_creatediagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="version" Type="System.Int32" DbType="Int" />
+    <Parameter Name="definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="dbo.sp_dropdiagram" Method="Sp_dropdiagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="dbo.sp_helpdiagramdefinition" Method="Sp_helpdiagramdefinition">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Sp_helpdiagramdefinitionResult">
+      <Column Name="version" Member="Version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="definition" Member="Definition" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_helpdiagrams" Method="Sp_helpdiagrams">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Sp_helpdiagramsResult">
+      <Column Name="Database" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_renamediagram" Method="Sp_renamediagram">
+    <Parameter Name="diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Parameter Name="owner_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="new_diagramname" Type="System.String" DbType="NVarChar(128)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Integration.GetMovementUpdates" Method="Integration_GetMovementUpdates">
+    <Parameter Name="LastCutoff" Parameter="lastCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <Parameter Name="NewCutoff" Parameter="newCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <ElementType Name="Integration_GetMovementUpdatesResult">
+      <Column Name="Date Key" Member="DateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="WWI Stock Item Transaction ID" Member="WWIStockItemTransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Invoice ID" Member="WWIInvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Purchase Order ID" Member="WWIPurchaseOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Stock Item ID" Member="WWIStockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Customer ID" Member="WWICustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Supplier ID" Member="WWISupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Transaction Type ID" Member="WWITransactionTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Transaction Occurred When" Member="TransactionOccurredWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Integration.GetOrderUpdates" Method="Integration_GetOrderUpdates">
+    <Parameter Name="LastCutoff" Parameter="lastCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <Parameter Name="NewCutoff" Parameter="newCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <ElementType Name="Integration_GetOrderUpdatesResult">
+      <Column Name="Order Date Key" Member="OrderDateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Picked Date Key" Member="PickedDateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="WWI Order ID" Member="WWIOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Backorder ID" Member="WWIBackorderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Package" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit Price" Member="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Tax Rate" Member="TaxRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="Total Excluding Tax" Member="TotalExcludingTax" Type="System.Decimal" DbType="Decimal(29,2)" CanBeNull="true" />
+      <Column Name="Tax Amount" Member="TaxAmount" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="Total Including Tax" Member="TotalIncludingTax" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="WWI City ID" Member="WWICityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Customer ID" Member="WWICustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Stock Item ID" Member="WWIStockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Salesperson ID" Member="WWISalespersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Picker ID" Member="WWIPickerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last Modified When" Member="LastModifiedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Integration.GetPurchaseUpdates" Method="Integration_GetPurchaseUpdates">
+    <Parameter Name="LastCutoff" Parameter="lastCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <Parameter Name="NewCutoff" Parameter="newCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <ElementType Name="Integration_GetPurchaseUpdatesResult">
+      <Column Name="Date Key" Member="DateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="WWI Purchase Order ID" Member="WWIPurchaseOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ordered Outers" Member="OrderedOuters" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ordered Quantity" Member="OrderedQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Received Outers" Member="ReceivedOuters" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Package" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Is Order Finalized" Member="IsOrderFinalized" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WWI Supplier ID" Member="WWISupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Stock Item ID" Member="WWIStockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last Modified When" Member="LastModifiedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Integration.GetSaleUpdates" Method="Integration_GetSaleUpdates">
+    <Parameter Name="LastCutoff" Parameter="lastCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <Parameter Name="NewCutoff" Parameter="newCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <ElementType Name="Integration_GetSaleUpdatesResult">
+      <Column Name="Invoice Date Key" Member="InvoiceDateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Delivery Date Key" Member="DeliveryDateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="WWI Invoice ID" Member="WWIInvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Package" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Unit Price" Member="UnitPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Tax Rate" Member="TaxRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="Total Excluding Tax" Member="TotalExcludingTax" Type="System.Decimal" DbType="Decimal(19,2)" CanBeNull="true" />
+      <Column Name="Tax Amount" Member="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Profit" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Total Including Tax" Member="TotalIncludingTax" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Total Dry Items" Member="TotalDryItems" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total Chiller Items" Member="TotalChillerItems" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI City ID" Member="WWICityID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Customer ID" Member="WWICustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Bill To Customer ID" Member="WWIBillToCustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Stock Item ID" Member="WWIStockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Saleperson ID" Member="WWISalepersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last Modified When" Member="LastModifiedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Integration.GetStockHoldingUpdates" Method="Integration_GetStockHoldingUpdates">
+    <ElementType Name="Integration_GetStockHoldingUpdatesResult">
+      <Column Name="Quantity On Hand" Member="QuantityOnHand" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bin Location" Member="BinLocation" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Last Stocktake Quantity" Member="LastStocktakeQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last Cost Price" Member="LastCostPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Reorder Level" Member="ReorderLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Target Stock Level" Member="TargetStockLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Stock Item ID" Member="WWIStockItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Integration.GetTransactionUpdates" Method="Integration_GetTransactionUpdates">
+    <Parameter Name="LastCutoff" Parameter="lastCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <Parameter Name="NewCutoff" Parameter="newCutoff" Type="System.DateTime" DbType="DateTime2(7)" />
+    <ElementType Name="Integration_GetTransactionUpdatesResult">
+      <Column Name="Date Key" Member="DateKey" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="WWI Customer Transaction ID" Member="WWICustomerTransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Supplier Transaction ID" Member="WWISupplierTransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Invoice ID" Member="WWIInvoiceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Purchase Order ID" Member="WWIPurchaseOrderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Supplier Invoice Number" Member="SupplierInvoiceNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Total Excluding Tax" Member="TotalExcludingTax" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Tax Amount" Member="TaxAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Total Including Tax" Member="TotalIncludingTax" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Outstanding Balance" Member="OutstandingBalance" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Is Finalized" Member="IsFinalized" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WWI Customer ID" Member="WWICustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Bill To Customer ID" Member="WWIBillToCustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Supplier ID" Member="WWISupplierID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Transaction Type ID" Member="WWITransactionTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WWI Payment Method ID" Member="WWIPaymentMethodID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Last Modified When" Member="LastModifiedWhen" Type="System.DateTime" DbType="DateTime2(7)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Website.ActivateWebsiteLogon" Method="Website_ActivateWebsiteLogon">
+    <Parameter Name="PersonID" Parameter="personID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LogonName" Parameter="logonName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="InitialPassword" Parameter="initialPassword" Type="System.String" DbType="NVarChar(40)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Website.CalculateCustomerPrice" Method="Website_CalculateCustomerPrice" IsComposable="true">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StockItemID" Parameter="stockItemID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PricingDate" Parameter="pricingDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Decimal" DbType="Decimal(18,2)" />
+  </Function>
+  <Function Name="Website.ChangePassword" Method="Website_ChangePassword">
+    <Parameter Name="PersonID" Parameter="personID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OldPassword" Parameter="oldPassword" Type="System.String" DbType="NVarChar(40)" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(40)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Website.RecordVehicleTemperature" Method="Website_RecordVehicleTemperature">
+    <Parameter Name="FullSensorDataArray" Parameter="fullSensorDataArray" Type="System.String" DbType="NVarChar(1000)" />
+    <Return Type="System.Int32" DbType="Int" />
+  </Function>
+  <Function Name="Website.SearchForCustomers" Method="Website_SearchForCustomers">
+    <Parameter Name="SearchText" Parameter="searchText" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="MaximumRowsToReturn" Parameter="maximumRowsToReturn" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Website_SearchForCustomersResult">
+      <Column Name="JSON_F52E2B61-18A1-11d1-B105-00805F49916B" Member="JSON_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Website.SearchForPeople" Method="Website_SearchForPeople">
+    <Parameter Name="SearchText" Parameter="searchText" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="MaximumRowsToReturn" Parameter="maximumRowsToReturn" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Website_SearchForPeopleResult">
+      <Column Name="JSON_F52E2B61-18A1-11d1-B105-00805F49916B" Member="JSON_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Website.SearchForStockItems" Method="Website_SearchForStockItems">
+    <Parameter Name="SearchText" Parameter="searchText" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="MaximumRowsToReturn" Parameter="maximumRowsToReturn" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Website_SearchForStockItemsResult">
+      <Column Name="JSON_F52E2B61-18A1-11d1-B105-00805F49916B" Member="JSON_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Website.SearchForStockItemsByTags" Method="Website_SearchForStockItemsByTags">
+    <Parameter Name="SearchText" Parameter="searchText" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="MaximumRowsToReturn" Parameter="maximumRowsToReturn" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Website_SearchForStockItemsByTagsResult">
+      <Column Name="JSON_F52E2B61-18A1-11d1-B105-00805F49916B" Member="JSON_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="Website.SearchForSuppliers" Method="Website_SearchForSuppliers">
+    <Parameter Name="SearchText" Parameter="searchText" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="MaximumRowsToReturn" Parameter="maximumRowsToReturn" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Website_SearchForSuppliersResult">
+      <Column Name="JSON_F52E2B61-18A1-11d1-B105-00805F49916B" Member="JSON_F52E2B61_18A1_11d1_B105_00805F49916B" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
