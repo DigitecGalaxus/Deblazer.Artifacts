@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c672b4d0-6a2d-423f-9b82-a83733be3e75</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Deblazer.DataClasses.Test</RootNamespace>
-    <AssemblyName>Deblazer.DataClasses.Test</AssemblyName>
+    <RootNamespace>Deblazer.Artifacts.Test</RootNamespace>
+    <AssemblyName>Deblazer.Artifacts.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
