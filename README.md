@@ -43,5 +43,4 @@ var topTenPeople = db.Application_Peoples()
 The tooling uses f# as primary Language targeting the .NET 4.6.1 Framework. .NET core is not yet possible because of the usuage of an XML Type-Provider.
 
 ## Continuous Integration
-Badges coming soon
 

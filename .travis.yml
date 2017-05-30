@@ -8,5 +8,5 @@ install:
   - mono .nuget/nuget.exe restore Deblazer.Artifacts.sln -Verbosity detailed
   - mono .nuget/nuget.exe install xunit.runner.console -Version 2.2.0 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release Sample.sln
+  - xbuild /p:Configuration=Release Deblazer.Artifacts.sln
   - mono ./testrunner/xunit.runner.console.2.2.0/tools/xunit.console.exe ./Deblazer.Artifacts.Test/bin/Release/Deblazer.Artifacts.Test.dll ./Deblazer.WideWorldImporter.DbLayer.Test/bin/Release/Deblazer.WideWorldImporter.DbLayer.Test.dll
