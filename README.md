@@ -1,6 +1,6 @@
 # Deblazer Artifacts
 ![Build Status](https://tkae.visualstudio.com/_apis/public/build/definitions/600337e5-0517-476a-aa93-a7831c02c8cc/4/badge)
-
+[![Build Status](https://travis-ci.org/DigitecGalaxus/Deblazer.Artifacts.svg?branch=master)](https://travis-ci.org/DigitecGalaxus/Deblazer.Artifacts)
 
 This project is used to generate the artifact classes for the C# Deblazer ORM [<insert link to repo here>](https://gogole.ch) used by   [Digitec Galaxus](https://github.com/DigitecGalaxus)
 
