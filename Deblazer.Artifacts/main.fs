@@ -1,5 +1,5 @@
 ﻿module Dbml
-    open Attributes
+    open CliParser
     open Artifact
     open System
     open System.Linq
@@ -16,7 +16,6 @@
     open System.Threading
     open System.Diagnostics
     open System.Xml
-    open CliParser
     
     [<NoComparison>]
     type DocName = { Id:DocumentId; Name:string; }

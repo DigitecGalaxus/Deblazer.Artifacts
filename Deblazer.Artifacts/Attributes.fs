@@ -1,5 +1,4 @@
 ﻿module Attributes
-    open Regexes   
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp
     open Microsoft.CodeAnalysis.CSharp.Syntax
