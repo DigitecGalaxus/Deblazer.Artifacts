@@ -1,5 +1,4 @@
 ﻿module Artifact
-    open Attributes
     open ArtifactClass
     open QueryClass
     open TableQueryClass

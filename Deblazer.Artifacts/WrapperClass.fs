@@ -1,5 +1,4 @@
 ﻿module WrapperClass
-    open Attributes
     open System
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp

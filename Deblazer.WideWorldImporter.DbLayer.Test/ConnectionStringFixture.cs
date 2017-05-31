@@ -7,8 +7,8 @@ namespace Deblazer.WideWorldImporter.DbLayer.Test
         public string ConnectionString { get; private set; }
         
         public ConnectionStringFixture()
-        {
-            ConnectionString = Environment.GetEnvironmentVariable("WideWorldImporterConnection", EnvironmentVariableTarget.User);
+        {            
+            ConnectionString = Environment.GetEnvironmentVariable("WideWorldImporterConnection");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿module HelperClass
-    open Attributes
     open System
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp

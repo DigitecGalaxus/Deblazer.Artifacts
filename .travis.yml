@@ -8,5 +8,10 @@ install:
   - mono .nuget/nuget.exe restore Deblazer.Artifacts.sln -Verbosity detailed
   - mono .nuget/nuget.exe install xunit.runner.console -Version 2.2.0 -OutputDirectory testrunner
 script:
-  - xbuild /p:Configuration=Release Sample.sln
-  - mono ./testrunner/xunit.runner.console.2.2.0/tools/xunit.console.exe ./Deblazer.Artifacts.Test/bin/Release/Deblazer.Artifacts.Test.dll ./Deblazer.WideWorldImporter.DbLayer.Test/bin/Release/Deblazer.WideWorldImporter.DbLayer.Test.dll
+  - xbuild /p:Configuration=Release Deblazer.Artifacts.sln
+  # Deblazer uses IsDbNull() from SqlDataReader. Mono uses a different implementation which leads to an error when using Sequential Access
+  # Explanation: https://support.microsoft.com/en-us/help/308614/an-invalid-attempt-to-read-from-column-ordinal-error-occurs-when-you-use-datareader-in-visual-c
+  # https://bugzilla.xamarin.com/show_bug.cgi?id=3739
+  # https://github.com/mono/mono/blob/master/mcs/class/System.Data/System.Data.SqlClient/SqlDataReader.cs()
+  # - mono ./testrunner/xunit.runner.console.2.2.0/tools/xunit.console.exe ./Deblazer.Artifacts.Test/bin/Release/Deblazer.Artifacts.Test.dll ./Deblazer.WideWorldImporter.DbLayer.Test/bin/Release/Deblazer.WideWorldImporter.DbLayer.Test.dll
+  - mono ./testrunner/xunit.runner.console.2.2.0/tools/xunit.console.exe ./Deblazer.Artifacts.Test/bin/Release/Deblazer.Artifacts.Test.dll

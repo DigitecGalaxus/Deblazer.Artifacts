@@ -1,10 +1,8 @@
 ﻿module QueryClass
-    open Attributes
     open System
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp
     open Microsoft.CodeAnalysis.CSharp.Syntax
-
 
     let queryBaseTypes (typeName:string) =
         [|
