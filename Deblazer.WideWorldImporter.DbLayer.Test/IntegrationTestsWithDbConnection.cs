@@ -78,5 +78,35 @@ namespace Deblazer.WideWorldImporter.DbLayer.Test
             Assert.NotNull(entity.Application_City);
             Assert.True(entity.Application_City.CityID > 0);
         }
+        
+        [Fact]
+        public void Feature_WhereDb()
+        {
+            var db = new Db(fixture.ConnectionString);
+
+            var systemUsers = db.Application_Peoples()
+                .WhereDb(p => p.IsSystemUser)
+                .ToList();
+
+            var countWithPlainSql = db.Load<int>("SELECT COUNT(*) FROM [Application].[People] WHERE IsSystemUser=1").First();
+
+            Assert.NotNull(systemUsers);
+            Assert.Equal(countWithPlainSql, systemUsers.Count);
+        }
+        
+        [Fact]
+        public void Feature_SumDb()
+        {
+            var db = new Db(fixture.ConnectionString);
+
+            var quantitySumOfAnItem = db.Sales_OrderLines()
+                .WhereDb(ol => ol.StockItemID == 50)
+                .SumDb(p => p.Quantity);
+                
+
+            var sumWithPlainSql = db.Load<int>("SELECT SUM(Quantity) FROM [Sales].[OrderLines] WHERE StockItemId = 50").First();
+
+            Assert.Equal(sumWithPlainSql, quantitySumOfAnItem);
+        }
     }
 }
