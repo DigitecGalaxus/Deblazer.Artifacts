@@ -17,7 +17,7 @@ sqlmetal.exe /conn:"Data Source=MySQlServer;Initial Catalog=MyDatabase;Integrate
 ```
 3. Generate Artifacts
 ```sh
-deblazer generate DataClasses.dbml -dbml <Path to DBML File> -o <OutputPath>
+deblazer.artifacts.exe DataClasses.dbml -dbml <Path to DBML File> -o <OutputPath>
 ```
 
 4. Add the files to a .csproj
