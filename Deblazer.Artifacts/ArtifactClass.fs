@@ -692,9 +692,7 @@
                                                                     )))))
                                                 ) :> StatementSyntax
                                             |]
-                                        )) :> StatementSyntax
-                                |]))
-                            .WithElse(
+                                        )).WithElse(
                                 sf.ElseClause(
                                     sf.ExpressionStatement(
                                         sf.AssignmentExpression(
@@ -873,6 +871,7 @@
                                                                 sf.Token(sk.CommaToken)
                                                                 sf.Token(sk.CommaToken)
                                                             |]))))))) :> StatementSyntax
+                                |])) :> StatementSyntax
                         sf.ReturnStatement(sf.IdentifierName(association.Storage)) :> StatementSyntax
                     |]))
     //sf.AccessorDeclaration(sk.SetAccessorDeclaration).WithBody(
