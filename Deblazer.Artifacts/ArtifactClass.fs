@@ -4,6 +4,7 @@
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp
     open Microsoft.CodeAnalysis.CSharp.Syntax
+    open System.Text.RegularExpressions
 
     let usings (nameSpace:string) = 
         [|
@@ -140,12 +141,16 @@
                                                     sf.Parameter(sf.Identifier("visitor")).WithType(sf.IdentifierName("DbEntityVisitorBase")))))
             .WithBody(sf.Block(handleChildrenMethodBody associations)) :> MemberDeclarationSyntax
 
-    let getFillerMethodName (typeString:string) (isNullable:bool) =
+    let getFillerMethodName (typeString:string) (dbTypeString:string) (isNullable:bool) =
         
-        match (typeString, isNullable) with
-        | "RowVersion", _ -> "GetRowVersion"
-        | "System.Date", _ -> "GetDate"
-        | "System.Data.Linq.Binary", _ -> "GetBinary"
+        match (typeString, dbTypeString, isNullable) with
+        | "RowVersion", _ , _ -> "GetRowVersion"
+        | "System.Date", _ , _ -> "GetDate"
+        | "System.Data.Linq.Binary", _ , _ -> "GetBinary"
+        | _ , x, _ when Regex.Match(x, "Money").Success 
+            -> match (isNullable) with
+                | true -> "GetNullableMoney"
+                | false -> "GetMoney"
         | _ 
             -> match Type.GetType(typeString) with
                 | t when 
@@ -185,7 +190,7 @@
                                     sf.MemberAccessExpression(
                                         sk.SimpleMemberAccessExpression, 
                                         sf.IdentifierName("visitor"), 
-                                        sf.IdentifierName((getFillerMethodName column.Type column.IsNullableType)))))))))
+                                        sf.IdentifierName((getFillerMethodName column.Type column.DbType column.IsNullableType)))))))))
 
     let modifyInternalStateLoadFieldExpressions (columns:column[]) = 
         columns |> Array.map (fun column -> 

@@ -18,16 +18,24 @@ module ArtifactTest
             member this.``FillerMethod is as specific as Possible for System. Types``(typeName:string) =
                 let expected = "Get" + typeName.Replace("System.", "")           
                 
-                Assert.Equal(expected, getFillerMethodName typeName false)
+                Assert.Equal(expected, getFillerMethodName typeName "" false)
             
             [<Fact>]
             member this.``FillerMethod for Binary returns GetBinary `` () =
-                Assert.Equal("GetBinary", getFillerMethodName "System.Data.Linq.Binary" false)
+                Assert.Equal("GetBinary", getFillerMethodName "System.Data.Linq.Binary" "" false)
                 
             [<Fact>]
             member this.``FillerMethod for nullable Binary returns GetBinary `` () =
-                Assert.Equal("GetBinary", getFillerMethodName "System.Data.Linq.Binary" true)
+                Assert.Equal("GetBinary", getFillerMethodName "System.Data.Linq.Binary" "" true)
                 
+            [<Fact>]
+            member this.``FillerMethod for Money returns GetMoney `` () =
+                Assert.Equal("GetMoney", getFillerMethodName "System.Decimal" "Money NOT NULL" false)
+                
+            [<Fact>]
+            member this.``FillerMethod for nullable Money returns GetMoney `` () =
+                Assert.Equal("GetNullableMoney", getFillerMethodName "System.Decimal" "Money" true)
+
             [<Theory>]
             [<InlineData("System.String")>]
             [<InlineData("System.AppDomain")>]
@@ -35,7 +43,7 @@ module ArtifactTest
             member this.``FillerMethod default is GetValue<T>``(typeName:string) =
                 let expected = String.Format("GetValue<{0}>", typeName)           
                 
-                Assert.Equal(expected, getFillerMethodName typeName false)
+                Assert.Equal(expected, getFillerMethodName typeName "" false)
             
             [<Theory>]
             [<InlineData("PrimaryKeyId")>]
