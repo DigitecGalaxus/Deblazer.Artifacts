@@ -76,6 +76,5 @@
         sw.Stop()
         let elapsed = sw.Elapsed
         Console.WriteLine(String.Format("Wrote Files to disk in {0} seconds", elapsed.TotalSeconds))
-        Console.ReadLine() |> ignore
         0 
         
