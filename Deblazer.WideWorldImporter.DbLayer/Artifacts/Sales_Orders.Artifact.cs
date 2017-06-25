@@ -291,16 +291,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices = new DbEntitySetCached<Sales_Order, Sales_Invoice>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                    else
                     {
-                        var x = e.Sales_Order;
-                        e.Sales_Order = null;
-                        new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
-                    }
+                        _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                        {
+                            var x = e.Sales_Order;
+                            e.Sales_Order = null;
+                            new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices;
             }
         }
@@ -316,16 +319,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_OrderLines = new DbEntitySetCached<Sales_Order, Sales_OrderLine>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                    else
                     {
-                        var x = e.Sales_Order;
-                        e.Sales_Order = null;
-                        new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
-                    }
+                        _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                        {
+                            var x = e.Sales_Order;
+                            e.Sales_Order = null;
+                            new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_OrderLines;
             }
         }
@@ -405,16 +411,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Orders = new DbEntitySetCached<Sales_Order, Sales_Order>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[BackorderOrderID]"}, (member, root) => member.BackorderOrder = root as Sales_Order, this, _lazyLoadChildren, e => e.BackorderOrder = this, e =>
+                    else
                     {
-                        var x = e.BackorderOrder;
-                        e.BackorderOrder = null;
-                        new UpdateSetVisitor(true, new[]{"BackorderOrderID"}, false).Process(x);
-                    }
+                        _Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[BackorderOrderID]"}, (member, root) => member.BackorderOrder = root as Sales_Order, this, _lazyLoadChildren, e => e.BackorderOrder = this, e =>
+                        {
+                            var x = e.BackorderOrder;
+                            e.BackorderOrder = null;
+                            new UpdateSetVisitor(true, new[]{"BackorderOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Orders;
             }
         }

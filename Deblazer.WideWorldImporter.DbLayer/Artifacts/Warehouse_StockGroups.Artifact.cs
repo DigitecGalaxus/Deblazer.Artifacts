@@ -117,16 +117,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Warehouse_StockGroup, Sales_SpecialDeal>(() => _StockGroupID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _StockGroupID.Entity}, new[]{"[StockGroupID]"}, (member, root) => member.Warehouse_StockGroup = root as Warehouse_StockGroup, this, _lazyLoadChildren, e => e.Warehouse_StockGroup = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockGroup;
-                        e.Warehouse_StockGroup = null;
-                        new UpdateSetVisitor(true, new[]{"StockGroupID"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _StockGroupID.Entity}, new[]{"[StockGroupID]"}, (member, root) => member.Warehouse_StockGroup = root as Warehouse_StockGroup, this, _lazyLoadChildren, e => e.Warehouse_StockGroup = this, e =>
+                        {
+                            var x = e.Warehouse_StockGroup;
+                            e.Warehouse_StockGroup = null;
+                            new UpdateSetVisitor(true, new[]{"StockGroupID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }
@@ -174,16 +177,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemStockGroups = new DbEntitySetCached<Warehouse_StockGroup, Warehouse_StockItemStockGroup>(() => _StockGroupID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _StockGroupID.Entity}, new[]{"[StockGroupID]"}, (member, root) => member.Warehouse_StockGroup = root as Warehouse_StockGroup, this, _lazyLoadChildren, e => e.Warehouse_StockGroup = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockGroup;
-                        e.Warehouse_StockGroup = null;
-                        new UpdateSetVisitor(true, new[]{"StockGroupID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _StockGroupID.Entity}, new[]{"[StockGroupID]"}, (member, root) => member.Warehouse_StockGroup = root as Warehouse_StockGroup, this, _lazyLoadChildren, e => e.Warehouse_StockGroup = this, e =>
+                        {
+                            var x = e.Warehouse_StockGroup;
+                            e.Warehouse_StockGroup = null;
+                            new UpdateSetVisitor(true, new[]{"StockGroupID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemStockGroups;
             }
         }

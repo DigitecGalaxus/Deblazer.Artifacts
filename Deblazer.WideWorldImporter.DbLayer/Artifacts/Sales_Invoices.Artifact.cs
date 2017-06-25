@@ -434,16 +434,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Sales_Invoice, Sales_CustomerTransaction>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }
@@ -459,16 +462,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_InvoiceLines = new DbEntitySetCached<Sales_Invoice, Sales_InvoiceLine>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_InvoiceLines;
             }
         }
@@ -772,16 +778,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Sales_Invoice, Warehouse_StockItemTransaction>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }

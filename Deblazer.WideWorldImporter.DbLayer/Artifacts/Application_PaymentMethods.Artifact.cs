@@ -149,16 +149,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierTransactions = new DbEntitySetCached<Application_PaymentMethod, Purchasing_SupplierTransaction>(() => _PaymentMethodID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PaymentMethodID.Entity}, new[]{"[PaymentMethodID]"}, (member, root) => member.Application_PaymentMethod = root as Application_PaymentMethod, this, _lazyLoadChildren, e => e.Application_PaymentMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_PaymentMethod;
-                        e.Application_PaymentMethod = null;
-                        new UpdateSetVisitor(true, new[]{"PaymentMethodID"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PaymentMethodID.Entity}, new[]{"[PaymentMethodID]"}, (member, root) => member.Application_PaymentMethod = root as Application_PaymentMethod, this, _lazyLoadChildren, e => e.Application_PaymentMethod = this, e =>
+                        {
+                            var x = e.Application_PaymentMethod;
+                            e.Application_PaymentMethod = null;
+                            new UpdateSetVisitor(true, new[]{"PaymentMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierTransactions;
             }
         }
@@ -174,16 +177,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Application_PaymentMethod, Sales_CustomerTransaction>(() => _PaymentMethodID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _PaymentMethodID.Entity}, new[]{"[PaymentMethodID]"}, (member, root) => member.Application_PaymentMethod = root as Application_PaymentMethod, this, _lazyLoadChildren, e => e.Application_PaymentMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_PaymentMethod;
-                        e.Application_PaymentMethod = null;
-                        new UpdateSetVisitor(true, new[]{"PaymentMethodID"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _PaymentMethodID.Entity}, new[]{"[PaymentMethodID]"}, (member, root) => member.Application_PaymentMethod = root as Application_PaymentMethod, this, _lazyLoadChildren, e => e.Application_PaymentMethod = this, e =>
+                        {
+                            var x = e.Application_PaymentMethod;
+                            e.Application_PaymentMethod = null;
+                            new UpdateSetVisitor(true, new[]{"PaymentMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }

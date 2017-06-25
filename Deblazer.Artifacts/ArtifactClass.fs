@@ -147,8 +147,8 @@
         | "RowVersion", _ , _ -> "GetRowVersion"
         | "System.Date", _ , _ -> "GetDate"
         | "System.Data.Linq.Binary", _ , _ -> "GetBinary"
-        | _ , x, _ when Regex.Match(x, "Money").Success 
-            -> match (isNullable) with
+        | _ , dbts, n when Regex.Match(dbts, "Money").Success 
+            -> match (n) with
                 | true -> "GetNullableMoney"
                 | false -> "GetMoney"
         | _ 
@@ -699,6 +699,8 @@
                                             |]
                                         )).WithElse(
                                 sf.ElseClause(
+                                    sf.Block(
+                                    [|
                                     sf.ExpressionStatement(
                                         sf.AssignmentExpression(
                                             sk.SimpleAssignmentExpression,
@@ -875,7 +877,8 @@
                                                                 sf.Token(sk.CommaToken)
                                                                 sf.Token(sk.CommaToken)
                                                                 sf.Token(sk.CommaToken)
-                                                            |]))))))) :> StatementSyntax
+                                                            |]))))) :> StatementSyntax
+                                    |]))) :> StatementSyntax
                                 |])) :> StatementSyntax
                         sf.ReturnStatement(sf.IdentifierName(association.Storage)) :> StatementSyntax
                     |]))

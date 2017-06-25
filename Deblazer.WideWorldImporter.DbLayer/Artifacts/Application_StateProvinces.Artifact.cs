@@ -179,16 +179,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_Cities = new DbEntitySetCached<Application_StateProvince, Application_City>(() => _StateProvinceID.Entity);
                     }
-                }
-                else
-                    _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _StateProvinceID.Entity}, new[]{"[StateProvinceID]"}, (member, root) => member.Application_StateProvince = root as Application_StateProvince, this, _lazyLoadChildren, e => e.Application_StateProvince = this, e =>
+                    else
                     {
-                        var x = e.Application_StateProvince;
-                        e.Application_StateProvince = null;
-                        new UpdateSetVisitor(true, new[]{"StateProvinceID"}, false).Process(x);
-                    }
+                        _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _StateProvinceID.Entity}, new[]{"[StateProvinceID]"}, (member, root) => member.Application_StateProvince = root as Application_StateProvince, this, _lazyLoadChildren, e => e.Application_StateProvince = this, e =>
+                        {
+                            var x = e.Application_StateProvince;
+                            e.Application_StateProvince = null;
+                            new UpdateSetVisitor(true, new[]{"StateProvinceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_Cities;
             }
         }

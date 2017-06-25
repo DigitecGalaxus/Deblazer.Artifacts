@@ -227,16 +227,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrderLines = new DbEntitySetCached<Purchasing_PurchaseOrder, Purchasing_PurchaseOrderLine>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrderLines;
             }
         }
@@ -380,16 +383,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierTransactions = new DbEntitySetCached<Purchasing_PurchaseOrder, Purchasing_SupplierTransaction>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierTransactions;
             }
         }
@@ -405,16 +411,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Purchasing_PurchaseOrder, Warehouse_StockItemTransaction>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }

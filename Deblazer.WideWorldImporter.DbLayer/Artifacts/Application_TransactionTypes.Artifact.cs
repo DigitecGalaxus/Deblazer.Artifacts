@@ -150,16 +150,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierTransactions = new DbEntitySetCached<Application_TransactionType, Purchasing_SupplierTransaction>(() => _TransactionTypeID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                    else
                     {
-                        var x = e.Application_TransactionType;
-                        e.Application_TransactionType = null;
-                        new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                        {
+                            var x = e.Application_TransactionType;
+                            e.Application_TransactionType = null;
+                            new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierTransactions;
             }
         }
@@ -175,16 +178,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Application_TransactionType, Sales_CustomerTransaction>(() => _TransactionTypeID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                    else
                     {
-                        var x = e.Application_TransactionType;
-                        e.Application_TransactionType = null;
-                        new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                        {
+                            var x = e.Application_TransactionType;
+                            e.Application_TransactionType = null;
+                            new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }
@@ -200,16 +206,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Application_TransactionType, Warehouse_StockItemTransaction>(() => _TransactionTypeID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                    else
                     {
-                        var x = e.Application_TransactionType;
-                        e.Application_TransactionType = null;
-                        new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _TransactionTypeID.Entity}, new[]{"[TransactionTypeID]"}, (member, root) => member.Application_TransactionType = root as Application_TransactionType, this, _lazyLoadChildren, e => e.Application_TransactionType = this, e =>
+                        {
+                            var x = e.Application_TransactionType;
+                            e.Application_TransactionType = null;
+                            new UpdateSetVisitor(true, new[]{"TransactionTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }

@@ -216,16 +216,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_SystemParameters = new DbEntitySetCached<Application_City, Application_SystemParameter>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Application_SystemParameters = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
-                    }
+                        _Application_SystemParameters = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_SystemParameters;
             }
         }
@@ -241,16 +244,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Cities = new DbEntitySetCached<Application_City, Application_SystemParameter>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Cities = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
-                    }
+                        _Cities = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Cities;
             }
         }
@@ -266,16 +272,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers = new DbEntitySetCached<Application_City, Purchasing_Supplier>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers;
             }
         }
@@ -291,16 +300,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers_PostalCityID_Application_Cities = new DbEntitySetCached<Application_City, Purchasing_Supplier>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers_PostalCityID_Application_Cities = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers_PostalCityID_Application_Cities = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers_PostalCityID_Application_Cities;
             }
         }
@@ -316,16 +328,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers = new DbEntitySetCached<Application_City, Sales_Customer>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
-                    }
+                        _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[DeliveryCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers;
             }
         }
@@ -341,16 +356,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers_PostalCityID_Application_Cities = new DbEntitySetCached<Application_City, Sales_Customer>(() => _CityID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers_PostalCityID_Application_Cities = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                    else
                     {
-                        var x = e.Application_City;
-                        e.Application_City = null;
-                        new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
-                    }
+                        _Sales_Customers_PostalCityID_Application_Cities = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CityID.Entity}, new[]{"[PostalCityID]"}, (member, root) => member.Application_City = root as Application_City, this, _lazyLoadChildren, e => e.Application_City = this, e =>
+                        {
+                            var x = e.Application_City;
+                            e.Application_City = null;
+                            new UpdateSetVisitor(true, new[]{"PostalCityID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers_PostalCityID_Application_Cities;
             }
         }

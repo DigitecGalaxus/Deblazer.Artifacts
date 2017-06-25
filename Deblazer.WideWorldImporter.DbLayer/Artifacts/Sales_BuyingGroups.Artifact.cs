@@ -149,16 +149,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers = new DbEntitySetCached<Sales_BuyingGroup, Sales_Customer>(() => _BuyingGroupID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _BuyingGroupID.Entity}, new[]{"[BuyingGroupID]"}, (member, root) => member.Sales_BuyingGroup = root as Sales_BuyingGroup, this, _lazyLoadChildren, e => e.Sales_BuyingGroup = this, e =>
+                    else
                     {
-                        var x = e.Sales_BuyingGroup;
-                        e.Sales_BuyingGroup = null;
-                        new UpdateSetVisitor(true, new[]{"BuyingGroupID"}, false).Process(x);
-                    }
+                        _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _BuyingGroupID.Entity}, new[]{"[BuyingGroupID]"}, (member, root) => member.Sales_BuyingGroup = root as Sales_BuyingGroup, this, _lazyLoadChildren, e => e.Sales_BuyingGroup = this, e =>
+                        {
+                            var x = e.Sales_BuyingGroup;
+                            e.Sales_BuyingGroup = null;
+                            new UpdateSetVisitor(true, new[]{"BuyingGroupID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers;
             }
         }
@@ -174,16 +177,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Sales_BuyingGroup, Sales_SpecialDeal>(() => _BuyingGroupID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _BuyingGroupID.Entity}, new[]{"[BuyingGroupID]"}, (member, root) => member.Sales_BuyingGroup = root as Sales_BuyingGroup, this, _lazyLoadChildren, e => e.Sales_BuyingGroup = this, e =>
+                    else
                     {
-                        var x = e.Sales_BuyingGroup;
-                        e.Sales_BuyingGroup = null;
-                        new UpdateSetVisitor(true, new[]{"BuyingGroupID"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _BuyingGroupID.Entity}, new[]{"[BuyingGroupID]"}, (member, root) => member.Sales_BuyingGroup = root as Sales_BuyingGroup, this, _lazyLoadChildren, e => e.Sales_BuyingGroup = this, e =>
+                        {
+                            var x = e.Sales_BuyingGroup;
+                            e.Sales_BuyingGroup = null;
+                            new UpdateSetVisitor(true, new[]{"BuyingGroupID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }

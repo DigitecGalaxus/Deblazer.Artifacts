@@ -435,16 +435,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrderLines = new DbEntitySetCached<Warehouse_StockItem, Purchasing_PurchaseOrderLine>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrderLines;
             }
         }
@@ -460,16 +463,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_InvoiceLines = new DbEntitySetCached<Warehouse_StockItem, Sales_InvoiceLine>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_InvoiceLines;
             }
         }
@@ -485,16 +491,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_OrderLines = new DbEntitySetCached<Warehouse_StockItem, Sales_OrderLine>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_OrderLines;
             }
         }
@@ -510,16 +519,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Warehouse_StockItem, Sales_SpecialDeal>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }
@@ -695,16 +707,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemStockGroups = new DbEntitySetCached<Warehouse_StockItem, Warehouse_StockItemStockGroup>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemStockGroups;
             }
         }
@@ -720,16 +735,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Warehouse_StockItem, Warehouse_StockItemTransaction>(() => _StockItemID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_StockItem;
-                        e.Warehouse_StockItem = null;
-                        new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _StockItemID.Entity}, new[]{"[StockItemID]"}, (member, root) => member.Warehouse_StockItem = root as Warehouse_StockItem, this, _lazyLoadChildren, e => e.Warehouse_StockItem = this, e =>
+                        {
+                            var x = e.Warehouse_StockItem;
+                            e.Warehouse_StockItem = null;
+                            new UpdateSetVisitor(true, new[]{"StockItemID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }

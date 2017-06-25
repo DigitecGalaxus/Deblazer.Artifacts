@@ -274,16 +274,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_StateProvinces = new DbEntitySetCached<Application_Country, Application_StateProvince>(() => _CountryID.Entity);
                     }
-                }
-                else
-                    _Application_StateProvinces = new DbEntitySet<Application_StateProvince>(_db, false, new Func<long ? >[]{() => _CountryID.Entity}, new[]{"[CountryID]"}, (member, root) => member.Application_Country = root as Application_Country, this, _lazyLoadChildren, e => e.Application_Country = this, e =>
+                    else
                     {
-                        var x = e.Application_Country;
-                        e.Application_Country = null;
-                        new UpdateSetVisitor(true, new[]{"CountryID"}, false).Process(x);
-                    }
+                        _Application_StateProvinces = new DbEntitySet<Application_StateProvince>(_db, false, new Func<long ? >[]{() => _CountryID.Entity}, new[]{"[CountryID]"}, (member, root) => member.Application_Country = root as Application_Country, this, _lazyLoadChildren, e => e.Application_Country = this, e =>
+                        {
+                            var x = e.Application_Country;
+                            e.Application_Country = null;
+                            new UpdateSetVisitor(true, new[]{"CountryID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_StateProvinces;
             }
         }

@@ -148,16 +148,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItems = new DbEntitySetCached<Warehouse_Color, Warehouse_StockItem>(() => _ColorID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _ColorID.Entity}, new[]{"[ColorID]"}, (member, root) => member.Warehouse_Color = root as Warehouse_Color, this, _lazyLoadChildren, e => e.Warehouse_Color = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_Color;
-                        e.Warehouse_Color = null;
-                        new UpdateSetVisitor(true, new[]{"ColorID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _ColorID.Entity}, new[]{"[ColorID]"}, (member, root) => member.Warehouse_Color = root as Warehouse_Color, this, _lazyLoadChildren, e => e.Warehouse_Color = this, e =>
+                        {
+                            var x = e.Warehouse_Color;
+                            e.Warehouse_Color = null;
+                            new UpdateSetVisitor(true, new[]{"ColorID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItems;
             }
         }
