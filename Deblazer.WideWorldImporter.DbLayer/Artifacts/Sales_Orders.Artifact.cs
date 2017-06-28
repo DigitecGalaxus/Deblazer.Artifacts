@@ -26,9 +26,9 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.Int32> _OrderID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _CustomerID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _SalespersonPersonID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _PickedByPersonID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _PickedByPersonID = new DbValue<System.Int32? >();
         private DbValue<System.Int32> _ContactPersonID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _BackorderOrderID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _BackorderOrderID = new DbValue<System.Int32? >();
         private DbValue<System.DateTime> _OrderDate = new DbValue<System.DateTime>();
         private DbValue<System.DateTime> _ExpectedDeliveryDate = new DbValue<System.DateTime>();
         private DbValue<System.String> _CustomerPurchaseOrderNumber = new DbValue<System.String>();
@@ -36,7 +36,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _Comments = new DbValue<System.String>();
         private DbValue<System.String> _DeliveryInstructions = new DbValue<System.String>();
         private DbValue<System.String> _InternalComments = new DbValue<System.String>();
-        private DbValue<System.DateTime> _PickingCompletedWhen = new DbValue<System.DateTime>();
+        private DbValue<System.DateTime? > _PickingCompletedWhen = new DbValue<System.DateTime? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
         private IDbEntitySet<Sales_Invoice> _Sales_Invoices;
@@ -93,7 +93,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 PickedByPersonID
+        public System.Int32? PickedByPersonID
         {
             get
             {
@@ -121,7 +121,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 BackorderOrderID
+        public System.Int32? BackorderOrderID
         {
             get
             {
@@ -238,7 +238,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
 
         [StringColumn(7, true)]
         [Validate]
-        public System.DateTime PickingCompletedWhen
+        public System.DateTime? PickingCompletedWhen
         {
             get
             {
@@ -291,16 +291,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices = new DbEntitySetCached<Sales_Order, Sales_Invoice>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                    else
                     {
-                        var x = e.Sales_Order;
-                        e.Sales_Order = null;
-                        new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
-                    }
+                        _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                        {
+                            var x = e.Sales_Order;
+                            e.Sales_Order = null;
+                            new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices;
             }
         }
@@ -316,16 +319,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_OrderLines = new DbEntitySetCached<Sales_Order, Sales_OrderLine>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                    else
                     {
-                        var x = e.Sales_Order;
-                        e.Sales_Order = null;
-                        new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
-                    }
+                        _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[OrderID]"}, (member, root) => member.Sales_Order = root as Sales_Order, this, _lazyLoadChildren, e => e.Sales_Order = this, e =>
+                        {
+                            var x = e.Sales_Order;
+                            e.Sales_Order = null;
+                            new UpdateSetVisitor(true, new[]{"OrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_OrderLines;
             }
         }
@@ -405,16 +411,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Orders = new DbEntitySetCached<Sales_Order, Sales_Order>(() => _OrderID.Entity);
                     }
-                }
-                else
-                    _Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[BackorderOrderID]"}, (member, root) => member.BackorderOrder = root as Sales_Order, this, _lazyLoadChildren, e => e.BackorderOrder = this, e =>
+                    else
                     {
-                        var x = e.BackorderOrder;
-                        e.BackorderOrder = null;
-                        new UpdateSetVisitor(true, new[]{"BackorderOrderID"}, false).Process(x);
-                    }
+                        _Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _OrderID.Entity}, new[]{"[BackorderOrderID]"}, (member, root) => member.BackorderOrder = root as Sales_Order, this, _lazyLoadChildren, e => e.BackorderOrder = this, e =>
+                        {
+                            var x = e.BackorderOrder;
+                            e.BackorderOrder = null;
+                            new UpdateSetVisitor(true, new[]{"BackorderOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Orders;
             }
         }
@@ -780,9 +789,9 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@OrderID", _Sales_Order.OrderID);
             sqlCommand.Parameters.AddWithValue("@CustomerID", _Sales_Order.CustomerID);
             sqlCommand.Parameters.AddWithValue("@SalespersonPersonID", _Sales_Order.SalespersonPersonID);
-            sqlCommand.Parameters.AddWithValue("@PickedByPersonID", _Sales_Order.PickedByPersonID);
+            sqlCommand.Parameters.AddWithValue("@PickedByPersonID", _Sales_Order.PickedByPersonID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@ContactPersonID", _Sales_Order.ContactPersonID);
-            sqlCommand.Parameters.AddWithValue("@BackorderOrderID", _Sales_Order.BackorderOrderID);
+            sqlCommand.Parameters.AddWithValue("@BackorderOrderID", _Sales_Order.BackorderOrderID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@OrderDate", _Sales_Order.OrderDate);
             sqlCommand.Parameters.AddWithValue("@ExpectedDeliveryDate", _Sales_Order.ExpectedDeliveryDate);
             sqlCommand.Parameters.AddWithValue("@CustomerPurchaseOrderNumber", _Sales_Order.CustomerPurchaseOrderNumber ?? (object)DBNull.Value);
@@ -790,7 +799,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@Comments", _Sales_Order.Comments ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@DeliveryInstructions", _Sales_Order.DeliveryInstructions ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@InternalComments", _Sales_Order.InternalComments ?? (object)DBNull.Value);
-            sqlCommand.Parameters.AddWithValue("@PickingCompletedWhen", _Sales_Order.PickingCompletedWhen);
+            sqlCommand.Parameters.AddWithValue("@PickingCompletedWhen", _Sales_Order.PickingCompletedWhen ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Sales_Order.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Sales_Order.LastEditedWhen);
         }
@@ -821,9 +830,9 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
     {
         public readonly QueryElMemberId<Sales_Customer> CustomerID = new QueryElMemberId<Sales_Customer>("CustomerID");
         public readonly QueryElMemberId<Application_People> SalespersonPersonID = new QueryElMemberId<Application_People>("SalespersonPersonID");
-        public readonly QueryElMemberId<Application_People> PickedByPersonID = new QueryElMemberId<Application_People>("PickedByPersonID");
+        public readonly QueryElMemberNullableId<Application_People> PickedByPersonID = new QueryElMemberNullableId<Application_People>("PickedByPersonID");
         public readonly QueryElMemberId<Application_People> ContactPersonID = new QueryElMemberId<Application_People>("ContactPersonID");
-        public readonly QueryElMemberId<Sales_Order> BackorderOrderID = new QueryElMemberId<Sales_Order>("BackorderOrderID");
+        public readonly QueryElMemberNullableId<Sales_Order> BackorderOrderID = new QueryElMemberNullableId<Sales_Order>("BackorderOrderID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMemberStruct<System.DateTime> OrderDate = new QueryElMemberStruct<System.DateTime>("OrderDate");
         public readonly QueryElMemberStruct<System.DateTime> ExpectedDeliveryDate = new QueryElMemberStruct<System.DateTime>("ExpectedDeliveryDate");
@@ -832,7 +841,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMember<System.String> Comments = new QueryElMember<System.String>("Comments");
         public readonly QueryElMember<System.String> DeliveryInstructions = new QueryElMember<System.String>("DeliveryInstructions");
         public readonly QueryElMember<System.String> InternalComments = new QueryElMember<System.String>("InternalComments");
-        public readonly QueryElMemberStruct<System.DateTime> PickingCompletedWhen = new QueryElMemberStruct<System.DateTime>("PickingCompletedWhen");
+        public readonly QueryElMember<System.DateTime> PickingCompletedWhen = new QueryElMember<System.DateTime>("PickingCompletedWhen");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Sales_OrderWrapper Instance = new Sales_OrderWrapper();
         private Sales_OrderWrapper(): base ("[Sales].[Orders]", "Sales_Order")

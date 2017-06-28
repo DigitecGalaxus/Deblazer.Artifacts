@@ -27,13 +27,13 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _CustomerName = new DbValue<System.String>();
         private DbValue<System.Int32> _BillToCustomerID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _CustomerCategoryID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _BuyingGroupID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _BuyingGroupID = new DbValue<System.Int32? >();
         private DbValue<System.Int32> _PrimaryContactPersonID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _AlternateContactPersonID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _AlternateContactPersonID = new DbValue<System.Int32? >();
         private DbValue<System.Int32> _DeliveryMethodID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _DeliveryCityID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _PostalCityID = new DbValue<System.Int32>();
-        private DbValue<System.Decimal> _CreditLimit = new DbValue<System.Decimal>();
+        private DbValue<System.Decimal? > _CreditLimit = new DbValue<System.Decimal? >();
         private DbValue<System.DateTime> _AccountOpenedDate = new DbValue<System.DateTime>();
         private DbValue<System.Decimal> _StandardDiscountPercentage = new DbValue<System.Decimal>();
         private DbValue<System.Boolean> _IsStatementSent = new DbValue<System.Boolean>();
@@ -129,7 +129,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 BuyingGroupID
+        public System.Int32? BuyingGroupID
         {
             get
             {
@@ -157,7 +157,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 AlternateContactPersonID
+        public System.Int32? AlternateContactPersonID
         {
             get
             {
@@ -213,7 +213,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal CreditLimit
+        public System.Decimal? CreditLimit
         {
             get
             {
@@ -612,16 +612,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Customers = new DbEntitySetCached<Sales_Customer, Sales_Customer>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[BillToCustomerID]"}, (member, root) => member.BillToCustomer = root as Sales_Customer, this, _lazyLoadChildren, e => e.BillToCustomer = this, e =>
+                    else
                     {
-                        var x = e.BillToCustomer;
-                        e.BillToCustomer = null;
-                        new UpdateSetVisitor(true, new[]{"BillToCustomerID"}, false).Process(x);
-                    }
+                        _Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[BillToCustomerID]"}, (member, root) => member.BillToCustomer = root as Sales_Customer, this, _lazyLoadChildren, e => e.BillToCustomer = this, e =>
+                        {
+                            var x = e.BillToCustomer;
+                            e.BillToCustomer = null;
+                            new UpdateSetVisitor(true, new[]{"BillToCustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Customers;
             }
         }
@@ -829,16 +832,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Sales_Customer, Sales_CustomerTransaction>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }
@@ -854,16 +860,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices = new DbEntitySetCached<Sales_Customer, Sales_Invoice>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[BillToCustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"BillToCustomerID"}, false).Process(x);
-                    }
+                        _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[BillToCustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"BillToCustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices;
             }
         }
@@ -879,16 +888,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices_CustomerID_Sales_Customers = new DbEntitySetCached<Sales_Customer, Sales_Invoice>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices_CustomerID_Sales_Customers = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
-                    }
+                        _Sales_Invoices_CustomerID_Sales_Customers = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices_CustomerID_Sales_Customers;
             }
         }
@@ -904,16 +916,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Orders = new DbEntitySetCached<Sales_Customer, Sales_Order>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Sales_Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
-                    }
+                        _Sales_Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Orders;
             }
         }
@@ -929,16 +944,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Sales_Customer, Sales_SpecialDeal>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }
@@ -954,16 +972,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Sales_Customer, Warehouse_StockItemTransaction>(() => _CustomerID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                    else
                     {
-                        var x = e.Sales_Customer;
-                        e.Sales_Customer = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _CustomerID.Entity}, new[]{"[CustomerID]"}, (member, root) => member.Sales_Customer = root as Sales_Customer, this, _lazyLoadChildren, e => e.Sales_Customer = this, e =>
+                        {
+                            var x = e.Sales_Customer;
+                            e.Sales_Customer = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }
@@ -1312,13 +1333,13 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@CustomerName", _Sales_Customer.CustomerName ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@BillToCustomerID", _Sales_Customer.BillToCustomerID);
             sqlCommand.Parameters.AddWithValue("@CustomerCategoryID", _Sales_Customer.CustomerCategoryID);
-            sqlCommand.Parameters.AddWithValue("@BuyingGroupID", _Sales_Customer.BuyingGroupID);
+            sqlCommand.Parameters.AddWithValue("@BuyingGroupID", _Sales_Customer.BuyingGroupID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@PrimaryContactPersonID", _Sales_Customer.PrimaryContactPersonID);
-            sqlCommand.Parameters.AddWithValue("@AlternateContactPersonID", _Sales_Customer.AlternateContactPersonID);
+            sqlCommand.Parameters.AddWithValue("@AlternateContactPersonID", _Sales_Customer.AlternateContactPersonID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@DeliveryMethodID", _Sales_Customer.DeliveryMethodID);
             sqlCommand.Parameters.AddWithValue("@DeliveryCityID", _Sales_Customer.DeliveryCityID);
             sqlCommand.Parameters.AddWithValue("@PostalCityID", _Sales_Customer.PostalCityID);
-            sqlCommand.Parameters.AddWithValue("@CreditLimit", _Sales_Customer.CreditLimit);
+            sqlCommand.Parameters.AddWithValue("@CreditLimit", _Sales_Customer.CreditLimit ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@AccountOpenedDate", _Sales_Customer.AccountOpenedDate);
             sqlCommand.Parameters.AddWithValue("@StandardDiscountPercentage", _Sales_Customer.StandardDiscountPercentage);
             sqlCommand.Parameters.AddWithValue("@IsStatementSent", _Sales_Customer.IsStatementSent);
@@ -1366,15 +1387,15 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
     {
         public readonly QueryElMemberId<Sales_Customer> BillToCustomerID = new QueryElMemberId<Sales_Customer>("BillToCustomerID");
         public readonly QueryElMemberId<Sales_CustomerCategory> CustomerCategoryID = new QueryElMemberId<Sales_CustomerCategory>("CustomerCategoryID");
-        public readonly QueryElMemberId<Sales_BuyingGroup> BuyingGroupID = new QueryElMemberId<Sales_BuyingGroup>("BuyingGroupID");
+        public readonly QueryElMemberNullableId<Sales_BuyingGroup> BuyingGroupID = new QueryElMemberNullableId<Sales_BuyingGroup>("BuyingGroupID");
         public readonly QueryElMemberId<Application_People> PrimaryContactPersonID = new QueryElMemberId<Application_People>("PrimaryContactPersonID");
-        public readonly QueryElMemberId<Application_People> AlternateContactPersonID = new QueryElMemberId<Application_People>("AlternateContactPersonID");
+        public readonly QueryElMemberNullableId<Application_People> AlternateContactPersonID = new QueryElMemberNullableId<Application_People>("AlternateContactPersonID");
         public readonly QueryElMemberId<Application_DeliveryMethod> DeliveryMethodID = new QueryElMemberId<Application_DeliveryMethod>("DeliveryMethodID");
         public readonly QueryElMemberId<Application_City> DeliveryCityID = new QueryElMemberId<Application_City>("DeliveryCityID");
         public readonly QueryElMemberId<Application_City> PostalCityID = new QueryElMemberId<Application_City>("PostalCityID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> CustomerName = new QueryElMember<System.String>("CustomerName");
-        public readonly QueryElMemberStruct<System.Decimal> CreditLimit = new QueryElMemberStruct<System.Decimal>("CreditLimit");
+        public readonly QueryElMember<System.Decimal> CreditLimit = new QueryElMember<System.Decimal>("CreditLimit");
         public readonly QueryElMemberStruct<System.DateTime> AccountOpenedDate = new QueryElMemberStruct<System.DateTime>("AccountOpenedDate");
         public readonly QueryElMemberStruct<System.Decimal> StandardDiscountPercentage = new QueryElMemberStruct<System.Decimal>("StandardDiscountPercentage");
         public readonly QueryElMemberStruct<System.Boolean> IsStatementSent = new QueryElMemberStruct<System.Boolean>("IsStatementSent");

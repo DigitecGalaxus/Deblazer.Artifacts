@@ -38,6 +38,10 @@ module Types
         member this.OtherKeyStorage = getStorage this.OtherKey
         member this.IsMany = this.Cardinality = cardinality.Many   
     
+    let getDotNetType (typeString: string, isNullable: bool) = 
+            if Type.GetType(typeString) <> null && Type.GetType(typeString).IsValueType && isNullable then "System.Nullable`1[" + typeString + "]"
+            else typeString
+
     type column = {
         Name:string;
         Type:string;
@@ -62,7 +66,12 @@ module Types
             match this.Type with
             | "System.Xml.Linq.XElement" -> typeof<Xml.Linq.XElement>
             | "System.Data.Linq.Binary" -> typeof<System.Data.Linq.Binary>
-            | _ -> Type.GetType this.Type
+            | _ -> Type.GetType (getDotNetType(this.Type, this.CanBeNull))
+        
+        member this.TypeStringInCode =
+            match this.CompileType with
+            | _ when this.CompileType.IsGenericType && this.CompileType.GetGenericTypeDefinition() = typedefof<Nullable<_>> -> this.Type + "?"
+            | _ -> this.Type
 
         member this.IsNullableType =
             match this.CompileType with
@@ -162,14 +171,14 @@ module Types
                 })
         flatList |> Array.map (fun x -> { x with 
                                             OtherSideAssociation = getOtherSide x flatList 
-                                            OtherTableName = otherTableName x tables })      
-                                            
+                                            OtherTableName = otherTableName x tables })
+
     let parseColumns (columns:dc.Column[]) =
         columns
         |> Array.map (fun c -> 
             {
                 Name = c.Name;
-                Type = c.Type;
+                Type = c.Type
                 DbType = c.DbType;
                 CanBeNull = c.CanBeNull;
                 IsDbGenerated = c.IsDbGenerated;

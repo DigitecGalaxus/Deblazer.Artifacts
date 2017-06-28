@@ -26,16 +26,16 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.Int32> _SupplierTransactionID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _SupplierID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _TransactionTypeID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _PurchaseOrderID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _PaymentMethodID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _PurchaseOrderID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _PaymentMethodID = new DbValue<System.Int32? >();
         private DbValue<System.String> _SupplierInvoiceNumber = new DbValue<System.String>();
         private DbValue<System.DateTime> _TransactionDate = new DbValue<System.DateTime>();
         private DbValue<System.Decimal> _AmountExcludingTax = new DbValue<System.Decimal>();
         private DbValue<System.Decimal> _TaxAmount = new DbValue<System.Decimal>();
         private DbValue<System.Decimal> _TransactionAmount = new DbValue<System.Decimal>();
         private DbValue<System.Decimal> _OutstandingBalance = new DbValue<System.Decimal>();
-        private DbValue<System.DateTime> _FinalizationDate = new DbValue<System.DateTime>();
-        private DbValue<System.Boolean> _IsFinalized = new DbValue<System.Boolean>();
+        private DbValue<System.DateTime? > _FinalizationDate = new DbValue<System.DateTime? >();
+        private DbValue<System.Boolean? > _IsFinalized = new DbValue<System.Boolean? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
         private IDbEntityRef<Application_People> _Application_People;
@@ -88,7 +88,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 PurchaseOrderID
+        public System.Int32? PurchaseOrderID
         {
             get
             {
@@ -102,7 +102,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 PaymentMethodID
+        public System.Int32? PaymentMethodID
         {
             get
             {
@@ -201,7 +201,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.DateTime FinalizationDate
+        public System.DateTime? FinalizationDate
         {
             get
             {
@@ -215,7 +215,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Boolean IsFinalized
+        public System.Boolean? IsFinalized
         {
             get
             {
@@ -609,16 +609,16 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@SupplierTransactionID", _Purchasing_SupplierTransaction.SupplierTransactionID);
             sqlCommand.Parameters.AddWithValue("@SupplierID", _Purchasing_SupplierTransaction.SupplierID);
             sqlCommand.Parameters.AddWithValue("@TransactionTypeID", _Purchasing_SupplierTransaction.TransactionTypeID);
-            sqlCommand.Parameters.AddWithValue("@PurchaseOrderID", _Purchasing_SupplierTransaction.PurchaseOrderID);
-            sqlCommand.Parameters.AddWithValue("@PaymentMethodID", _Purchasing_SupplierTransaction.PaymentMethodID);
+            sqlCommand.Parameters.AddWithValue("@PurchaseOrderID", _Purchasing_SupplierTransaction.PurchaseOrderID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@PaymentMethodID", _Purchasing_SupplierTransaction.PaymentMethodID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@SupplierInvoiceNumber", _Purchasing_SupplierTransaction.SupplierInvoiceNumber ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@TransactionDate", _Purchasing_SupplierTransaction.TransactionDate);
             sqlCommand.Parameters.AddWithValue("@AmountExcludingTax", _Purchasing_SupplierTransaction.AmountExcludingTax);
             sqlCommand.Parameters.AddWithValue("@TaxAmount", _Purchasing_SupplierTransaction.TaxAmount);
             sqlCommand.Parameters.AddWithValue("@TransactionAmount", _Purchasing_SupplierTransaction.TransactionAmount);
             sqlCommand.Parameters.AddWithValue("@OutstandingBalance", _Purchasing_SupplierTransaction.OutstandingBalance);
-            sqlCommand.Parameters.AddWithValue("@FinalizationDate", _Purchasing_SupplierTransaction.FinalizationDate);
-            sqlCommand.Parameters.AddWithValue("@IsFinalized", _Purchasing_SupplierTransaction.IsFinalized);
+            sqlCommand.Parameters.AddWithValue("@FinalizationDate", _Purchasing_SupplierTransaction.FinalizationDate ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@IsFinalized", _Purchasing_SupplierTransaction.IsFinalized ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Purchasing_SupplierTransaction.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Purchasing_SupplierTransaction.LastEditedWhen);
         }
@@ -649,8 +649,8 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
     {
         public readonly QueryElMemberId<Purchasing_Supplier> SupplierID = new QueryElMemberId<Purchasing_Supplier>("SupplierID");
         public readonly QueryElMemberId<Application_TransactionType> TransactionTypeID = new QueryElMemberId<Application_TransactionType>("TransactionTypeID");
-        public readonly QueryElMemberId<Purchasing_PurchaseOrder> PurchaseOrderID = new QueryElMemberId<Purchasing_PurchaseOrder>("PurchaseOrderID");
-        public readonly QueryElMemberId<Application_PaymentMethod> PaymentMethodID = new QueryElMemberId<Application_PaymentMethod>("PaymentMethodID");
+        public readonly QueryElMemberNullableId<Purchasing_PurchaseOrder> PurchaseOrderID = new QueryElMemberNullableId<Purchasing_PurchaseOrder>("PurchaseOrderID");
+        public readonly QueryElMemberNullableId<Application_PaymentMethod> PaymentMethodID = new QueryElMemberNullableId<Application_PaymentMethod>("PaymentMethodID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> SupplierInvoiceNumber = new QueryElMember<System.String>("SupplierInvoiceNumber");
         public readonly QueryElMemberStruct<System.DateTime> TransactionDate = new QueryElMemberStruct<System.DateTime>("TransactionDate");
@@ -658,8 +658,8 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberStruct<System.Decimal> TaxAmount = new QueryElMemberStruct<System.Decimal>("TaxAmount");
         public readonly QueryElMemberStruct<System.Decimal> TransactionAmount = new QueryElMemberStruct<System.Decimal>("TransactionAmount");
         public readonly QueryElMemberStruct<System.Decimal> OutstandingBalance = new QueryElMemberStruct<System.Decimal>("OutstandingBalance");
-        public readonly QueryElMemberStruct<System.DateTime> FinalizationDate = new QueryElMemberStruct<System.DateTime>("FinalizationDate");
-        public readonly QueryElMemberStruct<System.Boolean> IsFinalized = new QueryElMemberStruct<System.Boolean>("IsFinalized");
+        public readonly QueryElMember<System.DateTime> FinalizationDate = new QueryElMember<System.DateTime>("FinalizationDate");
+        public readonly QueryElMember<System.Boolean> IsFinalized = new QueryElMember<System.Boolean>("IsFinalized");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Purchasing_SupplierTransactionWrapper Instance = new Purchasing_SupplierTransactionWrapper();
         private Purchasing_SupplierTransactionWrapper(): base ("[Purchasing].[SupplierTransactions]", "Purchasing_SupplierTransaction")

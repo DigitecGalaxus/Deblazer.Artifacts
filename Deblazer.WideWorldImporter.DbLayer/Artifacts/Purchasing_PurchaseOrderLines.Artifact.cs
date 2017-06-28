@@ -30,8 +30,8 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _Description = new DbValue<System.String>();
         private DbValue<System.Int32> _ReceivedOuters = new DbValue<System.Int32>();
         private DbValue<System.Int32> _PackageTypeID = new DbValue<System.Int32>();
-        private DbValue<System.Decimal> _ExpectedUnitPricePerOuter = new DbValue<System.Decimal>();
-        private DbValue<System.DateTime> _LastReceiptDate = new DbValue<System.DateTime>();
+        private DbValue<System.Decimal? > _ExpectedUnitPricePerOuter = new DbValue<System.Decimal? >();
+        private DbValue<System.DateTime? > _LastReceiptDate = new DbValue<System.DateTime? >();
         private DbValue<System.Boolean> _IsOrderLineFinalized = new DbValue<System.Boolean>();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
@@ -141,7 +141,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal ExpectedUnitPricePerOuter
+        public System.Decimal? ExpectedUnitPricePerOuter
         {
             get
             {
@@ -155,7 +155,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.DateTime LastReceiptDate
+        public System.DateTime? LastReceiptDate
         {
             get
             {
@@ -511,8 +511,8 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@Description", _Purchasing_PurchaseOrderLine.Description ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@ReceivedOuters", _Purchasing_PurchaseOrderLine.ReceivedOuters);
             sqlCommand.Parameters.AddWithValue("@PackageTypeID", _Purchasing_PurchaseOrderLine.PackageTypeID);
-            sqlCommand.Parameters.AddWithValue("@ExpectedUnitPricePerOuter", _Purchasing_PurchaseOrderLine.ExpectedUnitPricePerOuter);
-            sqlCommand.Parameters.AddWithValue("@LastReceiptDate", _Purchasing_PurchaseOrderLine.LastReceiptDate);
+            sqlCommand.Parameters.AddWithValue("@ExpectedUnitPricePerOuter", _Purchasing_PurchaseOrderLine.ExpectedUnitPricePerOuter ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@LastReceiptDate", _Purchasing_PurchaseOrderLine.LastReceiptDate ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@IsOrderLineFinalized", _Purchasing_PurchaseOrderLine.IsOrderLineFinalized);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Purchasing_PurchaseOrderLine.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Purchasing_PurchaseOrderLine.LastEditedWhen);
@@ -549,8 +549,8 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberStruct<System.Int32> OrderedOuters = new QueryElMemberStruct<System.Int32>("OrderedOuters");
         public readonly QueryElMember<System.String> Description = new QueryElMember<System.String>("Description");
         public readonly QueryElMemberStruct<System.Int32> ReceivedOuters = new QueryElMemberStruct<System.Int32>("ReceivedOuters");
-        public readonly QueryElMemberStruct<System.Decimal> ExpectedUnitPricePerOuter = new QueryElMemberStruct<System.Decimal>("ExpectedUnitPricePerOuter");
-        public readonly QueryElMemberStruct<System.DateTime> LastReceiptDate = new QueryElMemberStruct<System.DateTime>("LastReceiptDate");
+        public readonly QueryElMember<System.Decimal> ExpectedUnitPricePerOuter = new QueryElMember<System.Decimal>("ExpectedUnitPricePerOuter");
+        public readonly QueryElMember<System.DateTime> LastReceiptDate = new QueryElMember<System.DateTime>("LastReceiptDate");
         public readonly QueryElMemberStruct<System.Boolean> IsOrderLineFinalized = new QueryElMemberStruct<System.Boolean>("IsOrderLineFinalized");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Purchasing_PurchaseOrderLineWrapper Instance = new Purchasing_PurchaseOrderLineWrapper();

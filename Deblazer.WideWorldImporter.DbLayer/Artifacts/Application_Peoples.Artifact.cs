@@ -407,16 +407,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_Cities = new DbEntitySetCached<Application_People, Application_City>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_Cities;
             }
         }
@@ -432,16 +435,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_Countries = new DbEntitySetCached<Application_People, Application_Country>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_Countries = new DbEntitySet<Application_Country>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_Countries = new DbEntitySet<Application_Country>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_Countries;
             }
         }
@@ -457,16 +463,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_DeliveryMethods = new DbEntitySetCached<Application_People, Application_DeliveryMethod>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_DeliveryMethods = new DbEntitySet<Application_DeliveryMethod>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_DeliveryMethods = new DbEntitySet<Application_DeliveryMethod>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_DeliveryMethods;
             }
         }
@@ -482,16 +491,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_PaymentMethods = new DbEntitySetCached<Application_People, Application_PaymentMethod>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_PaymentMethods = new DbEntitySet<Application_PaymentMethod>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_PaymentMethods = new DbEntitySet<Application_PaymentMethod>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_PaymentMethods;
             }
         }
@@ -539,16 +551,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Persons = new DbEntitySetCached<Application_People, Application_People>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Persons = new DbEntitySet<Application_People>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.LastEditedByApplication_People = root as Application_People, this, _lazyLoadChildren, e => e.LastEditedByApplication_People = this, e =>
+                    else
                     {
-                        var x = e.LastEditedByApplication_People;
-                        e.LastEditedByApplication_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Persons = new DbEntitySet<Application_People>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.LastEditedByApplication_People = root as Application_People, this, _lazyLoadChildren, e => e.LastEditedByApplication_People = this, e =>
+                        {
+                            var x = e.LastEditedByApplication_People;
+                            e.LastEditedByApplication_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Persons;
             }
         }
@@ -564,16 +579,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_StateProvinces = new DbEntitySetCached<Application_People, Application_StateProvince>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_StateProvinces = new DbEntitySet<Application_StateProvince>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_StateProvinces = new DbEntitySet<Application_StateProvince>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_StateProvinces;
             }
         }
@@ -589,16 +607,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_SystemParameters = new DbEntitySetCached<Application_People, Application_SystemParameter>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_SystemParameters = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_SystemParameters = new DbEntitySet<Application_SystemParameter>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_SystemParameters;
             }
         }
@@ -614,16 +635,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_TransactionTypes = new DbEntitySetCached<Application_People, Application_TransactionType>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Application_TransactionTypes = new DbEntitySet<Application_TransactionType>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Application_TransactionTypes = new DbEntitySet<Application_TransactionType>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_TransactionTypes;
             }
         }
@@ -639,16 +663,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrderLines = new DbEntitySetCached<Application_People, Purchasing_PurchaseOrderLine>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrderLines;
             }
         }
@@ -664,16 +691,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrders = new DbEntitySetCached<Application_People, Purchasing_PurchaseOrder>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrders = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrders = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrders;
             }
         }
@@ -689,16 +719,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrders_ContactPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Purchasing_PurchaseOrder>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrders_ContactPersonID_Application_Peoples = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrders_ContactPersonID_Application_Peoples = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrders_ContactPersonID_Application_Peoples;
             }
         }
@@ -714,16 +747,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierCategories = new DbEntitySetCached<Application_People, Purchasing_SupplierCategory>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierCategories = new DbEntitySet<Purchasing_SupplierCategory>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierCategories = new DbEntitySet<Purchasing_SupplierCategory>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierCategories;
             }
         }
@@ -739,16 +775,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers = new DbEntitySetCached<Application_People, Purchasing_Supplier>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AlternateContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"AlternateContactPersonID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AlternateContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"AlternateContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers;
             }
         }
@@ -764,16 +803,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers_Application_Peoples = new DbEntitySetCached<Application_People, Purchasing_Supplier>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers_Application_Peoples = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers_Application_Peoples = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers_Application_Peoples;
             }
         }
@@ -789,16 +831,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers_PrimaryContactPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Purchasing_Supplier>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers_PrimaryContactPersonID_Application_Peoples = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PrimaryContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"PrimaryContactPersonID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers_PrimaryContactPersonID_Application_Peoples = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PrimaryContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"PrimaryContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers_PrimaryContactPersonID_Application_Peoples;
             }
         }
@@ -814,16 +859,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierTransactions = new DbEntitySetCached<Application_People, Purchasing_SupplierTransaction>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierTransactions;
             }
         }
@@ -839,16 +887,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_BuyingGroups = new DbEntitySetCached<Application_People, Sales_BuyingGroup>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_BuyingGroups = new DbEntitySet<Sales_BuyingGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_BuyingGroups = new DbEntitySet<Sales_BuyingGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_BuyingGroups;
             }
         }
@@ -864,16 +915,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerCategories = new DbEntitySetCached<Application_People, Sales_CustomerCategory>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerCategories = new DbEntitySet<Sales_CustomerCategory>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_CustomerCategories = new DbEntitySet<Sales_CustomerCategory>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerCategories;
             }
         }
@@ -889,16 +943,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers = new DbEntitySetCached<Application_People, Sales_Customer>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AlternateContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"AlternateContactPersonID"}, false).Process(x);
-                    }
+                        _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AlternateContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"AlternateContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers;
             }
         }
@@ -914,16 +971,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Customer>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers_Application_Peoples = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_Customers_Application_Peoples = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers_Application_Peoples;
             }
         }
@@ -939,16 +999,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers_PrimaryContactPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Customer>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers_PrimaryContactPersonID_Application_Peoples = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PrimaryContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"PrimaryContactPersonID"}, false).Process(x);
-                    }
+                        _Sales_Customers_PrimaryContactPersonID_Application_Peoples = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PrimaryContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"PrimaryContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers_PrimaryContactPersonID_Application_Peoples;
             }
         }
@@ -964,16 +1027,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Application_People, Sales_CustomerTransaction>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }
@@ -989,16 +1055,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_InvoiceLines = new DbEntitySetCached<Application_People, Sales_InvoiceLine>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_InvoiceLines;
             }
         }
@@ -1014,16 +1083,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices = new DbEntitySetCached<Application_People, Sales_Invoice>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AccountsPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"AccountsPersonID"}, false).Process(x);
-                    }
+                        _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[AccountsPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"AccountsPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices;
             }
         }
@@ -1039,16 +1111,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Invoice>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_Invoices_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices_Application_Peoples;
             }
         }
@@ -1064,16 +1139,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices_ContactPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Invoice>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices_ContactPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
-                    }
+                        _Sales_Invoices_ContactPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices_ContactPersonID_Application_Peoples;
             }
         }
@@ -1089,16 +1167,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices_PackedByPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Invoice>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices_PackedByPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PackedByPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"PackedByPersonID"}, false).Process(x);
-                    }
+                        _Sales_Invoices_PackedByPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PackedByPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"PackedByPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices_PackedByPersonID_Application_Peoples;
             }
         }
@@ -1114,16 +1195,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices_SalespersonPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Invoice>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices_SalespersonPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[SalespersonPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"SalespersonPersonID"}, false).Process(x);
-                    }
+                        _Sales_Invoices_SalespersonPersonID_Application_Peoples = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[SalespersonPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"SalespersonPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices_SalespersonPersonID_Application_Peoples;
             }
         }
@@ -1139,16 +1223,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_OrderLines = new DbEntitySetCached<Application_People, Sales_OrderLine>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_OrderLines;
             }
         }
@@ -1164,16 +1251,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Orders = new DbEntitySetCached<Application_People, Sales_Order>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_Orders = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Orders;
             }
         }
@@ -1189,16 +1279,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Orders_ContactPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Order>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Orders_ContactPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
-                    }
+                        _Sales_Orders_ContactPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[ContactPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"ContactPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Orders_ContactPersonID_Application_Peoples;
             }
         }
@@ -1214,16 +1307,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Orders_PickedByPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Order>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Orders_PickedByPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PickedByPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"PickedByPersonID"}, false).Process(x);
-                    }
+                        _Sales_Orders_PickedByPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[PickedByPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"PickedByPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Orders_PickedByPersonID_Application_Peoples;
             }
         }
@@ -1239,16 +1335,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Orders_SalespersonPersonID_Application_Peoples = new DbEntitySetCached<Application_People, Sales_Order>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_Orders_SalespersonPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[SalespersonPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"SalespersonPersonID"}, false).Process(x);
-                    }
+                        _Sales_Orders_SalespersonPersonID_Application_Peoples = new DbEntitySet<Sales_Order>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[SalespersonPersonID]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"SalespersonPersonID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Orders_SalespersonPersonID_Application_Peoples;
             }
         }
@@ -1264,16 +1363,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Application_People, Sales_SpecialDeal>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }
@@ -1289,16 +1391,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_Colors = new DbEntitySetCached<Application_People, Warehouse_Color>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_Colors = new DbEntitySet<Warehouse_Color>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_Colors = new DbEntitySet<Warehouse_Color>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_Colors;
             }
         }
@@ -1314,16 +1419,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_PackageTypes = new DbEntitySetCached<Application_People, Warehouse_PackageType>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_PackageTypes = new DbEntitySet<Warehouse_PackageType>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_PackageTypes = new DbEntitySet<Warehouse_PackageType>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_PackageTypes;
             }
         }
@@ -1339,16 +1447,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockGroups = new DbEntitySetCached<Application_People, Warehouse_StockGroup>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockGroups = new DbEntitySet<Warehouse_StockGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_StockGroups = new DbEntitySet<Warehouse_StockGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockGroups;
             }
         }
@@ -1364,16 +1475,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemHoldings = new DbEntitySetCached<Application_People, Warehouse_StockItemHolding>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemHoldings = new DbEntitySet<Warehouse_StockItemHolding>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemHoldings = new DbEntitySet<Warehouse_StockItemHolding>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemHoldings;
             }
         }
@@ -1389,16 +1503,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItems = new DbEntitySetCached<Application_People, Warehouse_StockItem>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItems;
             }
         }
@@ -1414,16 +1531,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemStockGroups = new DbEntitySetCached<Application_People, Warehouse_StockItemStockGroup>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemStockGroups = new DbEntitySet<Warehouse_StockItemStockGroup>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemStockGroups;
             }
         }
@@ -1439,16 +1559,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Application_People, Warehouse_StockItemTransaction>(() => _PersonID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                    else
                     {
-                        var x = e.Application_People;
-                        e.Application_People = null;
-                        new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PersonID.Entity}, new[]{"[LastEditedBy]"}, (member, root) => member.Application_People = root as Application_People, this, _lazyLoadChildren, e => e.Application_People = this, e =>
+                        {
+                            var x = e.Application_People;
+                            e.Application_People = null;
+                            new UpdateSetVisitor(true, new[]{"LastEditedBy"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }

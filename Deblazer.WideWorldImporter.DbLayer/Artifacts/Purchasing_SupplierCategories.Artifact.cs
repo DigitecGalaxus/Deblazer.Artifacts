@@ -148,16 +148,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers = new DbEntitySetCached<Purchasing_SupplierCategory, Purchasing_Supplier>(() => _SupplierCategoryID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _SupplierCategoryID.Entity}, new[]{"[SupplierCategoryID]"}, (member, root) => member.Purchasing_SupplierCategory = root as Purchasing_SupplierCategory, this, _lazyLoadChildren, e => e.Purchasing_SupplierCategory = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_SupplierCategory;
-                        e.Purchasing_SupplierCategory = null;
-                        new UpdateSetVisitor(true, new[]{"SupplierCategoryID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _SupplierCategoryID.Entity}, new[]{"[SupplierCategoryID]"}, (member, root) => member.Purchasing_SupplierCategory = root as Purchasing_SupplierCategory, this, _lazyLoadChildren, e => e.Purchasing_SupplierCategory = this, e =>
+                        {
+                            var x = e.Purchasing_SupplierCategory;
+                            e.Purchasing_SupplierCategory = null;
+                            new UpdateSetVisitor(true, new[]{"SupplierCategoryID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers;
             }
         }

@@ -28,7 +28,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _StateProvinceName = new DbValue<System.String>();
         private DbValue<System.Int32> _CountryID = new DbValue<System.Int32>();
         private DbValue<System.String> _SalesTerritory = new DbValue<System.String>();
-        private DbValue<System.Int64> _LatestRecordedPopulation = new DbValue<System.Int64>();
+        private DbValue<System.Int64? > _LatestRecordedPopulation = new DbValue<System.Int64? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _ValidFrom = new DbValue<System.DateTime>();
         private DbValue<System.DateTime> _ValidTo = new DbValue<System.DateTime>();
@@ -111,7 +111,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int64 LatestRecordedPopulation
+        public System.Int64? LatestRecordedPopulation
         {
             get
             {
@@ -179,16 +179,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Application_Cities = new DbEntitySetCached<Application_StateProvince, Application_City>(() => _StateProvinceID.Entity);
                     }
-                }
-                else
-                    _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _StateProvinceID.Entity}, new[]{"[StateProvinceID]"}, (member, root) => member.Application_StateProvince = root as Application_StateProvince, this, _lazyLoadChildren, e => e.Application_StateProvince = this, e =>
+                    else
                     {
-                        var x = e.Application_StateProvince;
-                        e.Application_StateProvince = null;
-                        new UpdateSetVisitor(true, new[]{"StateProvinceID"}, false).Process(x);
-                    }
+                        _Application_Cities = new DbEntitySet<Application_City>(_db, false, new Func<long ? >[]{() => _StateProvinceID.Entity}, new[]{"[StateProvinceID]"}, (member, root) => member.Application_StateProvince = root as Application_StateProvince, this, _lazyLoadChildren, e => e.Application_StateProvince = this, e =>
+                        {
+                            var x = e.Application_StateProvince;
+                            e.Application_StateProvince = null;
+                            new UpdateSetVisitor(true, new[]{"StateProvinceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Application_Cities;
             }
         }
@@ -392,7 +395,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@StateProvinceName", _Application_StateProvince.StateProvinceName ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@CountryID", _Application_StateProvince.CountryID);
             sqlCommand.Parameters.AddWithValue("@SalesTerritory", _Application_StateProvince.SalesTerritory ?? (object)DBNull.Value);
-            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_StateProvince.LatestRecordedPopulation);
+            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_StateProvince.LatestRecordedPopulation ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Application_StateProvince.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@ValidFrom", _Application_StateProvince.ValidFrom);
             sqlCommand.Parameters.AddWithValue("@ValidTo", _Application_StateProvince.ValidTo);
@@ -427,7 +430,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMember<System.String> StateProvinceCode = new QueryElMember<System.String>("StateProvinceCode");
         public readonly QueryElMember<System.String> StateProvinceName = new QueryElMember<System.String>("StateProvinceName");
         public readonly QueryElMember<System.String> SalesTerritory = new QueryElMember<System.String>("SalesTerritory");
-        public readonly QueryElMemberStruct<System.Int64> LatestRecordedPopulation = new QueryElMemberStruct<System.Int64>("LatestRecordedPopulation");
+        public readonly QueryElMember<System.Int64> LatestRecordedPopulation = new QueryElMember<System.Int64>("LatestRecordedPopulation");
         public readonly QueryElMemberStruct<System.DateTime> ValidFrom = new QueryElMemberStruct<System.DateTime>("ValidFrom");
         public readonly QueryElMemberStruct<System.DateTime> ValidTo = new QueryElMemberStruct<System.DateTime>("ValidTo");
         public static readonly Application_StateProvinceWrapper Instance = new Application_StateProvinceWrapper();

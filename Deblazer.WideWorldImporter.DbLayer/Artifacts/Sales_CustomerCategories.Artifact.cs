@@ -149,16 +149,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers = new DbEntitySetCached<Sales_CustomerCategory, Sales_Customer>(() => _CustomerCategoryID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CustomerCategoryID.Entity}, new[]{"[CustomerCategoryID]"}, (member, root) => member.Sales_CustomerCategory = root as Sales_CustomerCategory, this, _lazyLoadChildren, e => e.Sales_CustomerCategory = this, e =>
+                    else
                     {
-                        var x = e.Sales_CustomerCategory;
-                        e.Sales_CustomerCategory = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerCategoryID"}, false).Process(x);
-                    }
+                        _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _CustomerCategoryID.Entity}, new[]{"[CustomerCategoryID]"}, (member, root) => member.Sales_CustomerCategory = root as Sales_CustomerCategory, this, _lazyLoadChildren, e => e.Sales_CustomerCategory = this, e =>
+                        {
+                            var x = e.Sales_CustomerCategory;
+                            e.Sales_CustomerCategory = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerCategoryID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers;
             }
         }
@@ -174,16 +177,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_SpecialDeals = new DbEntitySetCached<Sales_CustomerCategory, Sales_SpecialDeal>(() => _CustomerCategoryID.Entity);
                     }
-                }
-                else
-                    _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _CustomerCategoryID.Entity}, new[]{"[CustomerCategoryID]"}, (member, root) => member.Sales_CustomerCategory = root as Sales_CustomerCategory, this, _lazyLoadChildren, e => e.Sales_CustomerCategory = this, e =>
+                    else
                     {
-                        var x = e.Sales_CustomerCategory;
-                        e.Sales_CustomerCategory = null;
-                        new UpdateSetVisitor(true, new[]{"CustomerCategoryID"}, false).Process(x);
-                    }
+                        _Sales_SpecialDeals = new DbEntitySet<Sales_SpecialDeal>(_db, false, new Func<long ? >[]{() => _CustomerCategoryID.Entity}, new[]{"[CustomerCategoryID]"}, (member, root) => member.Sales_CustomerCategory = root as Sales_CustomerCategory, this, _lazyLoadChildren, e => e.Sales_CustomerCategory = this, e =>
+                        {
+                            var x = e.Sales_CustomerCategory;
+                            e.Sales_CustomerCategory = null;
+                            new UpdateSetVisitor(true, new[]{"CustomerCategoryID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_SpecialDeals;
             }
         }

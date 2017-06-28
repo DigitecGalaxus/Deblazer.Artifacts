@@ -29,7 +29,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _Description = new DbValue<System.String>();
         private DbValue<System.Int32> _PackageTypeID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _Quantity = new DbValue<System.Int32>();
-        private DbValue<System.Decimal> _UnitPrice = new DbValue<System.Decimal>();
+        private DbValue<System.Decimal? > _UnitPrice = new DbValue<System.Decimal? >();
         private DbValue<System.Decimal> _TaxRate = new DbValue<System.Decimal>();
         private DbValue<System.Decimal> _TaxAmount = new DbValue<System.Decimal>();
         private DbValue<System.Decimal> _LineProfit = new DbValue<System.Decimal>();
@@ -128,7 +128,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal UnitPrice
+        public System.Decimal? UnitPrice
         {
             get
             {
@@ -527,7 +527,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@Description", _Sales_InvoiceLine.Description ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@PackageTypeID", _Sales_InvoiceLine.PackageTypeID);
             sqlCommand.Parameters.AddWithValue("@Quantity", _Sales_InvoiceLine.Quantity);
-            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_InvoiceLine.UnitPrice);
+            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_InvoiceLine.UnitPrice ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@TaxRate", _Sales_InvoiceLine.TaxRate);
             sqlCommand.Parameters.AddWithValue("@TaxAmount", _Sales_InvoiceLine.TaxAmount);
             sqlCommand.Parameters.AddWithValue("@LineProfit", _Sales_InvoiceLine.LineProfit);
@@ -566,7 +566,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> Description = new QueryElMember<System.String>("Description");
         public readonly QueryElMemberStruct<System.Int32> Quantity = new QueryElMemberStruct<System.Int32>("Quantity");
-        public readonly QueryElMemberStruct<System.Decimal> UnitPrice = new QueryElMemberStruct<System.Decimal>("UnitPrice");
+        public readonly QueryElMember<System.Decimal> UnitPrice = new QueryElMember<System.Decimal>("UnitPrice");
         public readonly QueryElMemberStruct<System.Decimal> TaxRate = new QueryElMemberStruct<System.Decimal>("TaxRate");
         public readonly QueryElMemberStruct<System.Decimal> TaxAmount = new QueryElMemberStruct<System.Decimal>("TaxAmount");
         public readonly QueryElMemberStruct<System.Decimal> LineProfit = new QueryElMemberStruct<System.Decimal>("LineProfit");

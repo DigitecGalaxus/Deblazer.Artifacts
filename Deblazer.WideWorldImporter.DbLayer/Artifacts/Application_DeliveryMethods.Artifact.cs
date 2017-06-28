@@ -151,16 +151,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrders = new DbEntitySetCached<Application_DeliveryMethod, Purchasing_PurchaseOrder>(() => _DeliveryMethodID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrders = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_DeliveryMethod;
-                        e.Application_DeliveryMethod = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrders = new DbEntitySet<Purchasing_PurchaseOrder>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                        {
+                            var x = e.Application_DeliveryMethod;
+                            e.Application_DeliveryMethod = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrders;
             }
         }
@@ -176,16 +179,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_Suppliers = new DbEntitySetCached<Application_DeliveryMethod, Purchasing_Supplier>(() => _DeliveryMethodID.Entity);
                     }
-                }
-                else
-                    _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_DeliveryMethod;
-                        e.Application_DeliveryMethod = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
-                    }
+                        _Purchasing_Suppliers = new DbEntitySet<Purchasing_Supplier>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                        {
+                            var x = e.Application_DeliveryMethod;
+                            e.Application_DeliveryMethod = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_Suppliers;
             }
         }
@@ -201,16 +207,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Customers = new DbEntitySetCached<Application_DeliveryMethod, Sales_Customer>(() => _DeliveryMethodID.Entity);
                     }
-                }
-                else
-                    _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_DeliveryMethod;
-                        e.Application_DeliveryMethod = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
-                    }
+                        _Sales_Customers = new DbEntitySet<Sales_Customer>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                        {
+                            var x = e.Application_DeliveryMethod;
+                            e.Application_DeliveryMethod = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Customers;
             }
         }
@@ -226,16 +235,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_Invoices = new DbEntitySetCached<Application_DeliveryMethod, Sales_Invoice>(() => _DeliveryMethodID.Entity);
                     }
-                }
-                else
-                    _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                    else
                     {
-                        var x = e.Application_DeliveryMethod;
-                        e.Application_DeliveryMethod = null;
-                        new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
-                    }
+                        _Sales_Invoices = new DbEntitySet<Sales_Invoice>(_db, false, new Func<long ? >[]{() => _DeliveryMethodID.Entity}, new[]{"[DeliveryMethodID]"}, (member, root) => member.Application_DeliveryMethod = root as Application_DeliveryMethod, this, _lazyLoadChildren, e => e.Application_DeliveryMethod = this, e =>
+                        {
+                            var x = e.Application_DeliveryMethod;
+                            e.Application_DeliveryMethod = null;
+                            new UpdateSetVisitor(true, new[]{"DeliveryMethodID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_Invoices;
             }
         }

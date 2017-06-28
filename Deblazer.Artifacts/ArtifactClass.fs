@@ -4,6 +4,7 @@
     open Microsoft.CodeAnalysis
     open Microsoft.CodeAnalysis.CSharp
     open Microsoft.CodeAnalysis.CSharp.Syntax
+    open System.Text.RegularExpressions
 
     let usings (nameSpace:string) = 
         [|
@@ -38,7 +39,7 @@
     let columnFields (table:table) = 
         table.Columns 
             |> Array.map (fun column -> 
-                let typeSyntax = sf.ParseTypeName("DbValue<"+column.Type+">")
+                let typeSyntax = sf.ParseTypeName("DbValue<"+column.TypeStringInCode+">")
                 sf.FieldDeclaration(
                     sf
                         .VariableDeclaration(                            
@@ -79,7 +80,7 @@
         |> Array.filter (fun x -> x.IsSome) |> Array.map (fun x -> x.Value)
 
     let constructorBody (columns:column[]) = 
-         columns |> Array.map (fun column -> sf.ParseStatement(String.Format("{0} = new DbValue<{1}>();", column.Storage, column.Type)))
+         columns |> Array.map (fun column -> sf.ParseStatement(String.Format("{0} = new DbValue<{1}>();", column.Storage, column.TypeStringInCode)))
 
 
     let getConstructor (table:table) =
@@ -140,12 +141,16 @@
                                                     sf.Parameter(sf.Identifier("visitor")).WithType(sf.IdentifierName("DbEntityVisitorBase")))))
             .WithBody(sf.Block(handleChildrenMethodBody associations)) :> MemberDeclarationSyntax
 
-    let getFillerMethodName (typeString:string) (isNullable:bool) =
+    let getFillerMethodName (typeString:string) (dbTypeString:string) (isNullable:bool) =
         
-        match (typeString, isNullable) with
-        | "RowVersion", _ -> "GetRowVersion"
-        | "System.Date", _ -> "GetDate"
-        | "System.Data.Linq.Binary", _ -> "GetBinary"
+        match (typeString, dbTypeString, isNullable) with
+        | "RowVersion", _ , _ -> "GetRowVersion"
+        | "System.Date", _ , _ -> "GetDate"
+        | "System.Data.Linq.Binary", _ , _ -> "GetBinary"
+        | _ , dbts, n when Regex.Match(dbts, "Money").Success 
+            -> match (n) with
+                | true -> "GetNullableMoney"
+                | false -> "GetMoney"
         | _ 
             -> match Type.GetType(typeString) with
                 | t when 
@@ -185,7 +190,7 @@
                                     sf.MemberAccessExpression(
                                         sk.SimpleMemberAccessExpression, 
                                         sf.IdentifierName("visitor"), 
-                                        sf.IdentifierName((getFillerMethodName column.Type column.IsNullableType)))))))))
+                                        sf.IdentifierName((getFillerMethodName column.Type column.DbType column.IsNullableType)))))))))
 
     let modifyInternalStateLoadFieldExpressions (columns:column[]) = 
         columns |> Array.map (fun column -> 
@@ -692,10 +697,10 @@
                                                                     )))))
                                                 ) :> StatementSyntax
                                             |]
-                                        )) :> StatementSyntax
-                                |]))
-                            .WithElse(
+                                        )).WithElse(
                                 sf.ElseClause(
+                                    sf.Block(
+                                    [|
                                     sf.ExpressionStatement(
                                         sf.AssignmentExpression(
                                             sk.SimpleAssignmentExpression,
@@ -872,7 +877,9 @@
                                                                 sf.Token(sk.CommaToken)
                                                                 sf.Token(sk.CommaToken)
                                                                 sf.Token(sk.CommaToken)
-                                                            |]))))))) :> StatementSyntax
+                                                            |]))))) :> StatementSyntax
+                                    |]))) :> StatementSyntax
+                                |])) :> StatementSyntax
                         sf.ReturnStatement(sf.IdentifierName(association.Storage)) :> StatementSyntax
                     |]))
     //sf.AccessorDeclaration(sk.SetAccessorDeclaration).WithBody(
@@ -973,7 +980,7 @@
                 |> Array.map (fun x -> x.Value)
     let columnProperties (columns:column[]) =
         columns |> Array.map (fun column -> 
-            sf.PropertyDeclaration(sf.ParseTypeName(column.Type), column.Member)
+            sf.PropertyDeclaration(sf.ParseTypeName(column.TypeStringInCode), column.Member)
                 .WithAttributeLists(sf.List(propertyAttributes column))
                 .AddModifiers(sf.Token(sk.PublicKeyword))
                 .AddAccessorListAccessors(

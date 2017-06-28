@@ -28,7 +28,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.DateTime> _OrderDate = new DbValue<System.DateTime>();
         private DbValue<System.Int32> _DeliveryMethodID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _ContactPersonID = new DbValue<System.Int32>();
-        private DbValue<System.DateTime> _ExpectedDeliveryDate = new DbValue<System.DateTime>();
+        private DbValue<System.DateTime? > _ExpectedDeliveryDate = new DbValue<System.DateTime? >();
         private DbValue<System.String> _SupplierReference = new DbValue<System.String>();
         private DbValue<System.Boolean> _IsOrderFinalized = new DbValue<System.Boolean>();
         private DbValue<System.String> _Comments = new DbValue<System.String>();
@@ -115,7 +115,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.DateTime ExpectedDeliveryDate
+        public System.DateTime? ExpectedDeliveryDate
         {
             get
             {
@@ -227,16 +227,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrderLines = new DbEntitySetCached<Purchasing_PurchaseOrder, Purchasing_PurchaseOrderLine>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrderLines;
             }
         }
@@ -380,16 +383,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_SupplierTransactions = new DbEntitySetCached<Purchasing_PurchaseOrder, Purchasing_SupplierTransaction>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Purchasing_SupplierTransactions = new DbEntitySet<Purchasing_SupplierTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_SupplierTransactions;
             }
         }
@@ -405,16 +411,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Purchasing_PurchaseOrder, Warehouse_StockItemTransaction>(() => _PurchaseOrderID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                    else
                     {
-                        var x = e.Purchasing_PurchaseOrder;
-                        e.Purchasing_PurchaseOrder = null;
-                        new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _PurchaseOrderID.Entity}, new[]{"[PurchaseOrderID]"}, (member, root) => member.Purchasing_PurchaseOrder = root as Purchasing_PurchaseOrder, this, _lazyLoadChildren, e => e.Purchasing_PurchaseOrder = this, e =>
+                        {
+                            var x = e.Purchasing_PurchaseOrder;
+                            e.Purchasing_PurchaseOrder = null;
+                            new UpdateSetVisitor(true, new[]{"PurchaseOrderID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }
@@ -610,7 +619,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@OrderDate", _Purchasing_PurchaseOrder.OrderDate);
             sqlCommand.Parameters.AddWithValue("@DeliveryMethodID", _Purchasing_PurchaseOrder.DeliveryMethodID);
             sqlCommand.Parameters.AddWithValue("@ContactPersonID", _Purchasing_PurchaseOrder.ContactPersonID);
-            sqlCommand.Parameters.AddWithValue("@ExpectedDeliveryDate", _Purchasing_PurchaseOrder.ExpectedDeliveryDate);
+            sqlCommand.Parameters.AddWithValue("@ExpectedDeliveryDate", _Purchasing_PurchaseOrder.ExpectedDeliveryDate ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@SupplierReference", _Purchasing_PurchaseOrder.SupplierReference ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@IsOrderFinalized", _Purchasing_PurchaseOrder.IsOrderFinalized);
             sqlCommand.Parameters.AddWithValue("@Comments", _Purchasing_PurchaseOrder.Comments ?? (object)DBNull.Value);
@@ -648,7 +657,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberId<Application_People> ContactPersonID = new QueryElMemberId<Application_People>("ContactPersonID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMemberStruct<System.DateTime> OrderDate = new QueryElMemberStruct<System.DateTime>("OrderDate");
-        public readonly QueryElMemberStruct<System.DateTime> ExpectedDeliveryDate = new QueryElMemberStruct<System.DateTime>("ExpectedDeliveryDate");
+        public readonly QueryElMember<System.DateTime> ExpectedDeliveryDate = new QueryElMember<System.DateTime>("ExpectedDeliveryDate");
         public readonly QueryElMember<System.String> SupplierReference = new QueryElMember<System.String>("SupplierReference");
         public readonly QueryElMemberStruct<System.Boolean> IsOrderFinalized = new QueryElMemberStruct<System.Boolean>("IsOrderFinalized");
         public readonly QueryElMember<System.String> Comments = new QueryElMember<System.String>("Comments");

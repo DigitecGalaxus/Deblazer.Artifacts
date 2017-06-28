@@ -29,10 +29,10 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _Description = new DbValue<System.String>();
         private DbValue<System.Int32> _PackageTypeID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _Quantity = new DbValue<System.Int32>();
-        private DbValue<System.Decimal> _UnitPrice = new DbValue<System.Decimal>();
+        private DbValue<System.Decimal? > _UnitPrice = new DbValue<System.Decimal? >();
         private DbValue<System.Decimal> _TaxRate = new DbValue<System.Decimal>();
         private DbValue<System.Int32> _PickedQuantity = new DbValue<System.Int32>();
-        private DbValue<System.DateTime> _PickingCompletedWhen = new DbValue<System.DateTime>();
+        private DbValue<System.DateTime? > _PickingCompletedWhen = new DbValue<System.DateTime? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
         private IDbEntityRef<Application_People> _Application_People;
@@ -127,7 +127,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal UnitPrice
+        public System.Decimal? UnitPrice
         {
             get
             {
@@ -170,7 +170,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
 
         [StringColumn(7, true)]
         [Validate]
-        public System.DateTime PickingCompletedWhen
+        public System.DateTime? PickingCompletedWhen
         {
             get
             {
@@ -511,10 +511,10 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@Description", _Sales_OrderLine.Description ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@PackageTypeID", _Sales_OrderLine.PackageTypeID);
             sqlCommand.Parameters.AddWithValue("@Quantity", _Sales_OrderLine.Quantity);
-            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_OrderLine.UnitPrice);
+            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_OrderLine.UnitPrice ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@TaxRate", _Sales_OrderLine.TaxRate);
             sqlCommand.Parameters.AddWithValue("@PickedQuantity", _Sales_OrderLine.PickedQuantity);
-            sqlCommand.Parameters.AddWithValue("@PickingCompletedWhen", _Sales_OrderLine.PickingCompletedWhen);
+            sqlCommand.Parameters.AddWithValue("@PickingCompletedWhen", _Sales_OrderLine.PickingCompletedWhen ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Sales_OrderLine.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Sales_OrderLine.LastEditedWhen);
         }
@@ -549,10 +549,10 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> Description = new QueryElMember<System.String>("Description");
         public readonly QueryElMemberStruct<System.Int32> Quantity = new QueryElMemberStruct<System.Int32>("Quantity");
-        public readonly QueryElMemberStruct<System.Decimal> UnitPrice = new QueryElMemberStruct<System.Decimal>("UnitPrice");
+        public readonly QueryElMember<System.Decimal> UnitPrice = new QueryElMember<System.Decimal>("UnitPrice");
         public readonly QueryElMemberStruct<System.Decimal> TaxRate = new QueryElMemberStruct<System.Decimal>("TaxRate");
         public readonly QueryElMemberStruct<System.Int32> PickedQuantity = new QueryElMemberStruct<System.Int32>("PickedQuantity");
-        public readonly QueryElMemberStruct<System.DateTime> PickingCompletedWhen = new QueryElMemberStruct<System.DateTime>("PickingCompletedWhen");
+        public readonly QueryElMember<System.DateTime> PickingCompletedWhen = new QueryElMember<System.DateTime>("PickingCompletedWhen");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Sales_OrderLineWrapper Instance = new Sales_OrderLineWrapper();
         private Sales_OrderLineWrapper(): base ("[Sales].[OrderLines]", "Sales_OrderLine")

@@ -26,7 +26,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.Int32> _InvoiceID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _CustomerID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _BillToCustomerID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _OrderID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _OrderID = new DbValue<System.Int32? >();
         private DbValue<System.Int32> _DeliveryMethodID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _ContactPersonID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _AccountsPersonID = new DbValue<System.Int32>();
@@ -44,7 +44,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _DeliveryRun = new DbValue<System.String>();
         private DbValue<System.String> _RunPosition = new DbValue<System.String>();
         private DbValue<System.String> _ReturnedDeliveryData = new DbValue<System.String>();
-        private DbValue<System.DateTime> _ConfirmedDeliveryTime = new DbValue<System.DateTime>();
+        private DbValue<System.DateTime? > _ConfirmedDeliveryTime = new DbValue<System.DateTime? >();
         private DbValue<System.String> _ConfirmedReceivedBy = new DbValue<System.String>();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
@@ -105,7 +105,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 OrderID
+        public System.Int32? OrderID
         {
             get
             {
@@ -366,7 +366,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
 
         [StringColumn(7, true)]
         [Validate]
-        public System.DateTime ConfirmedDeliveryTime
+        public System.DateTime? ConfirmedDeliveryTime
         {
             get
             {
@@ -434,16 +434,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_CustomerTransactions = new DbEntitySetCached<Sales_Invoice, Sales_CustomerTransaction>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Sales_CustomerTransactions = new DbEntitySet<Sales_CustomerTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_CustomerTransactions;
             }
         }
@@ -459,16 +462,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_InvoiceLines = new DbEntitySetCached<Sales_Invoice, Sales_InvoiceLine>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_InvoiceLines;
             }
         }
@@ -772,16 +778,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItemTransactions = new DbEntitySetCached<Sales_Invoice, Warehouse_StockItemTransaction>(() => _InvoiceID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                    else
                     {
-                        var x = e.Sales_Invoice;
-                        e.Sales_Invoice = null;
-                        new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItemTransactions = new DbEntitySet<Warehouse_StockItemTransaction>(_db, false, new Func<long ? >[]{() => _InvoiceID.Entity}, new[]{"[InvoiceID]"}, (member, root) => member.Sales_Invoice = root as Sales_Invoice, this, _lazyLoadChildren, e => e.Sales_Invoice = this, e =>
+                        {
+                            var x = e.Sales_Invoice;
+                            e.Sales_Invoice = null;
+                            new UpdateSetVisitor(true, new[]{"InvoiceID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItemTransactions;
             }
         }
@@ -1091,7 +1100,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@InvoiceID", _Sales_Invoice.InvoiceID);
             sqlCommand.Parameters.AddWithValue("@CustomerID", _Sales_Invoice.CustomerID);
             sqlCommand.Parameters.AddWithValue("@BillToCustomerID", _Sales_Invoice.BillToCustomerID);
-            sqlCommand.Parameters.AddWithValue("@OrderID", _Sales_Invoice.OrderID);
+            sqlCommand.Parameters.AddWithValue("@OrderID", _Sales_Invoice.OrderID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@DeliveryMethodID", _Sales_Invoice.DeliveryMethodID);
             sqlCommand.Parameters.AddWithValue("@ContactPersonID", _Sales_Invoice.ContactPersonID);
             sqlCommand.Parameters.AddWithValue("@AccountsPersonID", _Sales_Invoice.AccountsPersonID);
@@ -1109,7 +1118,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@DeliveryRun", _Sales_Invoice.DeliveryRun ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@RunPosition", _Sales_Invoice.RunPosition ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@ReturnedDeliveryData", _Sales_Invoice.ReturnedDeliveryData ?? (object)DBNull.Value);
-            sqlCommand.Parameters.AddWithValue("@ConfirmedDeliveryTime", _Sales_Invoice.ConfirmedDeliveryTime);
+            sqlCommand.Parameters.AddWithValue("@ConfirmedDeliveryTime", _Sales_Invoice.ConfirmedDeliveryTime ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@ConfirmedReceivedBy", _Sales_Invoice.ConfirmedReceivedBy ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Sales_Invoice.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Sales_Invoice.LastEditedWhen);
@@ -1141,7 +1150,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
     {
         public readonly QueryElMemberId<Sales_Customer> CustomerID = new QueryElMemberId<Sales_Customer>("CustomerID");
         public readonly QueryElMemberId<Sales_Customer> BillToCustomerID = new QueryElMemberId<Sales_Customer>("BillToCustomerID");
-        public readonly QueryElMemberId<Sales_Order> OrderID = new QueryElMemberId<Sales_Order>("OrderID");
+        public readonly QueryElMemberNullableId<Sales_Order> OrderID = new QueryElMemberNullableId<Sales_Order>("OrderID");
         public readonly QueryElMemberId<Application_DeliveryMethod> DeliveryMethodID = new QueryElMemberId<Application_DeliveryMethod>("DeliveryMethodID");
         public readonly QueryElMemberId<Application_People> ContactPersonID = new QueryElMemberId<Application_People>("ContactPersonID");
         public readonly QueryElMemberId<Application_People> AccountsPersonID = new QueryElMemberId<Application_People>("AccountsPersonID");
@@ -1160,7 +1169,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMember<System.String> DeliveryRun = new QueryElMember<System.String>("DeliveryRun");
         public readonly QueryElMember<System.String> RunPosition = new QueryElMember<System.String>("RunPosition");
         public readonly QueryElMember<System.String> ReturnedDeliveryData = new QueryElMember<System.String>("ReturnedDeliveryData");
-        public readonly QueryElMemberStruct<System.DateTime> ConfirmedDeliveryTime = new QueryElMemberStruct<System.DateTime>("ConfirmedDeliveryTime");
+        public readonly QueryElMember<System.DateTime> ConfirmedDeliveryTime = new QueryElMember<System.DateTime>("ConfirmedDeliveryTime");
         public readonly QueryElMember<System.String> ConfirmedReceivedBy = new QueryElMember<System.String>("ConfirmedReceivedBy");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Sales_InvoiceWrapper Instance = new Sales_InvoiceWrapper();

@@ -120,16 +120,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Purchasing_PurchaseOrderLines = new DbEntitySetCached<Warehouse_PackageType, Purchasing_PurchaseOrderLine>(() => _PackageTypeID.Entity);
                     }
-                }
-                else
-                    _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_PackageType;
-                        e.Warehouse_PackageType = null;
-                        new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
-                    }
+                        _Purchasing_PurchaseOrderLines = new DbEntitySet<Purchasing_PurchaseOrderLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                        {
+                            var x = e.Warehouse_PackageType;
+                            e.Warehouse_PackageType = null;
+                            new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Purchasing_PurchaseOrderLines;
             }
         }
@@ -145,16 +148,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_InvoiceLines = new DbEntitySetCached<Warehouse_PackageType, Sales_InvoiceLine>(() => _PackageTypeID.Entity);
                     }
-                }
-                else
-                    _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_PackageType;
-                        e.Warehouse_PackageType = null;
-                        new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
-                    }
+                        _Sales_InvoiceLines = new DbEntitySet<Sales_InvoiceLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                        {
+                            var x = e.Warehouse_PackageType;
+                            e.Warehouse_PackageType = null;
+                            new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_InvoiceLines;
             }
         }
@@ -170,16 +176,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Sales_OrderLines = new DbEntitySetCached<Warehouse_PackageType, Sales_OrderLine>(() => _PackageTypeID.Entity);
                     }
-                }
-                else
-                    _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_PackageType;
-                        e.Warehouse_PackageType = null;
-                        new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
-                    }
+                        _Sales_OrderLines = new DbEntitySet<Sales_OrderLine>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[PackageTypeID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                        {
+                            var x = e.Warehouse_PackageType;
+                            e.Warehouse_PackageType = null;
+                            new UpdateSetVisitor(true, new[]{"PackageTypeID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Sales_OrderLines;
             }
         }
@@ -227,16 +236,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _Warehouse_StockItems = new DbEntitySetCached<Warehouse_PackageType, Warehouse_StockItem>(() => _PackageTypeID.Entity);
                     }
-                }
-                else
-                    _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[OuterPackageID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_PackageType;
-                        e.Warehouse_PackageType = null;
-                        new UpdateSetVisitor(true, new[]{"OuterPackageID"}, false).Process(x);
-                    }
+                        _Warehouse_StockItems = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[OuterPackageID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                        {
+                            var x = e.Warehouse_PackageType;
+                            e.Warehouse_PackageType = null;
+                            new UpdateSetVisitor(true, new[]{"OuterPackageID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _Warehouse_StockItems;
             }
         }
@@ -252,16 +264,19 @@ namespace Deblazer.WideWorldImporter.DbLayer
                     {
                         _PackageTypes = new DbEntitySetCached<Warehouse_PackageType, Warehouse_StockItem>(() => _PackageTypeID.Entity);
                     }
-                }
-                else
-                    _PackageTypes = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[UnitPackageID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                    else
                     {
-                        var x = e.Warehouse_PackageType;
-                        e.Warehouse_PackageType = null;
-                        new UpdateSetVisitor(true, new[]{"UnitPackageID"}, false).Process(x);
-                    }
+                        _PackageTypes = new DbEntitySet<Warehouse_StockItem>(_db, false, new Func<long ? >[]{() => _PackageTypeID.Entity}, new[]{"[UnitPackageID]"}, (member, root) => member.Warehouse_PackageType = root as Warehouse_PackageType, this, _lazyLoadChildren, e => e.Warehouse_PackageType = this, e =>
+                        {
+                            var x = e.Warehouse_PackageType;
+                            e.Warehouse_PackageType = null;
+                            new UpdateSetVisitor(true, new[]{"UnitPackageID"}, false).Process(x);
+                        }
 
-                    );
+                        );
+                    }
+                }
+
                 return _PackageTypes;
             }
         }
