@@ -26,7 +26,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.Int32> _CityID = new DbValue<System.Int32>();
         private DbValue<System.String> _CityName = new DbValue<System.String>();
         private DbValue<System.Int32> _StateProvinceID = new DbValue<System.Int32>();
-        private DbValue<System.Int64> _LatestRecordedPopulation = new DbValue<System.Int64>();
+        private DbValue<System.Int64? > _LatestRecordedPopulation = new DbValue<System.Int64? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _ValidFrom = new DbValue<System.DateTime>();
         private DbValue<System.DateTime> _ValidTo = new DbValue<System.DateTime>();
@@ -84,7 +84,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int64 LatestRecordedPopulation
+        public System.Int64? LatestRecordedPopulation
         {
             get
             {
@@ -537,7 +537,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@CityID", _Application_City.CityID);
             sqlCommand.Parameters.AddWithValue("@CityName", _Application_City.CityName ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@StateProvinceID", _Application_City.StateProvinceID);
-            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_City.LatestRecordedPopulation);
+            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_City.LatestRecordedPopulation ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Application_City.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@ValidFrom", _Application_City.ValidFrom);
             sqlCommand.Parameters.AddWithValue("@ValidTo", _Application_City.ValidTo);
@@ -570,7 +570,7 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMemberId<Application_StateProvince> StateProvinceID = new QueryElMemberId<Application_StateProvince>("StateProvinceID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> CityName = new QueryElMember<System.String>("CityName");
-        public readonly QueryElMemberStruct<System.Int64> LatestRecordedPopulation = new QueryElMemberStruct<System.Int64>("LatestRecordedPopulation");
+        public readonly QueryElMember<System.Int64> LatestRecordedPopulation = new QueryElMember<System.Int64>("LatestRecordedPopulation");
         public readonly QueryElMemberStruct<System.DateTime> ValidFrom = new QueryElMemberStruct<System.DateTime>("ValidFrom");
         public readonly QueryElMemberStruct<System.DateTime> ValidTo = new QueryElMemberStruct<System.DateTime>("ValidTo");
         public static readonly Application_CityWrapper Instance = new Application_CityWrapper();

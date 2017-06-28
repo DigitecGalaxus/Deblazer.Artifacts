@@ -24,17 +24,17 @@ namespace Deblazer.WideWorldImporter.DbLayer
     public partial class Sales_SpecialDeal : DbEntity, IId
     {
         private DbValue<System.Int32> _SpecialDealID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _StockItemID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _CustomerID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _BuyingGroupID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _CustomerCategoryID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _StockGroupID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _StockItemID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _CustomerID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _BuyingGroupID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _CustomerCategoryID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _StockGroupID = new DbValue<System.Int32? >();
         private DbValue<System.String> _DealDescription = new DbValue<System.String>();
         private DbValue<System.DateTime> _StartDate = new DbValue<System.DateTime>();
         private DbValue<System.DateTime> _EndDate = new DbValue<System.DateTime>();
-        private DbValue<System.Decimal> _DiscountAmount = new DbValue<System.Decimal>();
-        private DbValue<System.Decimal> _DiscountPercentage = new DbValue<System.Decimal>();
-        private DbValue<System.Decimal> _UnitPrice = new DbValue<System.Decimal>();
+        private DbValue<System.Decimal? > _DiscountAmount = new DbValue<System.Decimal? >();
+        private DbValue<System.Decimal? > _DiscountPercentage = new DbValue<System.Decimal? >();
+        private DbValue<System.Decimal? > _UnitPrice = new DbValue<System.Decimal? >();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
         private DbValue<System.DateTime> _LastEditedWhen = new DbValue<System.DateTime>();
         private IDbEntityRef<Application_People> _Application_People;
@@ -60,7 +60,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 StockItemID
+        public System.Int32? StockItemID
         {
             get
             {
@@ -74,7 +74,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 CustomerID
+        public System.Int32? CustomerID
         {
             get
             {
@@ -88,7 +88,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 BuyingGroupID
+        public System.Int32? BuyingGroupID
         {
             get
             {
@@ -102,7 +102,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 CustomerCategoryID
+        public System.Int32? CustomerCategoryID
         {
             get
             {
@@ -116,7 +116,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 StockGroupID
+        public System.Int32? StockGroupID
         {
             get
             {
@@ -173,7 +173,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal DiscountAmount
+        public System.Decimal? DiscountAmount
         {
             get
             {
@@ -187,7 +187,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal DiscountPercentage
+        public System.Decimal? DiscountPercentage
         {
             get
             {
@@ -201,7 +201,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Decimal UnitPrice
+        public System.Decimal? UnitPrice
         {
             get
             {
@@ -641,17 +641,17 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
         {
             sqlCommand.CommandText = insertCommand;
             sqlCommand.Parameters.AddWithValue("@SpecialDealID", _Sales_SpecialDeal.SpecialDealID);
-            sqlCommand.Parameters.AddWithValue("@StockItemID", _Sales_SpecialDeal.StockItemID);
-            sqlCommand.Parameters.AddWithValue("@CustomerID", _Sales_SpecialDeal.CustomerID);
-            sqlCommand.Parameters.AddWithValue("@BuyingGroupID", _Sales_SpecialDeal.BuyingGroupID);
-            sqlCommand.Parameters.AddWithValue("@CustomerCategoryID", _Sales_SpecialDeal.CustomerCategoryID);
-            sqlCommand.Parameters.AddWithValue("@StockGroupID", _Sales_SpecialDeal.StockGroupID);
+            sqlCommand.Parameters.AddWithValue("@StockItemID", _Sales_SpecialDeal.StockItemID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@CustomerID", _Sales_SpecialDeal.CustomerID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@BuyingGroupID", _Sales_SpecialDeal.BuyingGroupID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@CustomerCategoryID", _Sales_SpecialDeal.CustomerCategoryID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@StockGroupID", _Sales_SpecialDeal.StockGroupID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@DealDescription", _Sales_SpecialDeal.DealDescription ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@StartDate", _Sales_SpecialDeal.StartDate);
             sqlCommand.Parameters.AddWithValue("@EndDate", _Sales_SpecialDeal.EndDate);
-            sqlCommand.Parameters.AddWithValue("@DiscountAmount", _Sales_SpecialDeal.DiscountAmount);
-            sqlCommand.Parameters.AddWithValue("@DiscountPercentage", _Sales_SpecialDeal.DiscountPercentage);
-            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_SpecialDeal.UnitPrice);
+            sqlCommand.Parameters.AddWithValue("@DiscountAmount", _Sales_SpecialDeal.DiscountAmount ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@DiscountPercentage", _Sales_SpecialDeal.DiscountPercentage ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@UnitPrice", _Sales_SpecialDeal.UnitPrice ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Sales_SpecialDeal.LastEditedBy);
             sqlCommand.Parameters.AddWithValue("@LastEditedWhen", _Sales_SpecialDeal.LastEditedWhen);
         }
@@ -680,18 +680,18 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
 {
     public class Sales_SpecialDealWrapper : QueryWrapper<Sales_SpecialDeal>
     {
-        public readonly QueryElMemberId<Warehouse_StockItem> StockItemID = new QueryElMemberId<Warehouse_StockItem>("StockItemID");
-        public readonly QueryElMemberId<Sales_Customer> CustomerID = new QueryElMemberId<Sales_Customer>("CustomerID");
-        public readonly QueryElMemberId<Sales_BuyingGroup> BuyingGroupID = new QueryElMemberId<Sales_BuyingGroup>("BuyingGroupID");
-        public readonly QueryElMemberId<Sales_CustomerCategory> CustomerCategoryID = new QueryElMemberId<Sales_CustomerCategory>("CustomerCategoryID");
-        public readonly QueryElMemberId<Warehouse_StockGroup> StockGroupID = new QueryElMemberId<Warehouse_StockGroup>("StockGroupID");
+        public readonly QueryElMemberNullableId<Warehouse_StockItem> StockItemID = new QueryElMemberNullableId<Warehouse_StockItem>("StockItemID");
+        public readonly QueryElMemberNullableId<Sales_Customer> CustomerID = new QueryElMemberNullableId<Sales_Customer>("CustomerID");
+        public readonly QueryElMemberNullableId<Sales_BuyingGroup> BuyingGroupID = new QueryElMemberNullableId<Sales_BuyingGroup>("BuyingGroupID");
+        public readonly QueryElMemberNullableId<Sales_CustomerCategory> CustomerCategoryID = new QueryElMemberNullableId<Sales_CustomerCategory>("CustomerCategoryID");
+        public readonly QueryElMemberNullableId<Warehouse_StockGroup> StockGroupID = new QueryElMemberNullableId<Warehouse_StockGroup>("StockGroupID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMember<System.String> DealDescription = new QueryElMember<System.String>("DealDescription");
         public readonly QueryElMemberStruct<System.DateTime> StartDate = new QueryElMemberStruct<System.DateTime>("StartDate");
         public readonly QueryElMemberStruct<System.DateTime> EndDate = new QueryElMemberStruct<System.DateTime>("EndDate");
-        public readonly QueryElMemberStruct<System.Decimal> DiscountAmount = new QueryElMemberStruct<System.Decimal>("DiscountAmount");
-        public readonly QueryElMemberStruct<System.Decimal> DiscountPercentage = new QueryElMemberStruct<System.Decimal>("DiscountPercentage");
-        public readonly QueryElMemberStruct<System.Decimal> UnitPrice = new QueryElMemberStruct<System.Decimal>("UnitPrice");
+        public readonly QueryElMember<System.Decimal> DiscountAmount = new QueryElMember<System.Decimal>("DiscountAmount");
+        public readonly QueryElMember<System.Decimal> DiscountPercentage = new QueryElMember<System.Decimal>("DiscountPercentage");
+        public readonly QueryElMember<System.Decimal> UnitPrice = new QueryElMember<System.Decimal>("UnitPrice");
         public readonly QueryElMemberStruct<System.DateTime> LastEditedWhen = new QueryElMemberStruct<System.DateTime>("LastEditedWhen");
         public static readonly Sales_SpecialDealWrapper Instance = new Sales_SpecialDealWrapper();
         private Sales_SpecialDealWrapper(): base ("[Sales].[SpecialDeals]", "Sales_SpecialDeal")

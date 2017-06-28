@@ -19,6 +19,15 @@ module ArtifactTest
                 let expected = "Get" + typeName.Replace("System.", "")           
                 
                 Assert.Equal(expected, getFillerMethodName typeName "" false)
+
+            [<Theory>]
+            [<InlineData("System.Int32")>]
+            [<InlineData("System.Decimal")>]
+            [<InlineData("System.Char")>]
+            member this.``FillerMethod is as specific as Possible for nullable System. Types``(typeName:string) =
+                let expected = "GetNullable" + typeName.Replace("System.", "")
+                
+                Assert.Equal(expected, getFillerMethodName ("System.Nullable`1[" + typeName + "]") "" false)
             
             [<Fact>]
             member this.``FillerMethod for Binary returns GetBinary `` () =
@@ -89,7 +98,7 @@ module ArtifactTest
                                 Name = columnName;
                                 Type = "System.Int64";
                                 DbType = "Int NOT NULL"
-                                CanBeNull = true;
+                                CanBeNull = false;
                                 IsDbGenerated = None;
                                 IsPrimaryKey = Some true;
                                 IsVersion = None;
@@ -143,7 +152,7 @@ module ArtifactTest
                                 Name = "Id";
                                 Type = "System.Int64";
                                 DbType = "Int NOT NULL"
-                                CanBeNull = true;
+                                CanBeNull = false;
                                 IsDbGenerated = None;
                                 IsPrimaryKey = Some true;
                                 IsVersion = None;
@@ -155,7 +164,3 @@ module ArtifactTest
                 let properties = IIdProperties table
                 
                 Assert.Equal(0, properties.Length)        
-               
-            
-
-                

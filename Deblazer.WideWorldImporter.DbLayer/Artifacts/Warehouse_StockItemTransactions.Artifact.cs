@@ -26,10 +26,10 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.Int32> _StockItemTransactionID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _StockItemID = new DbValue<System.Int32>();
         private DbValue<System.Int32> _TransactionTypeID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _CustomerID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _InvoiceID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _SupplierID = new DbValue<System.Int32>();
-        private DbValue<System.Int32> _PurchaseOrderID = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _CustomerID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _InvoiceID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _SupplierID = new DbValue<System.Int32? >();
+        private DbValue<System.Int32? > _PurchaseOrderID = new DbValue<System.Int32? >();
         private DbValue<System.DateTime> _TransactionOccurredWhen = new DbValue<System.DateTime>();
         private DbValue<System.Decimal> _Quantity = new DbValue<System.Decimal>();
         private DbValue<System.Int32> _LastEditedBy = new DbValue<System.Int32>();
@@ -86,7 +86,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 CustomerID
+        public System.Int32? CustomerID
         {
             get
             {
@@ -100,7 +100,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 InvoiceID
+        public System.Int32? InvoiceID
         {
             get
             {
@@ -114,7 +114,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 SupplierID
+        public System.Int32? SupplierID
         {
             get
             {
@@ -128,7 +128,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 PurchaseOrderID
+        public System.Int32? PurchaseOrderID
         {
             get
             {
@@ -643,10 +643,10 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@StockItemTransactionID", _Warehouse_StockItemTransaction.StockItemTransactionID);
             sqlCommand.Parameters.AddWithValue("@StockItemID", _Warehouse_StockItemTransaction.StockItemID);
             sqlCommand.Parameters.AddWithValue("@TransactionTypeID", _Warehouse_StockItemTransaction.TransactionTypeID);
-            sqlCommand.Parameters.AddWithValue("@CustomerID", _Warehouse_StockItemTransaction.CustomerID);
-            sqlCommand.Parameters.AddWithValue("@InvoiceID", _Warehouse_StockItemTransaction.InvoiceID);
-            sqlCommand.Parameters.AddWithValue("@SupplierID", _Warehouse_StockItemTransaction.SupplierID);
-            sqlCommand.Parameters.AddWithValue("@PurchaseOrderID", _Warehouse_StockItemTransaction.PurchaseOrderID);
+            sqlCommand.Parameters.AddWithValue("@CustomerID", _Warehouse_StockItemTransaction.CustomerID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@InvoiceID", _Warehouse_StockItemTransaction.InvoiceID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@SupplierID", _Warehouse_StockItemTransaction.SupplierID ?? (object)DBNull.Value);
+            sqlCommand.Parameters.AddWithValue("@PurchaseOrderID", _Warehouse_StockItemTransaction.PurchaseOrderID ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@TransactionOccurredWhen", _Warehouse_StockItemTransaction.TransactionOccurredWhen);
             sqlCommand.Parameters.AddWithValue("@Quantity", _Warehouse_StockItemTransaction.Quantity);
             sqlCommand.Parameters.AddWithValue("@LastEditedBy", _Warehouse_StockItemTransaction.LastEditedBy);
@@ -679,10 +679,10 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
     {
         public readonly QueryElMemberId<Warehouse_StockItem> StockItemID = new QueryElMemberId<Warehouse_StockItem>("StockItemID");
         public readonly QueryElMemberId<Application_TransactionType> TransactionTypeID = new QueryElMemberId<Application_TransactionType>("TransactionTypeID");
-        public readonly QueryElMemberId<Sales_Customer> CustomerID = new QueryElMemberId<Sales_Customer>("CustomerID");
-        public readonly QueryElMemberId<Sales_Invoice> InvoiceID = new QueryElMemberId<Sales_Invoice>("InvoiceID");
-        public readonly QueryElMemberId<Purchasing_Supplier> SupplierID = new QueryElMemberId<Purchasing_Supplier>("SupplierID");
-        public readonly QueryElMemberId<Purchasing_PurchaseOrder> PurchaseOrderID = new QueryElMemberId<Purchasing_PurchaseOrder>("PurchaseOrderID");
+        public readonly QueryElMemberNullableId<Sales_Customer> CustomerID = new QueryElMemberNullableId<Sales_Customer>("CustomerID");
+        public readonly QueryElMemberNullableId<Sales_Invoice> InvoiceID = new QueryElMemberNullableId<Sales_Invoice>("InvoiceID");
+        public readonly QueryElMemberNullableId<Purchasing_Supplier> SupplierID = new QueryElMemberNullableId<Purchasing_Supplier>("SupplierID");
+        public readonly QueryElMemberNullableId<Purchasing_PurchaseOrder> PurchaseOrderID = new QueryElMemberNullableId<Purchasing_PurchaseOrder>("PurchaseOrderID");
         public readonly QueryElMemberId<Application_People> LastEditedBy = new QueryElMemberId<Application_People>("LastEditedBy");
         public readonly QueryElMemberStruct<System.DateTime> TransactionOccurredWhen = new QueryElMemberStruct<System.DateTime>("TransactionOccurredWhen");
         public readonly QueryElMemberStruct<System.Decimal> Quantity = new QueryElMemberStruct<System.Decimal>("Quantity");

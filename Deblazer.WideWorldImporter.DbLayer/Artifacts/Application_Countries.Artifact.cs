@@ -27,9 +27,9 @@ namespace Deblazer.WideWorldImporter.DbLayer
         private DbValue<System.String> _CountryName = new DbValue<System.String>();
         private DbValue<System.String> _FormalName = new DbValue<System.String>();
         private DbValue<System.String> _IsoAlpha3Code = new DbValue<System.String>();
-        private DbValue<System.Int32> _IsoNumericCode = new DbValue<System.Int32>();
+        private DbValue<System.Int32? > _IsoNumericCode = new DbValue<System.Int32? >();
         private DbValue<System.String> _CountryType = new DbValue<System.String>();
-        private DbValue<System.Int64> _LatestRecordedPopulation = new DbValue<System.Int64>();
+        private DbValue<System.Int64? > _LatestRecordedPopulation = new DbValue<System.Int64? >();
         private DbValue<System.String> _Continent = new DbValue<System.String>();
         private DbValue<System.String> _Region = new DbValue<System.String>();
         private DbValue<System.String> _Subregion = new DbValue<System.String>();
@@ -100,7 +100,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int32 IsoNumericCode
+        public System.Int32? IsoNumericCode
         {
             get
             {
@@ -129,7 +129,7 @@ namespace Deblazer.WideWorldImporter.DbLayer
         }
 
         [Validate]
-        public System.Int64 LatestRecordedPopulation
+        public System.Int64? LatestRecordedPopulation
         {
             get
             {
@@ -415,9 +415,9 @@ namespace Deblazer.WideWorldImporter.DbLayer.Helpers
             sqlCommand.Parameters.AddWithValue("@CountryName", _Application_Country.CountryName ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@FormalName", _Application_Country.FormalName ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@IsoAlpha3Code", _Application_Country.IsoAlpha3Code ?? (object)DBNull.Value);
-            sqlCommand.Parameters.AddWithValue("@IsoNumericCode", _Application_Country.IsoNumericCode);
+            sqlCommand.Parameters.AddWithValue("@IsoNumericCode", _Application_Country.IsoNumericCode ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@CountryType", _Application_Country.CountryType ?? (object)DBNull.Value);
-            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_Country.LatestRecordedPopulation);
+            sqlCommand.Parameters.AddWithValue("@LatestRecordedPopulation", _Application_Country.LatestRecordedPopulation ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@Continent", _Application_Country.Continent ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@Region", _Application_Country.Region ?? (object)DBNull.Value);
             sqlCommand.Parameters.AddWithValue("@Subregion", _Application_Country.Subregion ?? (object)DBNull.Value);
@@ -454,9 +454,9 @@ namespace Deblazer.WideWorldImporter.DbLayer.Wrappers
         public readonly QueryElMember<System.String> CountryName = new QueryElMember<System.String>("CountryName");
         public readonly QueryElMember<System.String> FormalName = new QueryElMember<System.String>("FormalName");
         public readonly QueryElMember<System.String> IsoAlpha3Code = new QueryElMember<System.String>("IsoAlpha3Code");
-        public readonly QueryElMemberStruct<System.Int32> IsoNumericCode = new QueryElMemberStruct<System.Int32>("IsoNumericCode");
+        public readonly QueryElMember<System.Int32> IsoNumericCode = new QueryElMember<System.Int32>("IsoNumericCode");
         public readonly QueryElMember<System.String> CountryType = new QueryElMember<System.String>("CountryType");
-        public readonly QueryElMemberStruct<System.Int64> LatestRecordedPopulation = new QueryElMemberStruct<System.Int64>("LatestRecordedPopulation");
+        public readonly QueryElMember<System.Int64> LatestRecordedPopulation = new QueryElMember<System.Int64>("LatestRecordedPopulation");
         public readonly QueryElMember<System.String> Continent = new QueryElMember<System.String>("Continent");
         public readonly QueryElMember<System.String> Region = new QueryElMember<System.String>("Region");
         public readonly QueryElMember<System.String> Subregion = new QueryElMember<System.String>("Subregion");

@@ -39,7 +39,7 @@
     let columnFields (table:table) = 
         table.Columns 
             |> Array.map (fun column -> 
-                let typeSyntax = sf.ParseTypeName("DbValue<"+column.Type+">")
+                let typeSyntax = sf.ParseTypeName("DbValue<"+column.TypeStringInCode+">")
                 sf.FieldDeclaration(
                     sf
                         .VariableDeclaration(                            
@@ -80,7 +80,7 @@
         |> Array.filter (fun x -> x.IsSome) |> Array.map (fun x -> x.Value)
 
     let constructorBody (columns:column[]) = 
-         columns |> Array.map (fun column -> sf.ParseStatement(String.Format("{0} = new DbValue<{1}>();", column.Storage, column.Type)))
+         columns |> Array.map (fun column -> sf.ParseStatement(String.Format("{0} = new DbValue<{1}>();", column.Storage, column.TypeStringInCode)))
 
 
     let getConstructor (table:table) =
@@ -980,7 +980,7 @@
                 |> Array.map (fun x -> x.Value)
     let columnProperties (columns:column[]) =
         columns |> Array.map (fun column -> 
-            sf.PropertyDeclaration(sf.ParseTypeName(column.Type), column.Member)
+            sf.PropertyDeclaration(sf.ParseTypeName(column.TypeStringInCode), column.Member)
                 .WithAttributeLists(sf.List(propertyAttributes column))
                 .AddModifiers(sf.Token(sk.PublicKeyword))
                 .AddAccessorListAccessors(
